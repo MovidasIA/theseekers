@@ -31,6 +31,165 @@ h2{font-size:clamp(20px,3vw,30px);letter-spacing:3px;margin:0 0 8px}.intro{font-
 .docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;padding:22px}.doc-card{position:relative;background:linear-gradient(170deg,#121a14 0%,#08120c 60%,#040a06 100%);border:1px solid #234b35;box-shadow:0 12px 30px rgba(0,0,0,0.7);padding:14px;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s ease,border-color .2s ease;border-radius:2px}.doc-card:hover{transform:translateY(-5px);border-color:var(--amber);box-shadow:0 16px 36px rgba(0,0,0,0.9),0 0 18px #d39a4520}.doc-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a3827;padding-bottom:7px;margin-bottom:10px}.doc-id{font-size:9.5px;color:var(--amber);letter-spacing:2px;font-weight:bold}.doc-state-badge{font-size:8px;letter-spacing:1px;padding:2px 7px;border-radius:1px;text-transform:uppercase}.state-intact{background:#65e6a018;color:#65e6a0;border:1px solid #65e6a055}.papyri-thumbnail{position:relative;width:100%;aspect-ratio:16/11;background:radial-gradient(circle at center,#1e170e 0%,#110c07 75%,#070503 100%);border:1px solid #3d301f;margin-bottom:12px;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center}.papyri-thumbnail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s ease}.doc-card:hover .papyri-thumbnail img{transform:scale(1.05)}.doc-title{font-size:13px;letter-spacing:1.5px;color:#fff;font-weight:bold;margin:0 0 5px;line-height:1.3}.doc-format-tag{font-size:8px;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}.doc-desc{font-size:9.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.doc-btn{width:100%;background:transparent;border:1px solid var(--dim);color:var(--green);font-size:9px;padding:7px;letter-spacing:1.5px;text-align:center;transition:.15s;margin-top:auto}.doc-btn:hover{background:var(--green);color:var(--bg);border-color:var(--green)}
 .inspector-overlay{position:fixed;inset:0;background:rgba(2,7,4,0.92);backdrop-filter:blur(5px);z-index:900;display:grid;place-items:center;padding:20px}.inspector-dialog{width:min(760px,100%);background:linear-gradient(150deg,#0a1f14,#040e08);border:1px solid var(--green);box-shadow:0 20px 60px rgba(0,0,0,0.95);max-height:92vh;overflow-y:auto;position:relative}.inspector-title-bar{padding:12px 18px;border-bottom:1px solid var(--line);background:#05110a;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}.inspector-body{padding:20px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,0.9fr);gap:22px}.inspector-actions{display:flex;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}.inspector-btn{background:transparent;border:1px solid var(--dim);color:var(--green);padding:9px 14px;font-size:9px;letter-spacing:2px;flex:1;text-align:center}.inspector-btn:hover{background:var(--green);color:var(--bg)}.close-inspector-btn{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:4px}.close-inspector-btn:hover{color:var(--red)}
 footer{margin-top:35px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:#527361;font-size:9px;letter-spacing:1px}@media(max-width:960px){#archive{display:block}aside{width:100%;padding:14px;border:0;border-bottom:1px solid var(--line)}.brand{padding-bottom:12px}.navtitle{margin:13px 5px 7px}.nav{grid-template-columns:repeat(4,1fr)}.nav button{text-align:center;padding:9px 3px;font-size:9px}.sidefoot{display:none}.grid{grid-template-columns:1fr}.inspector-body{grid-template-columns:1fr}}
+
+/* RESPONSIVE LAYOUT: tablets and phones */
+/* Allow long archive labels to wrap instead of widening flex/grid tracks. */
+.head>div,.top>div,.ptitle>span,.album-stat-chip,.inspector-body>div,
+#docViewerBody>div,.inspector-title-bar>span{min-width:0;overflow-wrap:anywhere}
+.inspector-dialog{min-width:0;overscroll-behavior:contain}
+#loginGate{overflow-y:auto;justify-content:flex-start!important}
+#loginGate>div{flex-shrink:0;margin-block:auto}
+button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+@media (max-width: 1100px){
+  #archive{flex-direction:column}
+  aside{width:100%;padding:14px;border-right:0;border-bottom:1px solid var(--line)}
+  .brand{padding-bottom:12px}
+  .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .nav button{text-align:center;min-height:44px}
+  .sidefoot{display:none}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  main{padding:20px 22px 34px}
+  .top{align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+  .online{white-space:normal;text-align:right}
+  .head{flex-wrap:wrap}
+  .head>div:first-child{flex:1 1 400px}
+  h2{overflow-wrap:anywhere}
+  .cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:16px}
+  .tcg-card-container{min-height:0}
+  .tcg-char-name{font-size:14px}
+  .inspector-body{grid-template-columns:minmax(0,1fr)}
+  #docViewerBody{grid-template-columns:minmax(0,1fr)!important;max-height:none!important;overflow-y:visible!important}
+  #docViewerModal .inspector-dialog{max-height:94dvh!important}
+  #docViewerModal .inspector-title-bar{flex-wrap:wrap}
+  #docViewerTitle{flex:1 1 100%}
+  #docViewerModal .inspector-title-bar>div{flex-wrap:wrap}
+  .inspector-title-bar{gap:8px}
+  .inspector-dialog{max-height:94dvh}
+  .nav button,.filter-btn,.subdiv-pill,.page-btn,.page-pill,.doc-btn,
+  .inspector-btn,.close-inspector-btn,#access,#bypassBtn{min-height:44px}
+  .page-pill,.close-inspector-btn{min-width:44px}
+  .pagination-controls,.page-info-tag{flex-wrap:wrap}
+}
+
+@media (max-width: 700px){
+  body{font-size:13px}
+  #loginGate{padding:12px!important;overflow-y:auto}
+  #loginGate>div{padding:22px 16px!important}
+  #loginGate input{padding:12px!important;font-size:16px!important;letter-spacing:2px!important;min-width:0}
+  #loginGate #access{position:static!important;width:100%;padding:10px!important;font-size:12px!important}
+  #loginGate>div>div:nth-child(3)>div{flex-wrap:wrap;gap:8px}
+  #loginGate>div>div:nth-child(3)>div:nth-child(2){flex-direction:column;align-items:stretch!important}
+  #loginGate>div>div:first-child{font-size:8px!important;gap:8px}
+  #loginGate h1{font-size:17px!important;line-height:1.25}
+  #loginGate p,#loginMsg,#bypassBtn{font-size:12px!important;line-height:1.6}
+  #loginGate>div>div:last-child{align-items:flex-start!important;flex-direction:column}
+
+  aside{padding:12px 10px}
+  .brand{padding:0 4px 12px}
+  .brand b{font-size:13px;letter-spacing:1.5px}
+  .brand small{font-size:8px;letter-spacing:1.2px}
+  .navtitle{margin:12px 4px 7px;font-size:8px}
+  .nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .nav button{min-height:44px;padding:8px 5px;font-size:11px;line-height:1.25;letter-spacing:.5px}
+  main{padding:14px 10px 28px}
+  .top{font-size:8px;letter-spacing:1px;gap:8px;margin-bottom:16px;padding-bottom:11px}
+  .top>div{max-width:100%}
+  .online{text-align:left}
+  .head{display:block;margin-bottom:14px}
+  h2{font-size:20px;line-height:1.15;letter-spacing:2px}
+  .intro{font-size:12px;line-height:1.6}
+  .head .tag{display:inline-block;margin-top:12px;font-size:8px;padding:7px 8px}
+  .ptitle{padding:10px 11px;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:8px;line-height:1.35}
+  .map-viewport,.map-viewport.fullscreen{min-height:350px;margin:8px}
+  .map-canvas-wrap,.world-svg-el{min-height:330px}
+  .map-header-hud{top:9px;left:9px;right:9px;gap:8px;flex-direction:column}
+  .hud-title,.hud-coords{font-size:7px;letter-spacing:1px;text-align:left}
+  .hud-coords{align-self:flex-end;text-align:right}
+  .map-compass{width:48px;height:48px;bottom:10px;right:10px}
+  .marker-tag{font-size:7px}
+  .rows{padding:4px 11px 9px}
+  .row{padding:10px 0;font-size:9px;align-items:flex-start;flex-wrap:wrap}
+  .row span:last-child{text-align:right;max-width:62%}
+  .note{padding:12px;font-size:12px}
+
+  .album-hud-bar{padding:12px 11px;gap:11px}
+  .album-stats-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
+  .album-stat-chip span{font-size:7px;line-height:1.3}
+  .album-stat-chip strong{font-size:10px;line-height:1.3}
+  .album-progress-wrap{grid-column:1/-1;min-width:0;max-width:none;width:100%}
+  .filters-suite{gap:8px;padding-top:10px}
+  .primary-filters{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .filter-btn{justify-content:center;padding:8px 5px;font-size:10px;letter-spacing:.5px;min-height:44px;text-align:center;overflow-wrap:anywhere}
+  .filter-btn:first-child{grid-column:1/-1}
+  .subdivisions-bar{padding:8px 7px;gap:5px}
+  .subdiv-title{width:100%;font-size:7px;margin:0 0 2px}
+  .subdiv-pill{padding:5px 7px;font-size:10px;letter-spacing:.5px}
+  .tcg-pagination-bar{padding:10px 11px;align-items:stretch}
+  .page-info-tag{font-size:10px;line-height:1.4;flex-wrap:wrap}
+  .pagination-controls{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .pagination-controls>div{order:3;flex-basis:100%;justify-content:center}
+  .page-btn{padding:7px 8px;font-size:10px;letter-spacing:.5px}
+  .page-pill{width:44px;height:44px}
+  .cards-grid{grid-template-columns:1fr;gap:12px;padding:12px}
+  .tcg-card-container{min-height:0}
+  .tcg-inner-body{padding:11px}
+  .tcg-top-spec{padding:6px 9px;font-size:7px;gap:6px;flex-wrap:wrap}
+  .tcg-dim-indicator{font-size:6.5px}
+  .tcg-char-name{font-size:15px}
+  .tcg-class-pill{font-size:7px}
+  .elemental-badge{font-size:7px;padding:3px 5px}
+  .tcg-art-box,.tcg-sealed-art{aspect-ratio:1/0.9}
+  .tcg-lore-box{font-size:12px;padding:8px 9px}
+  .tcg-sealed-desc{font-size:12px}
+  .tcg-skills-grid{gap:4px}
+  .tcg-skill-slot{padding:5px;min-height:43px}
+  .tcg-skill-header{font-size:6.5px}
+  .tcg-skill-score{font-size:11px}
+
+  .docs-grid{grid-template-columns:1fr;gap:12px;padding:12px}
+  .doc-card{padding:11px}
+  .doc-title{font-size:12px}
+  .doc-desc{font-size:12px}
+  .doc-btn{font-size:10px;padding:9px 6px}
+
+  .inspector-overlay{padding:7px;place-items:start center;overflow-y:auto}
+  .inspector-dialog{width:100%;max-height:calc(100dvh - 28px);margin-top:7px}
+  .inspector-title-bar{padding:10px 11px;gap:8px;align-items:flex-start}
+  .inspector-title-bar>span{font-size:10px!important;line-height:1.35}
+  .close-inspector-btn{font-size:11px;white-space:nowrap}
+  .inspector-body{padding:12px;gap:14px;grid-template-columns:1fr!important}
+  .inspector-actions{gap:7px;padding-top:12px}
+  .inspector-btn{padding:9px 7px;font-size:8px;letter-spacing:1px}
+  #docViewerBody{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding:10px!important}
+  #docViewerModal .inspector-dialog{width:100%!important;max-height:calc(100dvh - 28px)!important}
+  #docViewerTitle{flex-basis:100%}
+  #docViewerModal .inspector-title-bar>div{gap:3px!important;flex-wrap:wrap;justify-content:flex-end}
+  #docViewerModal .page-btn{padding:5px 6px!important;font-size:10px!important}
+  #docViewerModal #docZoomLevelText{font-size:8px;min-width:34px!important}
+  #docViewerImageContainer img{max-width:none;width:100%!important}
+  footer{margin-top:24px;padding-top:11px;flex-direction:column;font-size:7px;line-height:1.5}
+}
+
+@media (min-width:701px) and (max-width:960px){
+  .nav{grid-template-columns:repeat(4,1fr)}
+  .nav button{font-size:11px;padding:9px 3px}
+  .map-viewport,.map-viewport.fullscreen{min-height:430px}
+  .map-canvas-wrap,.world-svg-el{min-height:410px}
+}
+
+/* Keep the SVG and its percentage-positioned target on the same 2:1 canvas. */
+@media (max-width:1100px){
+  .map-viewport,.map-viewport.fullscreen{min-height:0}
+  .map-header-hud{position:static;padding:12px;gap:10px;flex-wrap:wrap}
+  .map-canvas-wrap{min-height:0;flex:none;aspect-ratio:2/1}
+  .world-svg-el{position:absolute;inset:0;min-height:0;width:100%;height:100%}
+  .marker-tag{left:0;transform:none}
+  .tcg-card-container:hover,.doc-card:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .marker-radar,.marker-radar-2,.tcg-art-glow-ring{animation:none}
+}
 </style>
 </head>
 <body>
@@ -47,7 +206,7 @@ footer{margin-top:35px;border-top:1px solid var(--line);padding-top:14px;display
 <script>
 const archiveData={seekers:[{id:'SEEKER-01',name:'Bastian Baltasar Bux',location:'Vancouver, Columbia Británica (Canadá)',coords:'49°15′ N, 123°06′ W',status:'VERIFIED // INITIAL RECORD',date:'2026-09-01',details:'Primer Seeker localizado. Foco de emisión activa registrado en costa oeste canadiense.'}],locations:[{id:'LOC-01',name:'Vancouver, Columbia Británica (Canadá)',seeker:'Bastian Baltasar Bux',coords:'49°15′28″ N, 123°06′58″ W',region:'North America / Pacific Northwest',status:'VERIFIED',description:'Primer Seeker localizado en el archivo. Registro de coordenadas confirmado en la red cartográfica del proyecto.',x:15.8,y:28.5}],totalAlbumCapacity:12,cards:[{id:'CARD-001',order:1,number:'CARD #001',name:'BASTIAN BALTASAR BUX',rarity:'personaje',rarityType:'diamante',division:'jovenes',divisionLabel:'Jóvenes Seekers',element:'PNEUMA (AIRE)',elementKey:'pneuma',classification:'PERSONAJE - JÓVENES SEEKERS',discoveryDate:'2026-09-01',dimensions:'720 × 770 PX [VERTICAL TCG]',quote:'«Yo fui un Seeker. Ahora os toca descubrir qué significa serlo.»',description:'El lector que salvó al Reino de la Nada al otorgarle un nuevo nombre a la Emperatriz Infantil. Localizado originalmente en el desván escolar de la costa del Pacífico. Capaz de cruzar umbrales narrativos mediante la invocación del Pneuma y la memoria escrita.',skills:[{label:'Fortaleza',val:78},{label:'Valentía',val:85},{label:'Empatía',val:92},{label:'Equipo',val:88},{label:'Liderazgo',val:80},{label:'Ingenio',val:95}],lore:'Registro de Seeker primario catalogado tras la apertura de la carta de Vancouver (2006). Porta la insignia del Pneuma (Aire), elemento que rige el pensamiento libre, la inspiración desatada y la conexión con el Gran Cuaderno de Eudoro.'}],upcomingSlots:[{id:'SLOT-DIA',order:2,rarity:'diamante',division:'wildcards',badgeClass:'tag-dia',name:'RANURA SELLADA // RAREZA DIAMANTE',typeLabel:'ARTEFACTO SOBERANO // DIAMANTE',desc:'Ranura de máxima resonancia arcana. Contiene una reliquia o personaje de jerarquía superior pendiente de descifrado en el aula.',dim:'720 × 770 PX [VERT]',glyph:'💎'},{id:'SLOT-DOR',order:3,rarity:'dorada',division:'antiguos',badgeClass:'tag-dor',name:'RANURA SELLADA // RAREZA DORADA',typeLabel:'RELICARIO ÁUREO // DORADA',desc:'Custodia reliquias de gran poder histórico procedentes de la época de Alejandría o talismanes de protección.',dim:'720 × 770 PX [VERT]',glyph:'⚜️'},{id:'SLOT-PLA',order:4,rarity:'plata',division:'guardianes',badgeClass:'tag-pla',name:'RANURA SELLADA // RAREZA PLATA',typeLabel:'CRÓNICA ARGÉNTICA // PLATA',desc:'Crónica militar y táctica de guardianes y emisarios que custodian las fronteras del archivo.',dim:'720 × 770 PX [VERT]',glyph:'🛡️'},{id:'SLOT-PER-ANT',order:5,rarity:'personaje',division:'antiguos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: ANTIGUOS',typeLabel:'PERSONAJES // DIVISIÓN: ANTIGUOS',desc:'Eruditos y sabios clásicos como Eudoro de Alejandría que documentaron por primera vez la teoría elemental.',dim:'720 × 770 PX [VERT]',glyph:'📜'},{id:'SLOT-PER-EXP',order:6,rarity:'personaje',division:'exploradores',badgeClass:'tag-per',name:'RANURA // PERSONAJES: EXPLORADORES',typeLabel:'PERSONAJES // DIVISIÓN: EXPLORADORES',desc:'Pioneros del terreno, cartógrafos de rutas desconocidas y rastreadores de coordenadas olvidadas.',dim:'720 × 770 PX [VERT]',glyph:'🧭'},{id:'SLOT-PER-CIE',order:7,rarity:'personaje',division:'cientificos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: CIENTÍFICOS',typeLabel:'PERSONAJES // DIVISIÓN: CIENTÍFICOS',desc:'Analistas del pensamiento sistémico, investigadores de fenómenos físicos y descifradores de enigmas.',dim:'720 × 770 PX [VERT]',glyph:'⚗️'},{id:'SLOT-PER-GUA',order:8,rarity:'personaje',division:'guardianes',badgeClass:'tag-per',name:'RANURA // PERSONAJES: GUARDIANES',typeLabel:'PERSONAJES // DIVISIÓN: GUARDIANES',desc:'Protectores de los umbrales sagrados y defensores del archivo frente a las fuerzas del olvido.',dim:'720 × 770 PX [VERT]',glyph:'⚔️'},{id:'SLOT-PER-CON',order:9,rarity:'personaje',division:'contemporaneos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: CONTEMPORÁNEOS',typeLabel:'PERSONAJES // DIVISIÓN: CONTEMPORÁNEOS',desc:'Seekers activos en la era moderna que conectan el pasado con las misiones actuales.',dim:'720 × 770 PX [VERT]',glyph:'⌚'},{id:'SLOT-PER-TRA',order:10,rarity:'personaje',division:'transmisores',badgeClass:'tag-per',name:'RANURA // PERSONAJES: TRANSMISORES',typeLabel:'PERSONAJES // DIVISIÓN: TRANSMISORES',desc:'Operadores de frecuencias, mensajeros entre planos y custodios de la red de radiofrecuencia táctica.',dim:'720 × 770 PX [VERT]',glyph:'📡'},{id:'SLOT-PER-WIL',order:11,rarity:'personaje',division:'wildcards',badgeClass:'tag-per',name:'RANURA // PERSONAJES: WILDCARDS',typeLabel:'PERSONAJES // DIVISIÓN: WILDCARDS',desc:'Entidades anómalas, comodines de destino y manifestaciones inesperadas dentro de la investigación.',dim:'720 × 770 PX [VERT]',glyph:'🃏'}],documents:[{id:'DOC-01',title:'Carta de Bastian Baltasar Bux (Vancouver, 2006)',formatLabel:'Misiva Manuscrita Auténtica // 2 Folios',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuABB9Q21glWRDoFdHEMjx89tNmBKxUiaOD_4eUdiWf2VWRhEIxQldKtXgSh6lGBbO4kKYJR-a4hOqUHCeUgcNAAR3gAmynGoyhuuYbp9ytYFYqO6abA2A9QUC6mMAbO5atuJCLEU-3CJxR4ln5fcMJkMyb9O8aNYL8RleiO8BvMxTiemJestVLz7C85T65Ll5ClgRsIwrcaBzKMfbJgppmxt4H82yRov09XqYD8o6NSl3PxUYd9Ko6rf753u9Z_pBkp','https://lh3.googleusercontent.com/aida-public/AB6AXuDMTxaTkmEOAGrY-IjxmNVhxVKsCjOTG2hmRhzwF4CFcxT9lGmU7BvpwdVQgwAhQjrK-6eeLWlXrLeJFUmb4QBrcJ2CtLmeh20h27ytetWej2AAuPOyxzzF6MU8MPm5Ii9OfAEldlpjudK7CK3RyHzcAXwe2Ccj2LwZrlRt2Cg0Yx4J-q380wtAOdLvFJLWqX3ziS86F1oExbEPEslqv4LhYzRQII8O2CnYxGDVf3KoQZ7Op311r_4ptTNBV71eZeW-'],context:'Carta manuscrita original dividida en dos folios hallada con la rúbrica y sello de Bastian Baltasar Bux en Vancouver en el año 2006. En ella confiesa su trayectoria como antiguo Seeker tras regresar de Fantasía.',transcript:'«Para quienes hayan llegado hasta aquí: Si estáis leyendo esta carta, significa que algo que creía perdido ha vuelto a aparecer... Durante años conservé el recuerdo de lo que había vivido... Yo fui un Seeker. Ahora os toca descubrir qué significa serlo. P.D. Hasta que sepáis en quién confiar, guardad esta carta donde nadie la vea.»'},{id:'DOC-02',title:'Cuaderno de Eudoro // Pág 1: ΖΗΤΗΣΙΣ & Pneuma',formatLabel:'Papiro Alejandrino // Folio I',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuALKLOxW9Li8ftILefeuUJ3UJa5k_hqbxthskx3UeMt-oH3TcL1c7HnSwVR48FwR6msA2E-n0F7zftzTqOnz5Grawu2b1pt6qFpM1hegTpPoC5H9Og1FfwkjrMUp9m3d0Z0JgE3ks_-WTRCN_qNSU4aGpc5bEebOlooAKAYzR1RJK1oo6s7q7FaE2eA2g1n3qwXXd6lD1VobNwZGIJfpJ-1pnYgiLGTEiDgJeq4CrJA9h4K19bpKGHsKFkK7UtVCnGW'],context:'Primera página recuperada del Cuaderno de Eudoro de Alejandría. Introducción al término ΖΗΤΗΣΙΣ (Zétêsis - Búsqueda/Indagación) y estudio del aliento vital primordial (Pneuma).',transcript:'«FRAGMENTO I · SOBRE EL AIRE. He pasado esta mañana observando el agua de la fuente. No el agua en sí. Lo que la movía... El pneuma —aquello que los antiguos llamaron aliento, espíritu, aire— no ocupa un lugar en el mundo de la misma manera... ¿Dónde termina el Aire y dónde empieza todo lo demás?»'},{id:'DOC-03',title:'Cuaderno de Eudoro // Pág 2: Diagrama de 4 Elementos',formatLabel:'Papiro Alejandrino // Folio II',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuB7r5jRKSp8QCYGkhzP1fcVz_pNwkFmG9wzDHgod5Dh86CV5CWpGnFHZvTQAhAhtP5QrkatZ_7COvDvZCwJikmu11Va6cD3vqSXiBlrpnG_vAU001-qVU8_9gtGfRUPNyXi3x5_sd08WKx0roYRzv3WBTH5ZVnm0UKIu5HwbD7P-rfCe7w7sTvnjpUU-Slj7SzN7aolwVKc--14y7X4LZ9x14XL0IU3lKBJLhgBX_jrP1Z1O83MuQ-v-YbQphR72Bzf'],context:'Segunda página que contiene el primer esquema cosmológico: los cuatro elementos (Pneuma, Hydor, Pyr, Gaia) rodeando un signo de interrogación central enigmático.',transcript:'«He observado durante varios días el comportamiento del Aire sobre diferentes superficies... El Aire no moja. No pesa... ¿Actúa el Aire sobre los elementos o los elementos actúan a través del Aire? En el centro de la rueda se sitúa la gran incógnita [?].»'},{id:'DOC-04',title:'Cuaderno de Eudoro // Pág 3: Pensamiento Sistémico',formatLabel:'Papiro Alejandrino // Folio III',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuDynrbay6qxIJrrNu2rYmoQAWbvh8KqgaYWf0xI42dnDZeVsbs-Vc1SEDdOU8KKycIkRYMrsuN7gHdcEZNUAbiADpTtQ6O5GbG_zusoFrfMWTMcr6MVpR5cK9r4CpCzbMK5y44WrKwnQKyss2e0Hj_c4csc0b_KxFwMa50n93J1j47uneVaXHmZkePdtPFaThY6Z7mVCS-YAYg-_R6Sk8i0UV5prBMWt67y4kVT-X-K5X9qxijFcllzuQsT2vfzSBlm'],context:'Tercera página donde Eudoro refuta su primer modelo. Abandona la clasificación separada e introduce el pensamiento sistémico con el centro en blanco: "Lo que hay en el centro no tiene nombre todavía".',transcript:'«He vuelto a mirar el diagrama que dibujé ayer... He llegado a una conclusión incómoda: el diagrama está mal. En la idea que lo sostiene. No hay fronteras. He rehecho el diagrama... Y en el centro he dejado un espacio vacío. "Lo que hay en el centro no tiene nombre todavía".»'},{id:'DOC-05',title:'Cuaderno de Eudoro // Pág 4: Fragmento Rasgado',formatLabel:'Papiro Alejandrino // Fragmento IV Rasgado',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuD1nQnZj2GL0YxbUMGD3E9_NUzIkIvGW0oR7DFcagpgCq_F-pG4nEFkRUShSgsDN0lOcW37WBkPzERtOQMQ_ccgLq2M8Sg2t577lrnDqk3AIvsol1C4VL5AagnJnEBdfUTS6AD-yxRVyM3CG6yi7emr9XfD6l_iUQ1UY6h-rv_hlhS7JeyYNjMMzbybz53k0YRTSgwK99Hrw_xZFdUyaWyUnKDPkIhKriLbx-FWEsB8Dp1rTUaQyXwtXVdnEYGc07D3'],context:'Última página recuperada con borde rasgado. Formula la interdependencia total de las fuerzas elementales y plantea la gran tesis de la orden Seeker.',transcript:'«Esta noche he entendido que el método tiene un error fundamental. No puedes estudiar por separado algo que... El Aire mueve el Agua. El Agua transforma la Tierra. La Tierra alimenta el Fuego. El Fuego devuelve al Aire. Esto no es una cadena. Es algo que ocurre al mismo tiempo... ¿Y si aquello que conecta los cuatro no fuera un elemento sino...?»'}]};
 function total(k){return archiveData[k]?.length||0}function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function unlockArchive(){const gate=document.getElementById('loginGate'),app=document.getElementById('archive'),status=document.getElementById('keyStatus'),msg=document.getElementById('loginMsg');status.textContent='ACCESO CONCEDIDO // AUTORIZADO';status.style.color='#65e6a0';msg.textContent='CLAVE CORRECTA // ACCESO CONCEDIDO — SINCRONIZANDO NODO CENTRAL...';msg.style.color='#65e6a0';msg.style.fontWeight='bold';setTimeout(()=>{gate.style.display='none';gate.classList.add('hidden');app.style.display='flex';app.classList.remove('hidden');render('central')},350)}
+function unlockArchive(){const gate=document.getElementById('loginGate'),app=document.getElementById('archive'),status=document.getElementById('keyStatus'),msg=document.getElementById('loginMsg');status.textContent='ACCESO CONCEDIDO // AUTORIZADO';status.style.color='#65e6a0';msg.textContent='CLAVE CORRECTA // ACCESO CONCEDIDO — SINCRONIZANDO NODO CENTRAL...';msg.style.color='#65e6a0';msg.style.fontWeight='bold';setTimeout(()=>{gate.style.display='none';gate.classList.add('hidden');app.style.removeProperty('display');app.classList.remove('hidden');render('central')},350)}
 function handleLoginAttempt(){const input=document.getElementById('password'),status=document.getElementById('keyStatus'),msg=document.getElementById('loginMsg'),val=(input?.value||'').trim().toLowerCase();if(val==='empanadilla')unlockArchive();else{status.textContent='ERROR // CLAVE INVÁLIDA';status.style.color='var(--red)';msg.textContent='ERROR DE CLAVE: Intente nuevamente con el nombre clave (11 caracteres). O use el botón de demostración táctica.';msg.style.color='var(--red)';input.style.borderColor='var(--red)';input.focus();setTimeout(()=>input.style.borderColor='var(--dim)',1500)}}
 document.getElementById('access').addEventListener('click',handleLoginAttempt);document.getElementById('password').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();handleLoginAttempt()}});document.getElementById('bypassBtn').addEventListener('click',unlockArchive);
 function updateClock(){const clk=document.getElementById('clock');if(clk)clk.textContent=new Date().toLocaleString('es-ES',{dateStyle:'short',timeStyle:'medium'})}setInterval(updateClock,1000);updateClock();
@@ -62,7 +221,7 @@ function inspectSlot(id){const s=archiveData.upcomingSlots.find(x=>x.id===id);if
 function inspectCard(id){const c=archiveData.cards.find(x=>x.id===id);if(!c)return;document.getElementById('inspectorHeaderTitle').textContent=`DOSSIER TÁCTICO // ${c.number} — ${c.name}`;document.getElementById('inspectorModalContent').innerHTML=`<div style="display:flex;flex-direction:column;align-items:center"><div class="tcg-card-container" style="width:100%;max-width:280px;cursor:default;min-height:auto">${cardMarkup(c).replace(/^<article[^>]*>|<\/article>$/g,'')}</div></div><div style="display:flex;flex-direction:column;gap:12px"><div><div style="font-size:9px;color:var(--amber);letter-spacing:2px">${esc(c.classification)}</div><h3 style="font-size:18px;color:#fff;margin:3px 0 6px">${esc(c.name)}</h3><span style="font-size:9px;color:var(--muted)">ORDEN CRONOLÓGICO #${String(c.order).padStart(2,'0')} • ELEMENTO: ${esc(c.element)}</span></div><div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0"><div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TEXTO EXPLICATIVO CANÓNICO:</div>${esc(c.description)}</div><div style="font-size:9.5px;line-height:1.7;color:var(--muted)"><span style="color:var(--paper);font-weight:bold">LORE DEL ARCHIVO:</span><br/>${esc(c.lore)}</div><div class="inspector-actions"><button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR DOSSIER</button></div></div>`;document.getElementById('cardInspectorModal').classList.remove('hidden')}
 document.getElementById('closeInspectorBtn').onclick=()=>document.getElementById('cardInspectorModal').classList.add('hidden');document.getElementById('cardInspectorModal').onclick=e=>{if(e.target===document.getElementById('cardInspectorModal'))document.getElementById('cardInspectorModal').classList.add('hidden')};
 let docZoomLevel=1;function openDocViewer(id){const d=archiveData.documents.find(x=>x.id===id);if(!d)return;docZoomLevel=1;document.getElementById('docViewerTitle').textContent=`ARCHIVAL DOCUMENT // ${d.id} — ${d.title}`;document.getElementById('docViewerBody').innerHTML=`<div style="display:flex;flex-direction:column;gap:14px;overflow-x:auto;padding-bottom:10px" id="docViewerImageContainer">${d.pages.map((p,i)=>`<div style="border:1px solid #3d301f;background:#050705;padding:8px;position:relative"><div style="position:absolute;top:12px;left:14px;background:#05120caa;padding:2px 8px;font-size:8px;color:var(--amber);border:1px solid #163625;z-index:5">FOLIO [${i+1}/${d.pages.length}]</div><img src="${p}" alt="${d.title} - Página ${i+1}" style="width:100%;display:block;transform-origin:top center;transition:transform .2s ease;filter:contrast(1.04)"/></div>`).join('')}</div><div style="display:flex;flex-direction:column;gap:14px"><div style="border-bottom:1px solid #1a3827;padding-bottom:10px"><div style="font-size:8.5px;color:var(--amber);letter-spacing:1.5px">${esc(d.formatLabel)}</div><h3 style="font-size:16px;color:#fff;margin:4px 0">${esc(d.title)}</h3><span class="doc-state-badge ${d.conditionClass}">AUTENTICIDAD VERIFICADA</span></div><div style="background:#07120a;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0"><div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">CONTEXTO Y HALLAZGO:</div>${esc(d.context)}</div><div style="background:#050f09;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.8;color:var(--paper)"><div style="color:var(--green);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TRANSCRIPCIÓN PALEOGRÁFICA:</div>${esc(d.transcript)}</div><div class="inspector-actions"><button class="inspector-btn" onclick="document.getElementById('docViewerModal').classList.add('hidden')">CERRAR VISOR</button></div></div>`;updateDocZoomDisplay();document.getElementById('docViewerModal').classList.remove('hidden')}
-function updateDocZoomDisplay(){document.getElementById('docZoomLevelText').textContent=`${Math.round(docZoomLevel*100)}%`;document.querySelectorAll('#docViewerImageContainer img').forEach(img=>img.style.transform=`scale(${docZoomLevel})`)}document.getElementById('docZoomInBtn').onclick=()=>{if(docZoomLevel<2.5){docZoomLevel+=.25;updateDocZoomDisplay()}};document.getElementById('docZoomOutBtn').onclick=()=>{if(docZoomLevel>.5){docZoomLevel-=.25;updateDocZoomDisplay()}};document.getElementById('docZoomResetBtn').onclick=()=>{docZoomLevel=1;updateDocZoomDisplay()};document.getElementById('closeDocViewerBtn').onclick=()=>document.getElementById('docViewerModal').classList.add('hidden');document.getElementById('docViewerModal').onclick=e=>{if(e.target===document.getElementById('docViewerModal'))document.getElementById('docViewerModal').classList.add('hidden')};
+function updateDocZoomDisplay(){document.getElementById('docZoomLevelText').textContent=`${Math.round(docZoomLevel*100)}%`;document.querySelectorAll('#docViewerImageContainer img').forEach(img=>{img.style.transform='none';img.parentElement.style.width=`${docZoomLevel*100}%`;img.parentElement.style.flexShrink='0'})}document.getElementById('docZoomInBtn').onclick=()=>{if(docZoomLevel<2.5){docZoomLevel+=.25;updateDocZoomDisplay()}};document.getElementById('docZoomOutBtn').onclick=()=>{if(docZoomLevel>.5){docZoomLevel-=.25;updateDocZoomDisplay()}};document.getElementById('docZoomResetBtn').onclick=()=>{docZoomLevel=1;updateDocZoomDisplay()};document.getElementById('closeDocViewerBtn').onclick=()=>document.getElementById('docViewerModal').classList.add('hidden');document.getElementById('docViewerModal').onclick=e=>{if(e.target===document.getElementById('docViewerModal'))document.getElementById('docViewerModal').classList.add('hidden')};
 function documents(){return `<div class="head"><div><h2>DOCUMENTS // REPOSITORIO ORIGINAL</h2><p class="intro">Archivo de manuscritos, misivas históricas y fragmentos recuperados del Cuaderno de Eudoro de Alejandría.</p></div><div class="tag">RECORDS ONLINE: ${archiveData.documents.length} DOCUMENTOS VERIFICADOS</div></div><section class="panel"><div class="docs-grid">${archiveData.documents.map(d=>`<article class="doc-card" onclick="openDocViewer('${d.id}')"><div class="doc-header"><span class="doc-id">${d.id}</span><span class="doc-state-badge ${d.conditionClass}">AUTÉNTICO</span></div><div class="papyri-thumbnail"><img src="${d.pages[0]}" alt="${d.title}"></div><div class="doc-title">${esc(d.title)}</div><div class="doc-format-tag">${esc(d.formatLabel)}</div><div class="doc-desc">${esc(d.context)}</div><button class="doc-btn" onclick="event.stopPropagation();openDocViewer('${d.id}')">[ INSPECCIONAR EN ALTA RESOLUCIÓN ]</button></article>`).join('')}</div></section>`}
 function central(){return `<div class="head"><div><h2>CENTRAL INDEX</h2><p class="intro">Bienvenido al Archivo de los Seekers. La cartografía satelital del mundo real está sincronizada.<br/>Visualización activa del primer Seeker en Vancouver, estado del códex coleccionable y registro de manuscritos.</p></div><div class="tag">USER STATUS: NEW SEEKERS DETECTED</div></div><div class="grid">${renderMapMarkup(false)}<div class="stack"><section class="panel"><div class="ptitle"><span>ARCHIVE STATUS</span><span>LIVE</span></div><div class="rows"><div class="row"><span>Seekers located</span><span style="color:var(--green);font-weight:bold">01</span></div><div class="row"><span>Active Target</span><span style="color:var(--paper)">Bastian Baltasar Bux</span></div><div class="row"><span>Coordinates</span><span style="color:var(--amber)">49°15′ N, 123°06′ W</span></div><div class="row"><span>Location</span><span style="color:var(--green)">Vancouver, BC (Canadá)</span></div><div class="row"><span>Cards recovered</span><span style="color:var(--amber);font-weight:bold">01 / ${archiveData.totalAlbumCapacity}</span></div><div class="row"><span>Documents online</span><span style="color:var(--green)">${archiveData.documents.length} Manuscritos HD</span></div><div class="row"><span>Standard card size</span><span style="color:var(--green)">720 × 770 VERTICAL</span></div></div></section><section class="panel"><div class="ptitle"><span>SATELLITE TELEMETRY</span><span>WGS-84</span></div><div class="note"><b>INFORME TÁCTICO INICIAL:</b><br/>La emisión detectada en Vancouver confirma la presencia histórica de Bastian Baltasar Bux como Seeker primario. La colección clasificada se encuentra abierta para el registro cronológico del aula.</div></section></div></div>`}
 function mapPage(){return `<div class="head"><div><h2>WORLD MAP</h2><p class="intro">THE SEEKERS ARCHIVE / GLOBAL CARTOGRAPHIC RECORD &amp; SATELLITE NETWORK</p></div><div class="tag">SEEKERS LOCATED: 01</div></div>${renderMapMarkup(true)}`}
