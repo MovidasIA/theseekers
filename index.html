@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+
+<html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>THE SEEKERS ARCHIVE — Tactical Network &amp; Archival Dossier</title>
@@ -9,6 +9,8 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--green);font:14px 'Courier New',monospace;overflow-x:hidden}
 body:after{content:'';pointer-events:none;position:fixed;inset:0;opacity:.06;background:repeating-linear-gradient(0deg,transparent 0 3px,#65e6a0 4px,transparent 5px);z-index:999}
 button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+
+/* SHELL */
 #archive{display:flex;min-height:100vh}
 aside{width:250px;flex-shrink:0;background:#050c08;border-right:1px solid var(--line);padding:24px 15px;display:flex;flex-direction:column}
 .brand{padding:0 8px 22px;border-bottom:1px solid var(--line)}.brand b{display:block;font-size:16px;letter-spacing:2px}.brand small{color:var(--muted);font-size:9px;letter-spacing:2px}
@@ -17,216 +19,1285 @@ aside{width:250px;flex-shrink:0;background:#050c08;border-right:1px solid var(--
 .nav button:hover,.nav button.active{color:var(--green);border-color:var(--dim);background:#65e6a012}.nav button.locked{color:var(--amber)}
 .sidefoot{margin-top:auto;border-top:1px solid var(--line);padding:16px 8px 0;color:#527361;font-size:9px;line-height:1.8}
 main{padding:25px clamp(18px,3vw,40px) 45px;min-width:0;flex:1;max-width:1680px;margin:auto;width:100%}
-.top{display:flex;justify-content:space-between;gap:15px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:24px;color:var(--muted);font-size:10px;letter-spacing:2px}.top strong{color:var(--green);font-weight:normal}.online{color:var(--green);white-space:nowrap}
-h2{font-size:clamp(20px,3vw,30px);letter-spacing:3px;margin:0 0 8px}.intro{font-size:11px;color:var(--muted);line-height:1.7;margin:0}.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:20px}.tag{font-size:9px;color:var(--amber);border:1px solid #d39a4566;padding:9px 11px}
-.grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,.8fr);gap:18px}.stack{display:grid;gap:18px;align-content:start}.panel{background:linear-gradient(145deg,#0d2017,#07120d);border:1px solid var(--line);min-width:0;box-shadow:0 15px 40px #00000060;position:relative}.ptitle{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:10px;letter-spacing:2px;background:#06100b}.ptitle span+span{color:var(--amber)}
-.map-viewport{position:relative;margin:12px;background:radial-gradient(ellipse at 50% 50%,#0e261d 0%,#07140e 70%,#040a07 100%);border:1px solid var(--dim);overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,0.85);min-height:500px;display:flex;flex-direction:column}.map-viewport.fullscreen{min-height:680px}.map-header-hud{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:15}.hud-title{font-size:9px;letter-spacing:2px;color:var(--green);text-shadow:0 0 8px var(--green-glow)}.hud-coords{font-size:9px;color:var(--amber);letter-spacing:1.5px;text-align:right}.map-canvas-wrap{position:relative;width:100%;flex:1;min-height:480px;user-select:none}.world-svg-el{width:100%;height:100%;display:block;min-height:480px}.geo-land{fill:#143425;stroke:#2d6349;stroke-width:0.75;stroke-linejoin:round;transition:fill .2s}.geo-land:hover{fill:#1a4631}.grid-equator{stroke:#d39a45;stroke-width:0.7;stroke-dasharray:4 4;opacity:0.6}.grid-prime{stroke:#65e6a0;stroke-width:0.7;stroke-dasharray:4 4;opacity:0.5}.map-compass{position:absolute;bottom:16px;right:16px;width:64px;height:64px;border:1px solid #2d6349;border-radius:50%;display:grid;place-items:center;pointer-events:none;opacity:0.6}.map-compass:before{content:'N';position:absolute;top:2px;font-size:8px;color:var(--amber);font-weight:bold}.map-compass:after{content:'';position:absolute;width:1px;height:100%;background:linear-gradient(to bottom,var(--amber) 0%,transparent 30%,transparent 70%,#2d6349 100%)}
-.marker-anchor{position:absolute;transform:translate(-50%,-50%);z-index:30}.marker-btn{position:relative;width:34px;height:34px;background:none;border:none;padding:0;cursor:pointer;outline:none;display:grid;place-items:center}.marker-radar{position:absolute;width:100%;height:100%;border:1px solid #ff4433;border-radius:50%;animation:radarScan 2.2s infinite cubic-bezier(0,0.2,0.8,1);box-shadow:0 0 10px #ff3b3060}.marker-radar-2{position:absolute;width:100%;height:100%;border:1px dashed var(--amber);border-radius:50%;animation:radarScan 2.2s infinite 1.1s cubic-bezier(0,0.2,0.8,1);opacity:0}@keyframes radarScan{0%{transform:scale(0.4);opacity:1}100%{transform:scale(2.6);opacity:0}}.marker-cross{position:relative;width:24px;height:24px;display:grid;place-items:center;filter:drop-shadow(0 0 6px rgba(255,59,48,0.9))}.marker-cross:before,.marker-cross:after{content:'';position:absolute;background:#ff382e;border-radius:1px}.marker-cross:before{width:22px;height:3.5px;transform:rotate(45deg);box-shadow:0 0 10px #ff382e}.marker-cross:after{width:22px;height:3.5px;transform:rotate(-45deg);box-shadow:0 0 10px #ff382e}.marker-tag{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:3px;background:#05120caa;border:1px solid #ff382e88;color:#ff6961;font-size:8px;letter-spacing:1px;padding:2px 5px;white-space:nowrap;pointer-events:none;font-weight:bold;text-shadow:0 0 5px #000}
-.rows{padding:5px 16px 12px}.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #65e6a018;font-size:10px;gap:12px}.row:last-child{border:0}.row span:first-child{color:var(--muted)}.note{padding:16px;color:var(--muted);font-size:11px;line-height:1.8}.note b{color:var(--amber);font-weight:normal}
-.album-hud-bar{padding:16px 20px;background:#05100a;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px}.album-hud-top{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}.album-stats-group{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.album-stat-chip{display:flex;flex-direction:column;gap:3px}.album-stat-chip span{font-size:8px;color:var(--muted);letter-spacing:1.5px}.album-stat-chip strong{font-size:13px;color:var(--green);letter-spacing:1px;font-weight:normal}.album-progress-wrap{min-width:200px;flex:1;max-width:320px}.progress-meta{display:flex;justify-content:space-between;font-size:8px;color:var(--muted);letter-spacing:1.5px;margin-bottom:5px}.progress-track{height:5px;background:#030805;border:1px solid var(--dim);position:relative;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--dim),var(--green));transition:width .4s}
-.filters-suite{display:flex;flex-direction:column;gap:10px;border-top:1px dashed #163625;padding-top:12px}.primary-filters{display:flex;gap:8px;flex-wrap:wrap}.filter-btn{background:#040c07;border:1px solid var(--dim);color:var(--muted);padding:7px 13px;font-size:9.5px;letter-spacing:1.5px;transition:.15s;display:inline-flex;align-items:center;gap:6px}.filter-btn:hover{border-color:var(--green);color:var(--green);background:#65e6a012}.filter-btn.active{border-color:var(--green);color:#030906;background:var(--green);font-weight:bold}.filter-btn.badge-dia{border-color:#67e8f955;color:#a5f3fc}.filter-btn.badge-dia:hover,.filter-btn.badge-dia.active{border-color:#67e8f9;color:#030906;background:#67e8f9}.filter-btn.badge-dor{border-color:#f59e0b55;color:#fcd34d}.filter-btn.badge-dor:hover,.filter-btn.badge-dor.active{border-color:#f59e0b;color:#030906;background:#f59e0b}.filter-btn.badge-pla{border-color:#94a3b855;color:#cbd5e1}.filter-btn.badge-pla:hover,.filter-btn.badge-pla.active{border-color:#cbd5e1;color:#030906;background:#cbd5e1}.subdivisions-bar{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;background:#030906;border:1px solid #1a3827;align-items:center}.subdiv-title{font-size:8px;color:var(--amber);letter-spacing:1.5px;margin-right:4px;font-weight:bold}.subdiv-pill{background:transparent;border:1px solid #1e4532;color:var(--muted);padding:4px 9px;font-size:8.5px;letter-spacing:1px;border-radius:12px;transition:.15s}.subdiv-pill:hover{color:var(--green);border-color:var(--green);background:#65e6a014}.subdiv-pill.active{color:#fff;border-color:var(--green);background:#16422e;font-weight:bold}
-.tcg-pagination-bar{padding:12px 20px;background:#06120b;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}.pagination-controls{display:flex;align-items:center;gap:8px}.page-btn{background:#040c07;border:1px solid var(--dim);color:var(--green);padding:6px 14px;font-size:9.5px;letter-spacing:1.5px;transition:.15s;display:inline-flex;align-items:center;gap:6px}.page-btn:hover:not(:disabled){border-color:var(--green);background:#65e6a018;color:#fff}.page-btn:disabled{opacity:0.35;cursor:not-allowed;border-color:#163625;color:var(--muted)}.page-pill{background:#040c07;border:1px solid #1c3e2c;color:var(--muted);width:30px;height:30px;display:grid;place-items:center;font-size:10px;transition:.15s}.page-pill:hover{border-color:var(--green);color:var(--green)}.page-pill.active{background:var(--dim);border-color:var(--green);color:var(--green);font-weight:bold}.page-info-tag{font-size:9.5px;letter-spacing:1.5px;color:var(--paper);display:flex;align-items:center;gap:6px}.page-info-tag span{color:var(--amber);font-weight:bold}
-.cards-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:22px}@media(max-width:1440px){.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:768px){.cards-grid{grid-template-columns:1fr}}
-.tcg-card-container{position:relative;background:linear-gradient(175deg,#0c1e14 0%,#06130b 55%,#030805 100%);border:1px solid #234b35;box-shadow:0 14px 35px rgba(0,0,0,0.75);display:flex;flex-direction:column;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;border-radius:4px;overflow:hidden;min-height:640px}.tcg-card-container:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #65e6a025}.tcg-card-container.slot-diamond{border-color:#22d3ee55}.tcg-card-container.slot-diamond:hover{border-color:#22d3ee;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #22d3ee25}.tcg-card-container.slot-gold{border-color:#d9770655}.tcg-card-container.slot-gold:hover{border-color:#f59e0b;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #f59e0b25}.tcg-card-container.slot-silver{border-color:#94a3b855}.tcg-card-container.slot-silver:hover{border-color:#cbd5e1;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #cbd5e125}.tcg-top-spec{display:flex;justify-content:space-between;align-items:center;background:#05110a;border-bottom:1px solid #163625;padding:7px 12px;font-size:8px;color:var(--muted);letter-spacing:1.5px}.tcg-dim-indicator{background:#030805;border:1px solid #1e4532;color:var(--amber);padding:2px 6px;letter-spacing:1px;font-size:7.5px;font-weight:bold}.tcg-inner-body{padding:14px;display:flex;flex-direction:column;flex:1}.tcg-vertical-header{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;border-bottom:1px solid #163a26;padding-bottom:10px}.tcg-code-serial{font-size:8px;color:var(--amber);letter-spacing:2px;font-weight:bold}.tcg-char-name{font-size:16px;color:#fff;letter-spacing:1.5px;font-weight:bold;margin:0;line-height:1.2}.tcg-sub-row{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}.tcg-class-pill{font-size:8px;color:var(--paper);letter-spacing:1px}.elemental-badge{display:inline-flex;align-items:center;gap:5px;background:#153d2d;border:1px solid #65e6a0;color:#65e6a0;padding:3px 8px;font-size:8px;letter-spacing:1px;font-weight:bold;text-transform:uppercase}.elemental-badge.pneuma{border-color:#38bdf8;color:#7dd3fc;background:#082436}.tcg-art-box{position:relative;width:100%;aspect-ratio:1/1.05;background:radial-gradient(ellipse at 50% 40%,#133325 0%,#081710 65%,#030705 100%);border:1px solid #1c3e2c;overflow:hidden;margin-bottom:12px;display:flex;flex-direction:column;align-items:center;justify-content:center}.tcg-art-watermark{position:absolute;top:7px;right:7px;font-size:7px;color:#527361;letter-spacing:1px;border:1px solid #163625;padding:2px 5px}.tcg-art-center-vector{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.tcg-art-center-vector svg{width:82px;height:82px;filter:drop-shadow(0 0 14px rgba(101,230,160,0.45))}.tcg-art-glow-ring{position:absolute;width:108px;height:108px;border-radius:50%;border:1px dashed #65e6a055;animation:spinRing 20s linear infinite}@keyframes spinRing{100%{transform:rotate(360deg)}}.tcg-art-quote{position:absolute;bottom:6px;left:8px;right:8px;text-align:center;font-size:7.5px;color:var(--paper);letter-spacing:1px;background:#05110add;padding:3px 6px;border:1px solid #163625}.tcg-lore-box{font-size:9.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;background:#050f0a;border:1px solid #143021;padding:9px 11px}.tcg-lore-box b{color:var(--paper);font-weight:normal}.tcg-skills-section-label{font-size:8px;color:var(--amber);letter-spacing:1.5px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}.tcg-skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}.tcg-skill-slot{background:#040c07;border:1px solid #163625;padding:6px;display:flex;flex-direction:column;justify-content:space-between;min-height:46px}.tcg-skill-header{display:flex;justify-content:space-between;align-items:center;font-size:7.5px;color:var(--muted);letter-spacing:1px}.tcg-skill-score{font-size:12.5px;color:var(--green);font-weight:bold;letter-spacing:1px;margin-top:2px}.tcg-skill-bar-wrap{height:3px;background:#06140b;margin-top:3px;overflow:hidden}.tcg-skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--dim),var(--green))}.tcg-footer-row{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:#527361;border-top:1px dashed #163625;padding-top:8px;margin-top:auto}.tcg-card-container.sealed{cursor:pointer;background:linear-gradient(175deg,#0a1711 0%,#040a07 100%);opacity:0.88}.tcg-card-container.sealed:hover{opacity:1}.tcg-sealed-art{position:relative;width:100%;aspect-ratio:1/1.05;background:radial-gradient(circle at center,#0d2419 0%,#040c07 80%);border:1px dashed #1c3e2c;margin-bottom:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px}.tcg-sealed-glyph{font-size:38px;margin-bottom:8px;opacity:0.8}.tcg-sealed-lock-tag{font-size:8.5px;letter-spacing:2px;font-weight:bold;padding:3px 8px;border-radius:1px;margin-bottom:6px}.tag-dia{background:#083344;color:#67e8f9;border:1px solid #22d3ee}.tag-dor{background:#451a03;color:#fbbf24;border:1px solid #f59e0b}.tag-pla{background:#1e293b;color:#cbd5e1;border:1px solid #94a3b8}.tag-per{background:#132e22;color:#65e6a0;border:1px solid #2d6349}.tcg-sealed-desc{font-size:9px;color:var(--muted);line-height:1.6;max-width:260px;text-align:center}
-.docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;padding:22px}.doc-card{position:relative;background:linear-gradient(170deg,#121a14 0%,#08120c 60%,#040a06 100%);border:1px solid #234b35;box-shadow:0 12px 30px rgba(0,0,0,0.7);padding:14px;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s ease,border-color .2s ease;border-radius:2px}.doc-card:hover{transform:translateY(-5px);border-color:var(--amber);box-shadow:0 16px 36px rgba(0,0,0,0.9),0 0 18px #d39a4520}.doc-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a3827;padding-bottom:7px;margin-bottom:10px}.doc-id{font-size:9.5px;color:var(--amber);letter-spacing:2px;font-weight:bold}.doc-state-badge{font-size:8px;letter-spacing:1px;padding:2px 7px;border-radius:1px;text-transform:uppercase}.state-intact{background:#65e6a018;color:#65e6a0;border:1px solid #65e6a055}.papyri-thumbnail{position:relative;width:100%;aspect-ratio:16/11;background:radial-gradient(circle at center,#1e170e 0%,#110c07 75%,#070503 100%);border:1px solid #3d301f;margin-bottom:12px;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center}.papyri-thumbnail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s ease}.doc-card:hover .papyri-thumbnail img{transform:scale(1.05)}.doc-title{font-size:13px;letter-spacing:1.5px;color:#fff;font-weight:bold;margin:0 0 5px;line-height:1.3}.doc-format-tag{font-size:8px;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}.doc-desc{font-size:9.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.doc-btn{width:100%;background:transparent;border:1px solid var(--dim);color:var(--green);font-size:9px;padding:7px;letter-spacing:1.5px;text-align:center;transition:.15s;margin-top:auto}.doc-btn:hover{background:var(--green);color:var(--bg);border-color:var(--green)}
-.inspector-overlay{position:fixed;inset:0;background:rgba(2,7,4,0.92);backdrop-filter:blur(5px);z-index:900;display:grid;place-items:center;padding:20px}.inspector-dialog{width:min(760px,100%);background:linear-gradient(150deg,#0a1f14,#040e08);border:1px solid var(--green);box-shadow:0 20px 60px rgba(0,0,0,0.95);max-height:92vh;overflow-y:auto;position:relative}.inspector-title-bar{padding:12px 18px;border-bottom:1px solid var(--line);background:#05110a;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}.inspector-body{padding:20px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,0.9fr);gap:22px}.inspector-actions{display:flex;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}.inspector-btn{background:transparent;border:1px solid var(--dim);color:var(--green);padding:9px 14px;font-size:9px;letter-spacing:2px;flex:1;text-align:center}.inspector-btn:hover{background:var(--green);color:var(--bg)}.close-inspector-btn{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:4px}.close-inspector-btn:hover{color:var(--red)}
-footer{margin-top:35px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:#527361;font-size:9px;letter-spacing:1px}@media(max-width:960px){#archive{display:block}aside{width:100%;padding:14px;border:0;border-bottom:1px solid var(--line)}.brand{padding-bottom:12px}.navtitle{margin:13px 5px 7px}.nav{grid-template-columns:repeat(4,1fr)}.nav button{text-align:center;padding:9px 3px;font-size:9px}.sidefoot{display:none}.grid{grid-template-columns:1fr}.inspector-body{grid-template-columns:1fr}}
+.top{display:flex;justify-content:space-between;gap:15px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:24px;color:var(--muted);font-size:10px;letter-spacing:2px}
+.top strong{color:var(--green);font-weight:normal}.online{color:var(--green);white-space:nowrap}
+h2{font-size:clamp(20px,3vw,30px);letter-spacing:3px;margin:0 0 8px}.intro{font-size:11px;color:var(--muted);line-height:1.7;margin:0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:20px}
+.tag{font-size:9px;color:var(--amber);border:1px solid #d39a4566;padding:9px 11px}
+.grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,.8fr);gap:18px}.stack{display:grid;gap:18px;align-content:start}
+.panel{background:linear-gradient(145deg,#0d2017,#07120d);border:1px solid var(--line);min-width:0;box-shadow:0 15px 40px #00000060;position:relative}
+.ptitle{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:10px;letter-spacing:2px;background:#06100b}
+.ptitle span+span{color:var(--amber)}
 
-/* RESPONSIVE LAYOUT: tablets and phones */
-/* Allow long archive labels to wrap instead of widening flex/grid tracks. */
-.head>div,.top>div,.ptitle>span,.album-stat-chip,.inspector-body>div,
-#docViewerBody>div,.inspector-title-bar>span{min-width:0;overflow-wrap:anywhere}
-.inspector-dialog{min-width:0;overscroll-behavior:contain}
-#loginGate{overflow-y:auto;justify-content:flex-start!important}
-#loginGate>div{flex-shrink:0;margin-block:auto}
-button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+/* REAL WORLD CRT MAP */
+.map-viewport{position:relative;margin:12px;background:#030a06;border:1px solid var(--dim);overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,0.85);min-height:500px;display:flex;flex-direction:column}
+.map-viewport.fullscreen{min-height:720px}
+.map-header-hud{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:25}
+.hud-title{font-size:9px;letter-spacing:2px;color:var(--green);text-shadow:0 0 8px var(--green-glow)}
+.hud-coords{font-size:9px;color:var(--amber);letter-spacing:1.5px;text-align:right}
+.map-canvas-wrap{position:relative;width:100%;flex:1;min-height:480px;user-select:none;display:flex;align-items:center;justify-content:center;background:#020604;overflow:hidden}
+.map-canvas-wrap.fullscreen-wrap{min-height:700px}
+.world-crt-img{width:100%;height:100%;max-height:100%;object-fit:cover;display:block;opacity:0.95;filter:contrast(1.08) brightness(1.02)}
+.map-overlay-grid{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,0.6) 100%),repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,0.25) 3px,transparent 4px);pointer-events:none;z-index:10}
+.map-compass{position:absolute;bottom:16px;right:16px;width:64px;height:64px;border:1px solid #2d6349;border-radius:50%;display:grid;place-items:center;pointer-events:none;opacity:0.75;background:#04100988;z-index:20}
+.map-compass:before{content:'N';position:absolute;top:2px;font-size:8px;color:var(--amber);font-weight:bold}
+.map-compass:after{content:'';position:absolute;width:1px;height:100%;background:linear-gradient(to bottom,var(--amber) 0%,transparent 30%,transparent 70%,#2d6349 100%)}
 
-@media (max-width: 1100px){
-  #archive{flex-direction:column}
-  aside{width:100%;padding:14px;border-right:0;border-bottom:1px solid var(--line)}
-  .brand{padding-bottom:12px}
-  .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .nav button{text-align:center;min-height:44px}
-  .sidefoot{display:none}
-  .grid{grid-template-columns:minmax(0,1fr)}
-  main{padding:20px 22px 34px}
-  .top{align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
-  .online{white-space:normal;text-align:right}
-  .head{flex-wrap:wrap}
-  .head>div:first-child{flex:1 1 400px}
-  h2{overflow-wrap:anywhere}
-  .cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:16px}
-  .tcg-card-container{min-height:0}
-  .tcg-char-name{font-size:14px}
-  .inspector-body{grid-template-columns:minmax(0,1fr)}
-  #docViewerBody{grid-template-columns:minmax(0,1fr)!important;max-height:none!important;overflow-y:visible!important}
-  #docViewerModal .inspector-dialog{max-height:94dvh!important}
-  #docViewerModal .inspector-title-bar{flex-wrap:wrap}
-  #docViewerTitle{flex:1 1 100%}
-  #docViewerModal .inspector-title-bar>div{flex-wrap:wrap}
-  .inspector-title-bar{gap:8px}
-  .inspector-dialog{max-height:94dvh}
-  .nav button,.filter-btn,.subdiv-pill,.page-btn,.page-pill,.doc-btn,
-  .inspector-btn,.close-inspector-btn,#access,#bypassBtn{min-height:44px}
-  .page-pill,.close-inspector-btn{min-width:44px}
-  .pagination-controls,.page-info-tag{flex-wrap:wrap}
-}
+/* X MARKER PIN */
+.marker-anchor{position:absolute;transform:translate(-50%,-50%);z-index:30}
+.marker-btn{position:relative;width:38px;height:38px;background:none;border:none;padding:0;cursor:pointer;outline:none;display:grid;place-items:center}
+.marker-radar{position:absolute;width:100%;height:100%;border:1.5px solid #ff4433;border-radius:50%;animation:radarScan 2.2s infinite cubic-bezier(0,0.2,0.8,1);box-shadow:0 0 12px #ff3b30}
+.marker-radar-2{position:absolute;width:100%;height:100%;border:1px dashed var(--amber);border-radius:50%;animation:radarScan 2.2s infinite 1.1s cubic-bezier(0,0.2,0.8,1);opacity:0}
+@keyframes radarScan{0%{transform:scale(0.3);opacity:1}100%{transform:scale(2.8);opacity:0}}
+.marker-cross{position:relative;width:24px;height:24px;display:grid;place-items:center;filter:drop-shadow(0 0 8px rgba(255,59,48,0.95))}
+.marker-cross:before,.marker-cross:after{content:'';position:absolute;background:#ff382e;border-radius:1px}
+.marker-cross:before{width:24px;height:3.5px;transform:rotate(45deg);box-shadow:0 0 10px #ff382e}
+.marker-cross:after{width:24px;height:3.5px;transform:rotate(-45deg);box-shadow:0 0 10px #ff382e}
+.marker-tag{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:4px;background:#05120ce6;border:1px solid #ff382ecc;color:#ff857d;font-size:8.5px;letter-spacing:1px;padding:3px 7px;white-space:nowrap;font-weight:bold;text-shadow:0 0 6px #000;box-shadow:0 4px 12px rgba(0,0,0,0.7);transition:all .15s}
+.marker-tooltip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#05140dee;border:1px solid var(--green);padding:10px 14px;min-width:240px;color:var(--paper);font-size:9.5px;line-height:1.6;letter-spacing:1px;box-shadow:0 8px 24px rgba(0,0,0,0.9),0 0 15px rgba(101,230,160,0.2);display:none;pointer-events:none;z-index:40;text-align:left}
+.marker-anchor:hover .marker-tooltip{display:block}
+.marker-tooltip strong{display:block;color:#fff;font-size:11px;margin-bottom:3px}
+.marker-tooltip span{color:var(--amber);font-size:8.5px;display:block;margin-bottom:4px}
 
-@media (max-width: 700px){
-  body{font-size:13px}
-  #loginGate{padding:12px!important;overflow-y:auto}
-  #loginGate>div{padding:22px 16px!important}
-  #loginGate input{padding:12px!important;font-size:16px!important;letter-spacing:2px!important;min-width:0}
-  #loginGate #access{position:static!important;width:100%;padding:10px!important;font-size:12px!important}
-  #loginGate>div>div:nth-child(3)>div{flex-wrap:wrap;gap:8px}
-  #loginGate>div>div:nth-child(3)>div:nth-child(2){flex-direction:column;align-items:stretch!important}
-  #loginGate>div>div:first-child{font-size:8px!important;gap:8px}
-  #loginGate h1{font-size:17px!important;line-height:1.25}
-  #loginGate p,#loginMsg,#bypassBtn{font-size:12px!important;line-height:1.6}
-  #loginGate>div>div:last-child{align-items:flex-start!important;flex-direction:column}
+/* COMMON ROWS */
+.rows{padding:5px 16px 12px}.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #65e6a018;font-size:10px;gap:12px}.row:last-child{border:0}.row span:first-child{color:var(--muted)}
+.note,.activity{padding:16px;color:var(--muted);font-size:11px;line-height:1.8}.note b{color:var(--amber);font-weight:normal}.activity div{padding:5px 0}.activity i{color:var(--amber);font-style:normal;margin-right:10px}
 
-  aside{padding:12px 10px}
-  .brand{padding:0 4px 12px}
-  .brand b{font-size:13px;letter-spacing:1.5px}
-  .brand small{font-size:8px;letter-spacing:1.2px}
-  .navtitle{margin:12px 4px 7px;font-size:8px}
-  .nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
-  .nav button{min-height:44px;padding:8px 5px;font-size:11px;line-height:1.25;letter-spacing:.5px}
-  main{padding:14px 10px 28px}
-  .top{font-size:8px;letter-spacing:1px;gap:8px;margin-bottom:16px;padding-bottom:11px}
-  .top>div{max-width:100%}
-  .online{text-align:left}
-  .head{display:block;margin-bottom:14px}
-  h2{font-size:20px;line-height:1.15;letter-spacing:2px}
-  .intro{font-size:12px;line-height:1.6}
-  .head .tag{display:inline-block;margin-top:12px;font-size:8px;padding:7px 8px}
-  .ptitle{padding:10px 11px;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:8px;line-height:1.35}
-  .map-viewport,.map-viewport.fullscreen{min-height:350px;margin:8px}
-  .map-canvas-wrap,.world-svg-el{min-height:330px}
-  .map-header-hud{top:9px;left:9px;right:9px;gap:8px;flex-direction:column}
-  .hud-title,.hud-coords{font-size:7px;letter-spacing:1px;text-align:left}
-  .hud-coords{align-self:flex-end;text-align:right}
-  .map-compass{width:48px;height:48px;bottom:10px;right:10px}
-  .marker-tag{font-size:7px}
-  .rows{padding:4px 11px 9px}
-  .row{padding:10px 0;font-size:9px;align-items:flex-start;flex-wrap:wrap}
-  .row span:last-child{text-align:right;max-width:62%}
-  .note{padding:12px;font-size:12px}
+/* ALBUM & COLLECTION HUD */
+.album-hud-bar{padding:16px 20px;background:#05100a;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.album-hud-top{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.album-stats-group{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.album-stat-chip{display:flex;flex-direction:column;gap:3px}
+.album-stat-chip span{font-size:8px;color:var(--muted);letter-spacing:1.5px}
+.album-stat-chip strong{font-size:13px;color:var(--green);letter-spacing:1px;font-weight:normal}
+.album-progress-wrap{min-width:200px;flex:1;max-width:320px}
+.progress-meta{display:flex;justify-content:space-between;font-size:8px;color:var(--muted);letter-spacing:1.5px;margin-bottom:5px}
+.progress-track{height:5px;background:#030805;border:1px solid var(--dim);position:relative;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--dim),var(--green));transition:width .4s}
 
-  .album-hud-bar{padding:12px 11px;gap:11px}
-  .album-stats-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
-  .album-stat-chip span{font-size:7px;line-height:1.3}
-  .album-stat-chip strong{font-size:10px;line-height:1.3}
-  .album-progress-wrap{grid-column:1/-1;min-width:0;max-width:none;width:100%}
-  .filters-suite{gap:8px;padding-top:10px}
-  .primary-filters{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-  .filter-btn{justify-content:center;padding:8px 5px;font-size:10px;letter-spacing:.5px;min-height:44px;text-align:center;overflow-wrap:anywhere}
-  .filter-btn:first-child{grid-column:1/-1}
-  .subdivisions-bar{padding:8px 7px;gap:5px}
-  .subdiv-title{width:100%;font-size:7px;margin:0 0 2px}
-  .subdiv-pill{padding:5px 7px;font-size:10px;letter-spacing:.5px}
-  .tcg-pagination-bar{padding:10px 11px;align-items:stretch}
-  .page-info-tag{font-size:10px;line-height:1.4;flex-wrap:wrap}
-  .pagination-controls{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}
-  .pagination-controls>div{order:3;flex-basis:100%;justify-content:center}
-  .page-btn{padding:7px 8px;font-size:10px;letter-spacing:.5px}
-  .page-pill{width:44px;height:44px}
-  .cards-grid{grid-template-columns:1fr;gap:12px;padding:12px}
-  .tcg-card-container{min-height:0}
-  .tcg-inner-body{padding:11px}
-  .tcg-top-spec{padding:6px 9px;font-size:7px;gap:6px;flex-wrap:wrap}
-  .tcg-dim-indicator{font-size:6.5px}
-  .tcg-char-name{font-size:15px}
-  .tcg-class-pill{font-size:7px}
-  .elemental-badge{font-size:7px;padding:3px 5px}
-  .tcg-art-box,.tcg-sealed-art{aspect-ratio:1/0.9}
-  .tcg-lore-box{font-size:12px;padding:8px 9px}
-  .tcg-sealed-desc{font-size:12px}
-  .tcg-skills-grid{gap:4px}
-  .tcg-skill-slot{padding:5px;min-height:43px}
-  .tcg-skill-header{font-size:6.5px}
-  .tcg-skill-score{font-size:11px}
+/* FILTERS SUITE */
+.filters-suite{display:flex;flex-direction:column;gap:10px;border-top:1px dashed #163625;padding-top:12px}
+.primary-filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{background:#040c07;border:1px solid var(--dim);color:var(--muted);padding:7px 13px;font-size:9.5px;letter-spacing:1.5px;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.filter-btn:hover{border-color:var(--green);color:var(--green);background:#65e6a012}
+.filter-btn.active{border-color:var(--green);color:#030906;background:var(--green);font-weight:bold}
+.filter-btn.badge-dia{border-color:#67e8f955;color:#a5f3fc}
+.filter-btn.badge-dia:hover,.filter-btn.badge-dia.active{border-color:#67e8f9;color:#030906;background:#67e8f9}
+.filter-btn.badge-dor{border-color:#f59e0b55;color:#fcd34d}
+.filter-btn.badge-dor:hover,.filter-btn.badge-dor.active{border-color:#f59e0b;color:#030906;background:#f59e0b}
+.filter-btn.badge-pla{border-color:#94a3b855;color:#cbd5e1}
+.filter-btn.badge-pla:hover,.filter-btn.badge-pla.active{border-color:#cbd5e1;color:#030906;background:#cbd5e1}
 
-  .docs-grid{grid-template-columns:1fr;gap:12px;padding:12px}
-  .doc-card{padding:11px}
-  .doc-title{font-size:12px}
-  .doc-desc{font-size:12px}
-  .doc-btn{font-size:10px;padding:9px 6px}
+.subdivisions-bar{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;background:#030906;border:1px solid #1a3827;align-items:center}
+.subdiv-title{font-size:8px;color:var(--amber);letter-spacing:1.5px;margin-right:4px;font-weight:bold}
+.subdiv-pill{background:transparent;border:1px solid #1e4532;color:var(--muted);padding:4px 9px;font-size:8.5px;letter-spacing:1px;border-radius:12px;transition:.15s}
+.subdiv-pill:hover{color:var(--green);border-color:var(--green);background:#65e6a014}
+.subdiv-pill.active{color:#fff;border-color:var(--green);background:#16422e;font-weight:bold}
 
-  .inspector-overlay{padding:7px;place-items:start center;overflow-y:auto}
-  .inspector-dialog{width:100%;max-height:calc(100dvh - 28px);margin-top:7px}
-  .inspector-title-bar{padding:10px 11px;gap:8px;align-items:flex-start}
-  .inspector-title-bar>span{font-size:10px!important;line-height:1.35}
-  .close-inspector-btn{font-size:11px;white-space:nowrap}
-  .inspector-body{padding:12px;gap:14px;grid-template-columns:1fr!important}
-  .inspector-actions{gap:7px;padding-top:12px}
-  .inspector-btn{padding:9px 7px;font-size:8px;letter-spacing:1px}
-  #docViewerBody{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding:10px!important}
-  #docViewerModal .inspector-dialog{width:100%!important;max-height:calc(100dvh - 28px)!important}
-  #docViewerTitle{flex-basis:100%}
-  #docViewerModal .inspector-title-bar>div{gap:3px!important;flex-wrap:wrap;justify-content:flex-end}
-  #docViewerModal .page-btn{padding:5px 6px!important;font-size:10px!important}
-  #docViewerModal #docZoomLevelText{font-size:8px;min-width:34px!important}
-  #docViewerImageContainer img{max-width:none;width:100%!important}
-  footer{margin-top:24px;padding-top:11px;flex-direction:column;font-size:7px;line-height:1.5}
-}
+/* PAGINATION BAR */
+.tcg-pagination-bar{padding:12px 20px;background:#06120b;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.pagination-controls{display:flex;align-items:center;gap:8px}
+.page-btn{background:#040c07;border:1px solid var(--dim);color:var(--green);padding:6px 14px;font-size:9.5px;letter-spacing:1.5px;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.page-btn:hover:not(:disabled){border-color:var(--green);background:#65e6a018;color:#fff}
+.page-btn:disabled{opacity:0.35;cursor:not-allowed;border-color:#163625;color:var(--muted)}
+.page-pill{background:#040c07;border:1px solid #1c3e2c;color:var(--muted);width:30px;height:30px;display:grid;place-items:center;font-size:10px;transition:.15s}
+.page-pill:hover{border-color:var(--green);color:var(--green)}
+.page-pill.active{background:var(--dim);border-color:var(--green);color:var(--green);font-weight:bold}
+.page-info-tag{font-size:9.5px;letter-spacing:1.5px;color:var(--paper);display:flex;align-items:center;gap:6px}
+.page-info-tag span{color:var(--amber);font-weight:bold}
 
-@media (min-width:701px) and (max-width:960px){
-  .nav{grid-template-columns:repeat(4,1fr)}
-  .nav button{font-size:11px;padding:9px 3px}
-  .map-viewport,.map-viewport.fullscreen{min-height:430px}
-  .map-canvas-wrap,.world-svg-el{min-height:410px}
-}
+/* 4-COLUMN CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:22px}
+@media(max-width:1440px){.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){.cards-grid{grid-template-columns:1fr}}
 
-/* Keep the SVG and its percentage-positioned target on the same 2:1 canvas. */
-@media (max-width:1100px){
-  .map-viewport,.map-viewport.fullscreen{min-height:0}
-  .map-header-hud{position:static;padding:12px;gap:10px;flex-wrap:wrap}
-  .map-canvas-wrap{min-height:0;flex:none;aspect-ratio:2/1}
-  .world-svg-el{position:absolute;inset:0;min-height:0;width:100%;height:100%}
-  .marker-tag{left:0;transform:none}
-  .tcg-card-container:hover,.doc-card:hover{transform:none}
-}
-@media (prefers-reduced-motion:reduce){
-  .marker-radar,.marker-radar-2,.tcg-art-glow-ring{animation:none}
-}
+/* VERTICAL TCG CARD CONTAINER */
+.tcg-card-container{position:relative;background:linear-gradient(175deg,#0c1e14 0%,#06130b 55%,#030805 100%);border:1px solid #234b35;box-shadow:0 14px 35px rgba(0,0,0,0.75);display:flex;flex-direction:column;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;border-radius:4px;overflow:hidden;min-height:640px}
+.tcg-card-container:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #65e6a025}
+.tcg-card-container.slot-diamond{border-color:#22d3ee55}
+.tcg-card-container.slot-diamond:hover{border-color:#22d3ee;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #22d3ee25}
+.tcg-card-container.slot-gold{border-color:#d9770655}
+.tcg-card-container.slot-gold:hover{border-color:#f59e0b;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #f59e0b25}
+.tcg-card-container.slot-silver{border-color:#94a3b855}
+.tcg-card-container.slot-silver:hover{border-color:#cbd5e1;box-shadow:0 18px 45px rgba(0,0,0,0.9),0 0 20px #cbd5e125}
+
+.tcg-top-spec{display:flex;justify-content:space-between;align-items:center;background:#05110a;border-bottom:1px solid #163625;padding:7px 12px;font-size:8px;color:var(--muted);letter-spacing:1.5px}
+.tcg-dim-indicator{background:#030805;border:1px solid #1e4532;color:var(--amber);padding:2px 6px;letter-spacing:1px;font-size:7.5px;font-weight:bold}
+.tcg-inner-body{padding:14px;display:flex;flex-direction:column;flex:1}
+.tcg-vertical-header{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;border-bottom:1px solid #163a26;padding-bottom:10px}
+.tcg-code-serial{font-size:8px;color:var(--amber);letter-spacing:2px;font-weight:bold}
+.tcg-char-name{font-size:16px;color:#fff;letter-spacing:1.5px;font-weight:bold;margin:0;line-height:1.2}
+.tcg-sub-row{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.tcg-class-pill{font-size:8px;color:var(--paper);letter-spacing:1px}
+
+.elemental-badge{display:inline-flex;align-items:center;gap:5px;background:#153d2d;border:1px solid #65e6a0;color:#65e6a0;padding:3px 8px;font-size:8px;letter-spacing:1px;font-weight:bold;text-transform:uppercase}
+.elemental-badge.pneuma{border-color:#38bdf8;color:#7dd3fc;background:#082436}
+
+.tcg-art-box{position:relative;width:100%;aspect-ratio:1/1.05;background:radial-gradient(ellipse at 50% 40%,#133325 0%,#081710 65%,#030705 100%);border:1px solid #1c3e2c;overflow:hidden;margin-bottom:12px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tcg-art-watermark{position:absolute;top:7px;right:7px;font-size:7px;color:#527361;letter-spacing:1px;border:1px solid #163625;padding:2px 5px}
+.tcg-art-center-vector{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.tcg-art-center-vector svg{width:82px;height:82px;filter:drop-shadow(0 0 14px rgba(101,230,160,0.45))}
+.tcg-art-glow-ring{position:absolute;width:108px;height:108px;border-radius:50%;border:1px dashed #65e6a055;animation:spinRing 20s linear infinite}
+@keyframes spinRing{100%{transform:rotate(360deg)}}
+.tcg-art-quote{position:absolute;bottom:6px;left:8px;right:8px;text-align:center;font-size:7.5px;color:var(--paper);letter-spacing:1px;background:#05110add;padding:3px 6px;border:1px solid #163625}
+
+.tcg-lore-box{font-size:9.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;background:#050f0a;border:1px solid #143021;padding:9px 11px}
+.tcg-lore-box b{color:var(--paper);font-weight:normal}
+
+.tcg-skills-section-label{font-size:8px;color:var(--amber);letter-spacing:1.5px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.tcg-skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}
+.tcg-skill-slot{background:#040c07;border:1px solid #163625;padding:6px;display:flex;flex-direction:column;justify-content:space-between;min-height:46px}
+.tcg-skill-header{display:flex;justify-content:space-between;align-items:center;font-size:7.5px;color:var(--muted);letter-spacing:1px}
+.tcg-skill-score{font-size:12.5px;color:var(--green);font-weight:bold;letter-spacing:1px;margin-top:2px}
+.tcg-skill-bar-wrap{height:3px;background:#06140b;margin-top:3px;overflow:hidden}
+.tcg-skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--dim),var(--green))}
+
+.tcg-footer-row{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:#527361;border-top:1px dashed #163625;padding-top:8px;margin-top:auto}
+
+.tcg-card-container.sealed{cursor:pointer;background:linear-gradient(175deg,#0a1711 0%,#040a07 100%);opacity:0.88}
+.tcg-card-container.sealed:hover{opacity:1}
+.tcg-sealed-art{position:relative;width:100%;aspect-ratio:1/1.05;background:radial-gradient(circle at center,#0d2419 0%,#040c07 80%);border:1px dashed #1c3e2c;margin-bottom:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px}
+.tcg-sealed-glyph{font-size:38px;margin-bottom:8px;opacity:0.8}
+.tcg-sealed-lock-tag{font-size:8.5px;letter-spacing:2px;font-weight:bold;padding:3px 8px;border-radius:1px;margin-bottom:6px}
+.tag-dia{background:#083344;color:#67e8f9;border:1px solid #22d3ee}
+.tag-dor{background:#451a03;color:#fbbf24;border:1px solid #f59e0b}
+.tag-pla{background:#1e293b;color:#cbd5e1;border:1px solid #94a3b8}
+.tag-per{background:#132e22;color:#65e6a0;border:1px solid #2d6349}
+.tcg-sealed-desc{font-size:9px;color:var(--muted);line-height:1.6;max-width:260px;text-align:center}
+
+/* DOCUMENTS ARCHIVE */
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;padding:22px}
+.doc-card{position:relative;background:linear-gradient(170deg,#121a14 0%,#08120c 60%,#040a06 100%);border:1px solid #234b35;box-shadow:0 12px 30px rgba(0,0,0,0.7);padding:14px;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s ease,border-color .2s ease;border-radius:2px}
+.doc-card:hover{transform:translateY(-5px);border-color:var(--amber);box-shadow:0 16px 36px rgba(0,0,0,0.9),0 0 18px #d39a4520}
+.doc-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a3827;padding-bottom:7px;margin-bottom:10px}
+.doc-id{font-size:9.5px;color:var(--amber);letter-spacing:2px;font-weight:bold}
+.doc-state-badge{font-size:8px;letter-spacing:1px;padding:2px 7px;border-radius:1px;text-transform:uppercase}
+.state-intact{background:#65e6a018;color:#65e6a0;border:1px solid #65e6a055}
+
+.papyri-thumbnail{position:relative;width:100%;aspect-ratio:16/11;background:radial-gradient(circle at center,#1e170e 0%,#110c07 75%,#070503 100%);border:1px solid #3d301f;margin-bottom:12px;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center}
+.papyri-thumbnail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s ease}
+.doc-card:hover .papyri-thumbnail img{transform:scale(1.05)}
+.doc-title{font-size:13px;letter-spacing:1.5px;color:#fff;font-weight:bold;margin:0 0 5px;line-height:1.3}
+.doc-format-tag{font-size:8px;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.doc-desc{font-size:9.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.doc-btn{width:100%;background:transparent;border:1px solid var(--dim);color:var(--green);font-size:9px;padding:7px;letter-spacing:1.5px;text-align:center;transition:.15s;margin-top:auto}
+.doc-btn:hover{background:var(--green);color:var(--bg);border-color:var(--green)}
+
+/* MODALS */
+.inspector-overlay{position:fixed;inset:0;background:rgba(2,7,4,0.92);backdrop-filter:blur(5px);z-index:900;display:grid;place-items:center;padding:20px}
+.inspector-dialog{width:min(760px,100%);background:linear-gradient(150deg,#0a1f14,#040e08);border:1px solid var(--green);box-shadow:0 20px 60px rgba(0,0,0,0.95);max-height:92vh;overflow-y:auto;position:relative}
+.inspector-title-bar{padding:12px 18px;border-bottom:1px solid var(--line);background:#05110a;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.inspector-body{padding:20px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,0.9fr);gap:22px}
+.inspector-actions{display:flex;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.inspector-btn{background:transparent;border:1px solid var(--dim);color:var(--green);padding:9px 14px;font-size:9px;letter-spacing:2px;flex:1;text-align:center}
+.inspector-btn:hover{background:var(--green);color:var(--bg)}
+.close-inspector-btn{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:4px}
+.close-inspector-btn:hover{color:var(--red)}
+
+footer{margin-top:35px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:#527361;font-size:9px;letter-spacing:1px}
+@media(max-width:960px){#archive{display:block}aside{width:100%;padding:14px;border:0;border-bottom:1px solid var(--line)}.brand{padding-bottom:12px}.navtitle{margin:13px 5px 7px}.nav{grid-template-columns:repeat(4,1fr)}.nav button{text-align:center;padding:9px 3px;font-size:9px}.sidefoot{display:none}.grid{grid-template-columns:1fr}.inspector-body{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<!-- APP ARCHIVE LOGIN GATEWAY -->
 <div id="loginGate" style="position:fixed;inset:0;background:radial-gradient(ellipse at 50% 40%,#091d14 0%,#040d08 65%,#010402 100%);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;color:var(--green);font-family:'Courier New',monospace">
 <div style="max-width:560px;width:100%;background:#06130b;border:1px solid var(--dim);box-shadow:0 0 45px rgba(0,0,0,0.9),0 0 25px rgba(101,230,160,0.15);padding:32px 28px;position:relative">
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:20px;font-size:9.5px;letter-spacing:2px;color:var(--muted)"><span>SECURITY PROTOCOL // GATE 01</span><span style="color:var(--amber)">AIR-GAPPED NODE</span></div>
-<div style="text-align:center;margin-bottom:28px"><div style="display:inline-block;border:1px solid var(--green);padding:4px 10px;font-size:8.5px;letter-spacing:2.5px;margin-bottom:12px;color:var(--green);box-shadow:0 0 10px rgba(101,230,160,0.2)">THE SEEKERS ARCHIVE</div><h1 style="font-size:20px;letter-spacing:3px;margin:0 0 8px;color:#fff">ACCESO DE SEGURIDAD CLASIFICADO</h1><p style="font-size:10px;color:var(--muted);line-height:1.7;margin:0">Terminal geodésico y repositorio criptográfico confidencial de la orden Seeker. Ingrese la clave alfanumérica de desbloqueo táctico.</p></div>
-<div style="background:#030805;border:1px solid #1a3827;padding:18px;margin-bottom:20px"><div style="display:flex;justify-content:space-between;font-size:8.5px;color:var(--muted);margin-bottom:8px;letter-spacing:1.5px"><span>CLAVE DE ACCESO [ENMASCARADA]</span><span id="keyStatus" style="color:var(--amber)">ESPERANDO TERMINAL</span></div><div style="position:relative;display:flex;align-items:center"><input autocomplete="off" autofocus="" id="password" placeholder="•••••••••••" style="width:100%;background:#06120b;border:1px solid var(--dim);color:var(--green);padding:12px 14px;font-family:'Courier New',monospace;font-size:16px;letter-spacing:5px;outline:none;transition:border-color .2s" type="password"/><button id="access" style="position:absolute;right:6px;background:var(--dim);border:1px solid var(--green);color:#fff;padding:8px 14px;font-size:9px;letter-spacing:1.5px;cursor:pointer">ENTRAR [↵]</button></div><div id="loginMsg" style="font-size:9px;color:var(--muted);margin-top:8px;letter-spacing:1px">Pista de aula: Nombre clave asignado en la expedición escolar (11 caracteres).</div></div>
-<div style="display:flex;gap:10px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px"><button id="bypassBtn" style="background:none;border:none;color:var(--muted);font-size:8.5px;letter-spacing:1.5px;cursor:pointer;text-decoration:underline">[ MODO DEMOSTRACIÓN TÁCTICA / ACCESO DIRECTO ]</button><span style="font-size:8px;color:var(--dim)">WGS-84 CALIBRATED</span></div>
-</div></div>
-<section id="archive" style="display:none"><aside><div class="brand"><b>THE SEEKERS ARCHIVE</b><small>TACTICAL INTERFACE // NODE 26-27</small></div><div class="navtitle">ARCHIVE DIRECTORY</div><nav class="nav"><button class="active" data-page="central">⌂ &nbsp; CENTRAL INDEX</button><button data-page="map">⌖ &nbsp; WORLD MAP</button><button data-page="documents">▤ &nbsp; DOCUMENTS</button><button data-page="collection">◇ &nbsp; COLLECTION</button><button data-page="evidence">⌕ &nbsp; EVIDENCE</button><button data-page="transmissions">◉ &nbsp; TRANSMISSIONS</button><button class="locked" data-page="locked">▣ &nbsp; LOCKED FILES</button><button class="locked" data-page="unknown">? &nbsp; UNKNOWN</button></nav><div class="sidefoot">CONNECTION: ESTABLISHED<br/>IDENTITY: NEW SEEKERS<br/>MAP PROJECTION: EQUIRRECTANGULAR<br/>COORDINATES: WGS-84 CALIBRATED<br/><span id="clock">18/10/26, 16:15:00</span></div></aside><main><div class="top"><div>ARCHIVE NODE / <strong id="crumb">CENTRAL INDEX</strong></div><div class="online">● CONNECTION ESTABLISHED // LIVE SATELLITE FEED</div></div><div id="content"></div><footer><span>THE SEEKERS ARCHIVE // 2026–2027</span><span>GEODETIC NETWORK RECORD — ALL COORDINATES ENCRYPTED</span></footer></main></section>
-<div class="inspector-overlay hidden" id="cardInspectorModal"><div class="inspector-dialog"><div class="inspector-title-bar"><span id="inspectorHeaderTitle" style="font-size:10px;color:var(--amber);letter-spacing:2px">CLASSIFIED ARTIFACT // INSPECTION</span><button aria-label="Cerrar Inspector" class="close-inspector-btn" id="closeInspectorBtn">[✕ ESC]</button></div><div class="inspector-body" id="inspectorModalContent"></div></div></div>
-<div class="inspector-overlay hidden" id="docViewerModal" style="z-index:950"><div class="inspector-dialog" style="width:min(1100px,96%);max-height:94vh"><div class="inspector-title-bar"><span id="docViewerTitle" style="font-size:10px;color:var(--amber);letter-spacing:2px">DOCUMENT VIEWER // HIGH RESOLUTION</span><div style="display:flex;gap:8px;align-items:center"><button class="page-btn" id="docZoomOutBtn" style="padding:3px 8px;font-size:8px">- ZOOM</button><span id="docZoomLevelText" style="font-size:8.5px;color:var(--green);min-width:42px;text-align:center">100%</span><button class="page-btn" id="docZoomInBtn" style="padding:3px 8px;font-size:8px">+ ZOOM</button><button class="page-btn" id="docZoomResetBtn" style="padding:3px 8px;font-size:8px">RESET</button><button aria-label="Cerrar Visor" class="close-inspector-btn" id="closeDocViewerBtn" style="margin-left:8px">[✕ ESC]</button></div></div><div id="docViewerBody" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,1fr);gap:20px;padding:18px;max-height:calc(94vh - 55px);overflow-y:auto"></div></div></div>
+<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:20px;font-size:9.5px;letter-spacing:2px;color:var(--muted)">
+<span>SECURITY PROTOCOL // GATE 01</span>
+<span style="color:var(--amber)">AIR-GAPPED NODE</span>
+</div>
+<div style="text-align:center;margin-bottom:28px">
+<div style="display:inline-block;border:1px solid var(--green);padding:4px 10px;font-size:8.5px;letter-spacing:2.5px;margin-bottom:12px;color:var(--green);box-shadow:0 0 10px rgba(101,230,160,0.2)">THE SEEKERS ARCHIVE</div>
+<h1 style="font-size:20px;letter-spacing:3px;margin:0 0 8px;color:#fff">ACCESO DE SEGURIDAD CLASIFICADO</h1>
+<p style="font-size:10px;color:var(--muted);line-height:1.7;margin:0">Terminal geodésico y repositorio criptográfico confidencial de la orden Seeker. Ingrese la clave alfanumérica de desbloqueo táctico.</p>
+</div>
+<div style="background:#030805;border:1px solid #1a3827;padding:18px;margin-bottom:20px">
+<div style="display:flex;justify-content:space-between;font-size:8.5px;color:var(--muted);margin-bottom:8px;letter-spacing:1.5px">
+<span>CLAVE DE ACCESO [ENMASCARADA]</span>
+<span id="keyStatus" style="color:var(--amber)">ESPERANDO TERMINAL</span>
+</div>
+<div style="position:relative;display:flex;align-items:center">
+<input autocomplete="off" autofocus="" id="password" placeholder="•••••••••••" style="width:100%;background:#06120b;border:1px solid var(--dim);color:var(--green);padding:12px 14px;font-family:'Courier New',monospace;font-size:16px;letter-spacing:5px;outline:none;transition:border-color .2s" type="password"/>
+<button id="access" style="position:absolute;right:6px;background:var(--dim);border:1px solid var(--green);color:#fff;padding:8px 14px;font-size:9px;letter-spacing:1.5px;cursor:pointer">ENTRAR [↵]</button>
+</div>
+<div id="loginMsg" style="font-size:9px;color:var(--muted);margin-top:8px;letter-spacing:1px">Pista de aula: Nombre clave asignado en la expedición escolar (11 caracteres).</div>
+</div>
+<div style="display:flex;gap:10px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px">
+<button id="bypassBtn" style="background:none;border:none;color:var(--muted);font-size:8.5px;letter-spacing:1.5px;cursor:pointer;text-decoration:underline">[ MODO DEMOSTRACIÓN TÁCTICA / ACCESO DIRECTO ]</button>
+<span style="font-size:8px;color:var(--dim)">WGS-84 CALIBRATED</span>
+</div>
+</div>
+</div>
+<!-- ARCHIVE APPLICATION CONTAINER -->
+<section id="archive" style="display:none">
+<aside>
+<div class="brand">
+<b>THE SEEKERS ARCHIVE</b>
+<small>TACTICAL INTERFACE // NODE 26-27</small>
+</div>
+<div class="navtitle">ARCHIVE DIRECTORY</div>
+<nav class="nav">
+<button class="active" data-page="central">⌂   CENTRAL INDEX</button>
+<button data-page="map">⌖   WORLD MAP</button>
+<button data-page="documents">▤   DOCUMENTS</button>
+<button data-page="collection">◇   COLLECTION</button>
+<button data-page="evidence">⌕   EVIDENCE</button>
+<button data-page="transmissions">◉   TRANSMISSIONS</button>
+<button class="locked" data-page="locked">▣   LOCKED FILES</button>
+<button class="locked" data-page="unknown">?   UNKNOWN</button>
+</nav>
+<div class="sidefoot">
+      CONNECTION: ESTABLISHED<br/>
+      IDENTITY: NEW SEEKERS<br/>
+      MAP PROJECTION: EQUIRRECTANGULAR<br/>
+      COORDINATES: WGS-84 CALIBRATED<br/>
+<span id="clock">18/10/26, 16:15:00</span>
+</div>
+</aside>
+<main>
+<div class="top">
+<div>ARCHIVE NODE / <strong id="crumb">CENTRAL INDEX</strong></div>
+<div class="online">● CONNECTION ESTABLISHED // LIVE SATELLITE FEED</div>
+</div>
+<div id="content"></div>
+<footer>
+<span>THE SEEKERS ARCHIVE // 2026–2027</span>
+<span>GEODETIC NETWORK RECORD — ALL COORDINATES ENCRYPTED</span>
+</footer>
+</main>
+</section>
+<!-- MODAL VISOR PARA INSPECCIÓN DE CARTAS TCG -->
+<div class="inspector-overlay hidden" id="cardInspectorModal">
+<div class="inspector-dialog">
+<div class="inspector-title-bar">
+<span id="inspectorHeaderTitle" style="font-size: 10px; color: var(--amber); letter-spacing: 2px;">CLASSIFIED ARTIFACT // INSPECTION</span>
+<button aria-label="Cerrar Inspector" class="close-inspector-btn" id="closeInspectorBtn">[✕ ESC]</button>
+</div>
+<div class="inspector-body" id="inspectorModalContent"></div>
+</div>
+</div>
+<!-- MODAL VISOR HD PARA DOCUMENTOS REALES Y MANUSCRITOS -->
+<div class="inspector-overlay hidden" id="docViewerModal" style="z-index:950">
+<div class="inspector-dialog" style="width:min(1100px,96%);max-height:94vh">
+<div class="inspector-title-bar">
+<span id="docViewerTitle" style="font-size:10px;color:var(--amber);letter-spacing:2px">DOCUMENT VIEWER // HIGH RESOLUTION</span>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="page-btn" id="docZoomOutBtn" style="padding:3px 8px;font-size:8px">- ZOOM</button>
+<span id="docZoomLevelText" style="font-size:8.5px;color:var(--green);min-width:42px;text-align:center">100%</span>
+<button class="page-btn" id="docZoomInBtn" style="padding:3px 8px;font-size:8px">+ ZOOM</button>
+<button class="page-btn" id="docZoomResetBtn" style="padding:3px 8px;font-size:8px">RESET</button>
+<button aria-label="Cerrar Visor" class="close-inspector-btn" id="closeDocViewerBtn" style="margin-left:8px">[✕ ESC]</button>
+</div>
+</div>
+<div id="docViewerBody" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,1fr);gap:20px;padding:18px;max-height:calc(94vh - 55px);overflow-y:auto"></div>
+</div>
+</div>
 <script>
-const archiveData={seekers:[{id:'SEEKER-01',name:'Bastian Baltasar Bux',location:'Vancouver, Columbia Británica (Canadá)',coords:'49°15′ N, 123°06′ W',status:'VERIFIED // INITIAL RECORD',date:'2026-09-01',details:'Primer Seeker localizado. Foco de emisión activa registrado en costa oeste canadiense.'}],locations:[{id:'LOC-01',name:'Vancouver, Columbia Británica (Canadá)',seeker:'Bastian Baltasar Bux',coords:'49°15′28″ N, 123°06′58″ W',region:'North America / Pacific Northwest',status:'VERIFIED',description:'Primer Seeker localizado en el archivo. Registro de coordenadas confirmado en la red cartográfica del proyecto.',x:15.8,y:28.5}],totalAlbumCapacity:12,cards:[{id:'CARD-001',order:1,number:'CARD #001',name:'BASTIAN BALTASAR BUX',rarity:'personaje',rarityType:'diamante',division:'jovenes',divisionLabel:'Jóvenes Seekers',element:'PNEUMA (AIRE)',elementKey:'pneuma',classification:'PERSONAJE - JÓVENES SEEKERS',discoveryDate:'2026-09-01',dimensions:'720 × 770 PX [VERTICAL TCG]',quote:'«Yo fui un Seeker. Ahora os toca descubrir qué significa serlo.»',description:'El lector que salvó al Reino de la Nada al otorgarle un nuevo nombre a la Emperatriz Infantil. Localizado originalmente en el desván escolar de la costa del Pacífico. Capaz de cruzar umbrales narrativos mediante la invocación del Pneuma y la memoria escrita.',skills:[{label:'Fortaleza',val:78},{label:'Valentía',val:85},{label:'Empatía',val:92},{label:'Equipo',val:88},{label:'Liderazgo',val:80},{label:'Ingenio',val:95}],lore:'Registro de Seeker primario catalogado tras la apertura de la carta de Vancouver (2006). Porta la insignia del Pneuma (Aire), elemento que rige el pensamiento libre, la inspiración desatada y la conexión con el Gran Cuaderno de Eudoro.'}],upcomingSlots:[{id:'SLOT-DIA',order:2,rarity:'diamante',division:'wildcards',badgeClass:'tag-dia',name:'RANURA SELLADA // RAREZA DIAMANTE',typeLabel:'ARTEFACTO SOBERANO // DIAMANTE',desc:'Ranura de máxima resonancia arcana. Contiene una reliquia o personaje de jerarquía superior pendiente de descifrado en el aula.',dim:'720 × 770 PX [VERT]',glyph:'💎'},{id:'SLOT-DOR',order:3,rarity:'dorada',division:'antiguos',badgeClass:'tag-dor',name:'RANURA SELLADA // RAREZA DORADA',typeLabel:'RELICARIO ÁUREO // DORADA',desc:'Custodia reliquias de gran poder histórico procedentes de la época de Alejandría o talismanes de protección.',dim:'720 × 770 PX [VERT]',glyph:'⚜️'},{id:'SLOT-PLA',order:4,rarity:'plata',division:'guardianes',badgeClass:'tag-pla',name:'RANURA SELLADA // RAREZA PLATA',typeLabel:'CRÓNICA ARGÉNTICA // PLATA',desc:'Crónica militar y táctica de guardianes y emisarios que custodian las fronteras del archivo.',dim:'720 × 770 PX [VERT]',glyph:'🛡️'},{id:'SLOT-PER-ANT',order:5,rarity:'personaje',division:'antiguos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: ANTIGUOS',typeLabel:'PERSONAJES // DIVISIÓN: ANTIGUOS',desc:'Eruditos y sabios clásicos como Eudoro de Alejandría que documentaron por primera vez la teoría elemental.',dim:'720 × 770 PX [VERT]',glyph:'📜'},{id:'SLOT-PER-EXP',order:6,rarity:'personaje',division:'exploradores',badgeClass:'tag-per',name:'RANURA // PERSONAJES: EXPLORADORES',typeLabel:'PERSONAJES // DIVISIÓN: EXPLORADORES',desc:'Pioneros del terreno, cartógrafos de rutas desconocidas y rastreadores de coordenadas olvidadas.',dim:'720 × 770 PX [VERT]',glyph:'🧭'},{id:'SLOT-PER-CIE',order:7,rarity:'personaje',division:'cientificos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: CIENTÍFICOS',typeLabel:'PERSONAJES // DIVISIÓN: CIENTÍFICOS',desc:'Analistas del pensamiento sistémico, investigadores de fenómenos físicos y descifradores de enigmas.',dim:'720 × 770 PX [VERT]',glyph:'⚗️'},{id:'SLOT-PER-GUA',order:8,rarity:'personaje',division:'guardianes',badgeClass:'tag-per',name:'RANURA // PERSONAJES: GUARDIANES',typeLabel:'PERSONAJES // DIVISIÓN: GUARDIANES',desc:'Protectores de los umbrales sagrados y defensores del archivo frente a las fuerzas del olvido.',dim:'720 × 770 PX [VERT]',glyph:'⚔️'},{id:'SLOT-PER-CON',order:9,rarity:'personaje',division:'contemporaneos',badgeClass:'tag-per',name:'RANURA // PERSONAJES: CONTEMPORÁNEOS',typeLabel:'PERSONAJES // DIVISIÓN: CONTEMPORÁNEOS',desc:'Seekers activos en la era moderna que conectan el pasado con las misiones actuales.',dim:'720 × 770 PX [VERT]',glyph:'⌚'},{id:'SLOT-PER-TRA',order:10,rarity:'personaje',division:'transmisores',badgeClass:'tag-per',name:'RANURA // PERSONAJES: TRANSMISORES',typeLabel:'PERSONAJES // DIVISIÓN: TRANSMISORES',desc:'Operadores de frecuencias, mensajeros entre planos y custodios de la red de radiofrecuencia táctica.',dim:'720 × 770 PX [VERT]',glyph:'📡'},{id:'SLOT-PER-WIL',order:11,rarity:'personaje',division:'wildcards',badgeClass:'tag-per',name:'RANURA // PERSONAJES: WILDCARDS',typeLabel:'PERSONAJES // DIVISIÓN: WILDCARDS',desc:'Entidades anómalas, comodines de destino y manifestaciones inesperadas dentro de la investigación.',dim:'720 × 770 PX [VERT]',glyph:'🃏'}],documents:[{id:'DOC-01',title:'Carta de Bastian Baltasar Bux (Vancouver, 2006)',formatLabel:'Misiva Manuscrita Auténtica // 2 Folios',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuABB9Q21glWRDoFdHEMjx89tNmBKxUiaOD_4eUdiWf2VWRhEIxQldKtXgSh6lGBbO4kKYJR-a4hOqUHCeUgcNAAR3gAmynGoyhuuYbp9ytYFYqO6abA2A9QUC6mMAbO5atuJCLEU-3CJxR4ln5fcMJkMyb9O8aNYL8RleiO8BvMxTiemJestVLz7C85T65Ll5ClgRsIwrcaBzKMfbJgppmxt4H82yRov09XqYD8o6NSl3PxUYd9Ko6rf753u9Z_pBkp','https://lh3.googleusercontent.com/aida-public/AB6AXuDMTxaTkmEOAGrY-IjxmNVhxVKsCjOTG2hmRhzwF4CFcxT9lGmU7BvpwdVQgwAhQjrK-6eeLWlXrLeJFUmb4QBrcJ2CtLmeh20h27ytetWej2AAuPOyxzzF6MU8MPm5Ii9OfAEldlpjudK7CK3RyHzcAXwe2Ccj2LwZrlRt2Cg0Yx4J-q380wtAOdLvFJLWqX3ziS86F1oExbEPEslqv4LhYzRQII8O2CnYxGDVf3KoQZ7Op311r_4ptTNBV71eZeW-'],context:'Carta manuscrita original dividida en dos folios hallada con la rúbrica y sello de Bastian Baltasar Bux en Vancouver en el año 2006. En ella confiesa su trayectoria como antiguo Seeker tras regresar de Fantasía.',transcript:'«Para quienes hayan llegado hasta aquí: Si estáis leyendo esta carta, significa que algo que creía perdido ha vuelto a aparecer... Durante años conservé el recuerdo de lo que había vivido... Yo fui un Seeker. Ahora os toca descubrir qué significa serlo. P.D. Hasta que sepáis en quién confiar, guardad esta carta donde nadie la vea.»'},{id:'DOC-02',title:'Cuaderno de Eudoro // Pág 1: ΖΗΤΗΣΙΣ & Pneuma',formatLabel:'Papiro Alejandrino // Folio I',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuALKLOxW9Li8ftILefeuUJ3UJa5k_hqbxthskx3UeMt-oH3TcL1c7HnSwVR48FwR6msA2E-n0F7zftzTqOnz5Grawu2b1pt6qFpM1hegTpPoC5H9Og1FfwkjrMUp9m3d0Z0JgE3ks_-WTRCN_qNSU4aGpc5bEebOlooAKAYzR1RJK1oo6s7q7FaE2eA2g1n3qwXXd6lD1VobNwZGIJfpJ-1pnYgiLGTEiDgJeq4CrJA9h4K19bpKGHsKFkK7UtVCnGW'],context:'Primera página recuperada del Cuaderno de Eudoro de Alejandría. Introducción al término ΖΗΤΗΣΙΣ (Zétêsis - Búsqueda/Indagación) y estudio del aliento vital primordial (Pneuma).',transcript:'«FRAGMENTO I · SOBRE EL AIRE. He pasado esta mañana observando el agua de la fuente. No el agua en sí. Lo que la movía... El pneuma —aquello que los antiguos llamaron aliento, espíritu, aire— no ocupa un lugar en el mundo de la misma manera... ¿Dónde termina el Aire y dónde empieza todo lo demás?»'},{id:'DOC-03',title:'Cuaderno de Eudoro // Pág 2: Diagrama de 4 Elementos',formatLabel:'Papiro Alejandrino // Folio II',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuB7r5jRKSp8QCYGkhzP1fcVz_pNwkFmG9wzDHgod5Dh86CV5CWpGnFHZvTQAhAhtP5QrkatZ_7COvDvZCwJikmu11Va6cD3vqSXiBlrpnG_vAU001-qVU8_9gtGfRUPNyXi3x5_sd08WKx0roYRzv3WBTH5ZVnm0UKIu5HwbD7P-rfCe7w7sTvnjpUU-Slj7SzN7aolwVKc--14y7X4LZ9x14XL0IU3lKBJLhgBX_jrP1Z1O83MuQ-v-YbQphR72Bzf'],context:'Segunda página que contiene el primer esquema cosmológico: los cuatro elementos (Pneuma, Hydor, Pyr, Gaia) rodeando un signo de interrogación central enigmático.',transcript:'«He observado durante varios días el comportamiento del Aire sobre diferentes superficies... El Aire no moja. No pesa... ¿Actúa el Aire sobre los elementos o los elementos actúan a través del Aire? En el centro de la rueda se sitúa la gran incógnita [?].»'},{id:'DOC-04',title:'Cuaderno de Eudoro // Pág 3: Pensamiento Sistémico',formatLabel:'Papiro Alejandrino // Folio III',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuDynrbay6qxIJrrNu2rYmoQAWbvh8KqgaYWf0xI42dnDZeVsbs-Vc1SEDdOU8KKycIkRYMrsuN7gHdcEZNUAbiADpTtQ6O5GbG_zusoFrfMWTMcr6MVpR5cK9r4CpCzbMK5y44WrKwnQKyss2e0Hj_c4csc0b_KxFwMa50n93J1j47uneVaXHmZkePdtPFaThY6Z7mVCS-YAYg-_R6Sk8i0UV5prBMWt67y4kVT-X-K5X9qxijFcllzuQsT2vfzSBlm'],context:'Tercera página donde Eudoro refuta su primer modelo. Abandona la clasificación separada e introduce el pensamiento sistémico con el centro en blanco: "Lo que hay en el centro no tiene nombre todavía".',transcript:'«He vuelto a mirar el diagrama que dibujé ayer... He llegado a una conclusión incómoda: el diagrama está mal. En la idea que lo sostiene. No hay fronteras. He rehecho el diagrama... Y en el centro he dejado un espacio vacío. "Lo que hay en el centro no tiene nombre todavía".»'},{id:'DOC-05',title:'Cuaderno de Eudoro // Pág 4: Fragmento Rasgado',formatLabel:'Papiro Alejandrino // Fragmento IV Rasgado',conditionClass:'state-intact',pages:['https://lh3.googleusercontent.com/aida-public/AB6AXuD1nQnZj2GL0YxbUMGD3E9_NUzIkIvGW0oR7DFcagpgCq_F-pG4nEFkRUShSgsDN0lOcW37WBkPzERtOQMQ_ccgLq2M8Sg2t577lrnDqk3AIvsol1C4VL5AagnJnEBdfUTS6AD-yxRVyM3CG6yi7emr9XfD6l_iUQ1UY6h-rv_hlhS7JeyYNjMMzbybz53k0YRTSgwK99Hrw_xZFdUyaWyUnKDPkIhKriLbx-FWEsB8Dp1rTUaQyXwtXVdnEYGc07D3'],context:'Última página recuperada con borde rasgado. Formula la interdependencia total de las fuerzas elementales y plantea la gran tesis de la orden Seeker.',transcript:'«Esta noche he entendido que el método tiene un error fundamental. No puedes estudiar por separado algo que... El Aire mueve el Agua. El Agua transforma la Tierra. La Tierra alimenta el Fuego. El Fuego devuelve al Aire. Esto no es una cadena. Es algo que ocurre al mismo tiempo... ¿Y si aquello que conecta los cuatro no fuera un elemento sino...?»'}]};
-function total(k){return archiveData[k]?.length||0}function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function unlockArchive(){const gate=document.getElementById('loginGate'),app=document.getElementById('archive'),status=document.getElementById('keyStatus'),msg=document.getElementById('loginMsg');status.textContent='ACCESO CONCEDIDO // AUTORIZADO';status.style.color='#65e6a0';msg.textContent='CLAVE CORRECTA // ACCESO CONCEDIDO — SINCRONIZANDO NODO CENTRAL...';msg.style.color='#65e6a0';msg.style.fontWeight='bold';setTimeout(()=>{gate.style.display='none';gate.classList.add('hidden');app.style.removeProperty('display');app.classList.remove('hidden');render('central')},350)}
-function handleLoginAttempt(){const input=document.getElementById('password'),status=document.getElementById('keyStatus'),msg=document.getElementById('loginMsg'),val=(input?.value||'').trim().toLowerCase();if(val==='empanadilla')unlockArchive();else{status.textContent='ERROR // CLAVE INVÁLIDA';status.style.color='var(--red)';msg.textContent='ERROR DE CLAVE: Intente nuevamente con el nombre clave (11 caracteres). O use el botón de demostración táctica.';msg.style.color='var(--red)';input.style.borderColor='var(--red)';input.focus();setTimeout(()=>input.style.borderColor='var(--dim)',1500)}}
-document.getElementById('access').addEventListener('click',handleLoginAttempt);document.getElementById('password').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();handleLoginAttempt()}});document.getElementById('bypassBtn').addEventListener('click',unlockArchive);
-function updateClock(){const clk=document.getElementById('clock');if(clk)clk.textContent=new Date().toLocaleString('es-ES',{dateStyle:'short',timeStyle:'medium'})}setInterval(updateClock,1000);updateClock();
-let currentPrimaryFilter='all',currentSubdivisionFilter='all',currentCollectionPage=1;const CARDS_PER_PAGE=4;
-function getRealWorldMapSvg(){return `<svg class="world-svg-el" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="geo-subgrid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M 25 0 L 0 0 0 25" fill="none" stroke="#132c20" stroke-width="0.3" opacity="0.6"/></pattern><linearGradient id="ocean-glow" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0a1b14"/><stop offset="50%" stop-color="#08150f"/><stop offset="100%" stop-color="#050e0a"/></linearGradient></defs><rect width="1000" height="500" fill="url(#ocean-glow)"/><rect width="1000" height="500" fill="url(#geo-subgrid)"/><line x1="0" y1="250" x2="1000" y2="250" class="grid-equator"/><line x1="500" y1="0" x2="500" y2="500" class="grid-prime"/><path class="geo-land" d="M48 88C62 80 85 82 105 85C118 70 140 68 160 76C185 82 210 75 230 85C248 95 260 110 240 120C230 125 235 145 220 152C205 158 208 140 195 136C180 132 172 155 185 160C200 166 215 155 230 162C245 168 255 185 240 195C232 200 222 208 225 220C230 235 250 250 260 270C270 285 285 295 290 310C292 318 282 320 275 315C260 300 252 280 238 275C220 270 210 282 200 270C188 255 178 245 170 230C162 215 155 190 150 170C146 150 138 145 130 135C118 138 105 130 92 135C75 142 60 130 52 118C45 108 42 95 48 88Z"/><path class="geo-land" d="M288 310C305 305 325 315 345 320C370 326 395 340 400 365C402 385 380 415 365 440C355 455 340 480 325 490C318 495 312 485 315 470C318 450 315 425 312 400C308 380 298 350 288 335C282 325 280 315 288 310Z"/><path class="geo-land" d="M485 140C490 120 510 95 530 85C545 78 560 90 565 110C555 125 545 135 540 145C550 148 560 152 570 145C585 150 590 165 580 180C565 190 555 185 540 195C532 205 528 215 520 215C515 205 505 208 498 215C485 218 475 210 472 195C470 180 480 165 482 150Z"/><path class="geo-land" d="M475 220C500 215 525 218 550 225C565 235 580 250 595 270C605 285 580 320 565 350C555 375 540 410 525 425C515 430 505 415 500 390C495 365 485 340 478 315C468 290 455 260 460 240C465 228 470 222 475 220Z"/><path class="geo-land" d="M565 110C600 95 650 85 720 80C770 76 830 85 875 90C915 95 935 110 915 130C890 140 870 160 860 180C845 200 825 220 800 235C785 245 765 255 750 240C735 230 725 250 715 275C705 295 685 285 675 255C665 235 650 240 630 250C610 245 595 235 585 220C578 200 585 180 595 165C585 150 575 130 565 110Z"/><path class="geo-land" d="M800 355C825 340 860 345 885 360C900 375 895 405 875 425C850 435 815 430 795 410C785 395 788 370 800 355Z"/><g transform="translate(158,142.5)"><circle r="18" fill="none" stroke="#e65c4c" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.75"/><circle r="32" fill="none" stroke="#d39a45" stroke-width="0.5" opacity="0.35"/><line x1="-28" y1="0" x2="28" y2="0" stroke="#e65c4c" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.6"/><line x1="0" y1="-28" x2="0" y2="28" stroke="#e65c4c" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.6"/></g></svg>`}
-function renderMapMarkup(full=false){const loc=archiveData.locations[0],x=loc?.x||15.8,y=loc?.y||28.5;return `<section class="panel"><div class="ptitle"><span>CARTOGRAPHY // GEODETIC WORLD NETWORK</span><span>SEEKERS LOCATED: ${String(total('seekers')).padStart(2,'0')}</span></div><div class="map-viewport ${full?'fullscreen':''}"><div class="map-header-hud"><div class="hud-title">▶ WGS-84 REAL-WORLD TOPOLOGY RECORD</div><div class="hud-coords">TARGET 01: 49°15′ N / 123°06′ W<br><span style="color:var(--green)">NODE: VANCOUVER [BC, CA]</span></div></div><div class="map-canvas-wrap">${getRealWorldMapSvg()}<div class="marker-anchor" style="left:${x}%;top:${y}%;"><button class="marker-btn" aria-label="Target 01"><div class="marker-radar"></div><div class="marker-radar-2"></div><div class="marker-cross"></div><div class="marker-tag">✕ BASTIAN B. BUX</div></button></div><div class="map-compass"></div></div></div></section>`}
-function cardMarkup(card){return `<article class="tcg-card-container" onclick="inspectCard('${card.id}')" tabindex="0"><div class="tcg-top-spec"><span>${esc(card.number)} // ORDEN: #${String(card.order).padStart(2,'0')}</span><span class="tcg-dim-indicator">720 × 770 VERTICAL</span></div><div class="tcg-inner-body"><div class="tcg-vertical-header"><div class="tcg-code-serial">SEEKER CLASSIFIED IDENTIFIER</div><h3 class="tcg-char-name">${esc(card.name)}</h3><div class="tcg-sub-row"><span class="tcg-class-pill">${esc(card.classification)}</span><div class="elemental-badge ${card.elementKey}"><span>🌀</span><span>${esc(card.element)}</span></div></div></div><div class="tcg-art-box"><div class="tcg-art-watermark">ARCHIVAL CODEX</div><div class="tcg-art-glow-ring"></div><div class="tcg-art-center-vector"><svg viewBox="0 0 100 100" fill="none" stroke="#65e6a0" stroke-width="1.8"><circle cx="50" cy="38" r="16" stroke-dasharray="3 2"/><path d="M26 84 C26 62, 74 62, 74 84" stroke-width="2"/><circle cx="50" cy="38" r="7" fill="#65e6a0"/><circle cx="50" cy="50" r="42" stroke="#38bdf8" stroke-width="1" stroke-dasharray="5 3" opacity="0.6"/></svg></div><div class="tcg-art-quote">${esc(card.quote)}</div></div><div class="tcg-lore-box"><b>TEXTO EXPLICATIVO CANÓNICO:</b><br>${esc(card.description)}</div><div class="tcg-skills-section-label"><span>HABILIDADES // JÓVENES SEEKERS</span><span style="color:var(--green)">518 PTS</span></div><div class="tcg-skills-grid">${card.skills.map(s=>`<div class="tcg-skill-slot"><div class="tcg-skill-header"><span>${esc(s.label.toUpperCase())}</span><span style="color:var(--amber)">LVL</span></div><div class="tcg-skill-score">${s.val} <span style="font-size:7px;font-weight:normal;color:var(--muted)">PTS</span></div><div class="tcg-skill-bar-wrap"><div class="tcg-skill-bar-fill" style="width:${s.val}%"></div></div></div>`).join('')}</div><div class="tcg-footer-row"><span>REGISTRO: ${esc(card.discoveryDate)}</span><span style="color:var(--amber)">[ INSPECCIONAR ]</span></div></div></article>`}
-function slotMarkup(slot){return `<article class="tcg-card-container sealed slot-${slot.rarity}" onclick="inspectSlot('${slot.id}')" tabindex="0"><div class="tcg-top-spec"><span>SLOT #${String(slot.order).padStart(2,'0')} // ORDEN CRONOLÓGICO</span><span class="tcg-dim-indicator">${slot.dim}</span></div><div class="tcg-inner-body"><div class="tcg-vertical-header"><div class="tcg-code-serial" style="color:var(--muted)">RANURA PENDIENTE DE REVELACIÓN</div><h3 class="tcg-char-name" style="color:var(--paper);font-size:14px">${esc(slot.name)}</h3><div class="tcg-sub-row"><span style="font-size:8px;color:var(--amber)">${esc(slot.typeLabel)}</span><span class="${slot.badgeClass}" style="font-size:7.5px;padding:2px 6px">${esc(slot.rarity.toUpperCase())}</span></div></div><div class="tcg-sealed-art"><div class="tcg-sealed-glyph">${slot.glyph}</div><div class="tcg-sealed-lock-tag ${slot.badgeClass}">ARCHIVO BLOQUEADO EN AULA</div><div class="tcg-sealed-desc">${esc(slot.desc)}</div></div><div class="tcg-lore-box" style="margin-top:auto"><b>CONDICIÓN DE DESBLOQUEO:</b><br/>Resolución de misiones y acertijos del códex en las sesiones de investigación escolar.</div><div class="tcg-footer-row"><span>ESTADO: BLOQUEADO</span><span style="color:var(--amber)">🔒 EN ESPERA</span></div></div></article>`}
-function collection(){let cards=archiveData.cards.filter(c=>currentPrimaryFilter==='all'||(currentPrimaryFilter==='diamante'&&c.rarityType==='diamante')||(currentPrimaryFilter==='personajes'&&(currentSubdivisionFilter==='all'||c.division===currentSubdivisionFilter)));let slots=archiveData.upcomingSlots.filter(s=>currentPrimaryFilter==='all'||(currentPrimaryFilter===s.rarity)||(currentPrimaryFilter==='personajes'&&s.rarity==='personaje'&&(currentSubdivisionFilter==='all'||s.division===currentSubdivisionFilter)));const items=[...cards.map(data=>({type:'card',data,order:data.order})),...slots.map(data=>({type:'slot',data,order:data.order}))].sort((a,b)=>a.order-b.order),pagesCount=Math.max(1,Math.ceil(items.length/CARDS_PER_PAGE));currentCollectionPage=Math.min(Math.max(1,currentCollectionPage),pagesCount);const shown=items.slice((currentCollectionPage-1)*CARDS_PER_PAGE,currentCollectionPage*CARDS_PER_PAGE);const buttons=Array.from({length:pagesCount},(_,i)=>`<button class="page-pill ${i+1===currentCollectionPage?'active':''}" onclick="goToCollectionPage(${i+1})">${i+1}</button>`).join('');const subdivisions=['all','jovenes','antiguos','exploradores','cientificos','guardianes','contemporaneos','transmisores','wildcards'];return `<div class="head"><div><h2>COLLECTION // ARCHIVO CLASIFICADO DE CARTAS</h2><p class="intro">Registro cronológico y táctico de cartas verticales (TCG). Vista por páginas acoplada al ritmo del panel central.</p></div><div class="tag">ALBUM STATUS: LIVE RECOVERY</div></div><section class="panel"><div class="album-hud-bar"><div class="album-hud-top"><div class="album-stats-group"><div class="album-stat-chip"><span>CARTAS ACTIVAS DESCUBIERTAS</span><strong>${String(archiveData.cards.length).padStart(2,'0')} / ${archiveData.totalAlbumCapacity} REGISTROS</strong></div><div class="album-stat-chip"><span>FORMATO VERTICAL TCG</span><strong style="color:var(--amber)">720 × 770 PX [VERTICAL]</strong></div><div class="album-progress-wrap"><div class="progress-meta"><span>SINCRONIZACIÓN CÓDEX</span><strong>${Math.round(archiveData.cards.length/archiveData.totalAlbumCapacity*100)}%</strong></div><div class="progress-track"><div class="progress-fill" style="width:${Math.round(archiveData.cards.length/archiveData.totalAlbumCapacity*100)}%"></div></div></div></div></div><div class="filters-suite"><div class="primary-filters"><button class="filter-btn ${currentPrimaryFilter==='all'?'active':''}" onclick="setPrimaryFilter('all')">TODOS (ORDEN DE APARICIÓN)</button><button class="filter-btn badge-dia ${currentPrimaryFilter==='diamante'?'active':''}" onclick="setPrimaryFilter('diamante')">💎 DIAMANTE</button><button class="filter-btn badge-dor ${currentPrimaryFilter==='dorada'?'active':''}" onclick="setPrimaryFilter('dorada')">⚜️ DORADA</button><button class="filter-btn badge-pla ${currentPrimaryFilter==='plata'?'active':''}" onclick="setPrimaryFilter('plata')">🛡️ PLATA</button><button class="filter-btn ${currentPrimaryFilter==='personajes'?'active':''}" onclick="setPrimaryFilter('personajes')">👥 PERSONAJES</button></div>${currentPrimaryFilter==='personajes'||currentPrimaryFilter==='all'?`<div class="subdivisions-bar"><span class="subdiv-title">SUBDIVISIONES:</span>${subdivisions.map(s=>`<button class="subdiv-pill ${currentSubdivisionFilter===s?'active':''}" onclick="setSubdivision('${s}')">${s==='all'?'TODAS':s.toUpperCase()}</button>`).join('')}</div>`:''}</div></div><div class="tcg-pagination-bar"><div class="page-info-tag">REGISTROS FILTRADOS: <span>${items.length}</span>&nbsp;|&nbsp; PÁGINA <span>${currentCollectionPage}</span> DE <span>${pagesCount}</span></div><div class="pagination-controls"><button class="page-btn" onclick="prevCollectionPage()" ${currentCollectionPage<=1?'disabled':''}>[ ◄ ANTERIOR ]</button><div style="display:flex;gap:4px">${buttons}</div><button class="page-btn" onclick="nextCollectionPage()" ${currentCollectionPage>=pagesCount?'disabled':''}>[ SIGUIENTE ► ]</button></div></div><div class="cards-grid">${shown.map(item=>item.type==='card'?cardMarkup(item.data):slotMarkup(item.data)).join('')}</div></section></div>`}
-function prevCollectionPage(){if(currentCollectionPage>1){currentCollectionPage--;render('collection')}}function nextCollectionPage(){currentCollectionPage++;render('collection')}function goToCollectionPage(p){currentCollectionPage=p;render('collection')}function setPrimaryFilter(f){currentPrimaryFilter=f;if(f!=='personajes')currentSubdivisionFilter='all';currentCollectionPage=1;render('collection')}function setSubdivision(s){currentSubdivisionFilter=s;currentCollectionPage=1;render('collection')}
-function inspectSlot(id){const s=archiveData.upcomingSlots.find(x=>x.id===id);if(!s)return;document.getElementById('inspectorHeaderTitle').textContent=`CLASSIFIED SLOT // ${s.id} — ${s.name}`;document.getElementById('inspectorModalContent').innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;border:1px dashed var(--dim);background:#030805"><div style="font-size:52px;margin-bottom:12px">${s.glyph}</div><div class="tcg-dim-indicator">${s.dim}</div></div><div style="display:flex;flex-direction:column;gap:12px"><div><div style="font-size:9px;color:var(--amber);letter-spacing:2px">RANURA BLOQUEADA</div><h3 style="font-size:17px;color:#fff;margin:4px 0">${esc(s.name)}</h3><span style="font-size:8.5px;color:var(--paper)">${esc(s.typeLabel)}</span></div><div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0">${esc(s.desc)}</div><div style="font-size:9px;color:var(--muted);line-height:1.7">Para desbloquear esta carta física se requiere que los alumnos resuelvan los acertijos de clase correspondientes al cuaderno de Eudoro y las señales geodésicas.</div><div class="inspector-actions"><button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR AVISO</button></div></div>`;document.getElementById('cardInspectorModal').classList.remove('hidden')}
-function inspectCard(id){const c=archiveData.cards.find(x=>x.id===id);if(!c)return;document.getElementById('inspectorHeaderTitle').textContent=`DOSSIER TÁCTICO // ${c.number} — ${c.name}`;document.getElementById('inspectorModalContent').innerHTML=`<div style="display:flex;flex-direction:column;align-items:center"><div class="tcg-card-container" style="width:100%;max-width:280px;cursor:default;min-height:auto">${cardMarkup(c).replace(/^<article[^>]*>|<\/article>$/g,'')}</div></div><div style="display:flex;flex-direction:column;gap:12px"><div><div style="font-size:9px;color:var(--amber);letter-spacing:2px">${esc(c.classification)}</div><h3 style="font-size:18px;color:#fff;margin:3px 0 6px">${esc(c.name)}</h3><span style="font-size:9px;color:var(--muted)">ORDEN CRONOLÓGICO #${String(c.order).padStart(2,'0')} • ELEMENTO: ${esc(c.element)}</span></div><div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0"><div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TEXTO EXPLICATIVO CANÓNICO:</div>${esc(c.description)}</div><div style="font-size:9.5px;line-height:1.7;color:var(--muted)"><span style="color:var(--paper);font-weight:bold">LORE DEL ARCHIVO:</span><br/>${esc(c.lore)}</div><div class="inspector-actions"><button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR DOSSIER</button></div></div>`;document.getElementById('cardInspectorModal').classList.remove('hidden')}
-document.getElementById('closeInspectorBtn').onclick=()=>document.getElementById('cardInspectorModal').classList.add('hidden');document.getElementById('cardInspectorModal').onclick=e=>{if(e.target===document.getElementById('cardInspectorModal'))document.getElementById('cardInspectorModal').classList.add('hidden')};
-let docZoomLevel=1;function openDocViewer(id){const d=archiveData.documents.find(x=>x.id===id);if(!d)return;docZoomLevel=1;document.getElementById('docViewerTitle').textContent=`ARCHIVAL DOCUMENT // ${d.id} — ${d.title}`;document.getElementById('docViewerBody').innerHTML=`<div style="display:flex;flex-direction:column;gap:14px;overflow-x:auto;padding-bottom:10px" id="docViewerImageContainer">${d.pages.map((p,i)=>`<div style="border:1px solid #3d301f;background:#050705;padding:8px;position:relative"><div style="position:absolute;top:12px;left:14px;background:#05120caa;padding:2px 8px;font-size:8px;color:var(--amber);border:1px solid #163625;z-index:5">FOLIO [${i+1}/${d.pages.length}]</div><img src="${p}" alt="${d.title} - Página ${i+1}" style="width:100%;display:block;transform-origin:top center;transition:transform .2s ease;filter:contrast(1.04)"/></div>`).join('')}</div><div style="display:flex;flex-direction:column;gap:14px"><div style="border-bottom:1px solid #1a3827;padding-bottom:10px"><div style="font-size:8.5px;color:var(--amber);letter-spacing:1.5px">${esc(d.formatLabel)}</div><h3 style="font-size:16px;color:#fff;margin:4px 0">${esc(d.title)}</h3><span class="doc-state-badge ${d.conditionClass}">AUTENTICIDAD VERIFICADA</span></div><div style="background:#07120a;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0"><div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">CONTEXTO Y HALLAZGO:</div>${esc(d.context)}</div><div style="background:#050f09;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.8;color:var(--paper)"><div style="color:var(--green);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TRANSCRIPCIÓN PALEOGRÁFICA:</div>${esc(d.transcript)}</div><div class="inspector-actions"><button class="inspector-btn" onclick="document.getElementById('docViewerModal').classList.add('hidden')">CERRAR VISOR</button></div></div>`;updateDocZoomDisplay();document.getElementById('docViewerModal').classList.remove('hidden')}
-function updateDocZoomDisplay(){document.getElementById('docZoomLevelText').textContent=`${Math.round(docZoomLevel*100)}%`;document.querySelectorAll('#docViewerImageContainer img').forEach(img=>{img.style.transform='none';img.parentElement.style.width=`${docZoomLevel*100}%`;img.parentElement.style.flexShrink='0'})}document.getElementById('docZoomInBtn').onclick=()=>{if(docZoomLevel<2.5){docZoomLevel+=.25;updateDocZoomDisplay()}};document.getElementById('docZoomOutBtn').onclick=()=>{if(docZoomLevel>.5){docZoomLevel-=.25;updateDocZoomDisplay()}};document.getElementById('docZoomResetBtn').onclick=()=>{docZoomLevel=1;updateDocZoomDisplay()};document.getElementById('closeDocViewerBtn').onclick=()=>document.getElementById('docViewerModal').classList.add('hidden');document.getElementById('docViewerModal').onclick=e=>{if(e.target===document.getElementById('docViewerModal'))document.getElementById('docViewerModal').classList.add('hidden')};
-function documents(){return `<div class="head"><div><h2>DOCUMENTS // REPOSITORIO ORIGINAL</h2><p class="intro">Archivo de manuscritos, misivas históricas y fragmentos recuperados del Cuaderno de Eudoro de Alejandría.</p></div><div class="tag">RECORDS ONLINE: ${archiveData.documents.length} DOCUMENTOS VERIFICADOS</div></div><section class="panel"><div class="docs-grid">${archiveData.documents.map(d=>`<article class="doc-card" onclick="openDocViewer('${d.id}')"><div class="doc-header"><span class="doc-id">${d.id}</span><span class="doc-state-badge ${d.conditionClass}">AUTÉNTICO</span></div><div class="papyri-thumbnail"><img src="${d.pages[0]}" alt="${d.title}"></div><div class="doc-title">${esc(d.title)}</div><div class="doc-format-tag">${esc(d.formatLabel)}</div><div class="doc-desc">${esc(d.context)}</div><button class="doc-btn" onclick="event.stopPropagation();openDocViewer('${d.id}')">[ INSPECCIONAR EN ALTA RESOLUCIÓN ]</button></article>`).join('')}</div></section>`}
-function central(){return `<div class="head"><div><h2>CENTRAL INDEX</h2><p class="intro">Bienvenido al Archivo de los Seekers. La cartografía satelital del mundo real está sincronizada.<br/>Visualización activa del primer Seeker en Vancouver, estado del códex coleccionable y registro de manuscritos.</p></div><div class="tag">USER STATUS: NEW SEEKERS DETECTED</div></div><div class="grid">${renderMapMarkup(false)}<div class="stack"><section class="panel"><div class="ptitle"><span>ARCHIVE STATUS</span><span>LIVE</span></div><div class="rows"><div class="row"><span>Seekers located</span><span style="color:var(--green);font-weight:bold">01</span></div><div class="row"><span>Active Target</span><span style="color:var(--paper)">Bastian Baltasar Bux</span></div><div class="row"><span>Coordinates</span><span style="color:var(--amber)">49°15′ N, 123°06′ W</span></div><div class="row"><span>Location</span><span style="color:var(--green)">Vancouver, BC (Canadá)</span></div><div class="row"><span>Cards recovered</span><span style="color:var(--amber);font-weight:bold">01 / ${archiveData.totalAlbumCapacity}</span></div><div class="row"><span>Documents online</span><span style="color:var(--green)">${archiveData.documents.length} Manuscritos HD</span></div><div class="row"><span>Standard card size</span><span style="color:var(--green)">720 × 770 VERTICAL</span></div></div></section><section class="panel"><div class="ptitle"><span>SATELLITE TELEMETRY</span><span>WGS-84</span></div><div class="note"><b>INFORME TÁCTICO INICIAL:</b><br/>La emisión detectada en Vancouver confirma la presencia histórica de Bastian Baltasar Bux como Seeker primario. La colección clasificada se encuentra abierta para el registro cronológico del aula.</div></section></div></div>`}
-function mapPage(){return `<div class="head"><div><h2>WORLD MAP</h2><p class="intro">THE SEEKERS ARCHIVE / GLOBAL CARTOGRAPHIC RECORD &amp; SATELLITE NETWORK</p></div><div class="tag">SEEKERS LOCATED: 01</div></div>${renderMapMarkup(true)}`}
-function empty(sym,title,desc,code,restricted=false){return `<div class="head"><div><h2>${title}</h2><p class="intro">THE SEEKERS ARCHIVE / DIRECTORY</p></div><div class="tag">${restricted?'RESTRICTED DIRECTORY':'RECORD STATUS: PENDING'}</div></div><section class="panel"><div class="ptitle"><span>${title} // DIRECTORY</span><span>${restricted?'RESTRICTED':'INDEX'}</span></div><div style="min-height:280px;padding:45px 25px;display:grid;place-items:center;text-align:center"><div><div style="font-size:38px;color:var(--dim);margin-bottom:18px">${sym}</div><h3 style="font-size:15px;font-weight:normal;letter-spacing:3px;margin:0 0 12px">${restricted?'ACCESS RESTRICTED':title+' — NO RECORDS'}</h3><p style="max-width:520px;color:var(--muted);font-size:11px;line-height:1.9">${desc}</p><div style="font-size:9px;color:var(--dim);letter-spacing:2px;margin-top:20px">${code}</div></div></div></section>`}function evidence(){return empty('◇','EVIDENCE','Las evidencias de campo se organizarán aquí a medida que la investigación escolar avance.','EVIDENCE REGISTER // NO ACTIVE LOGS')}function transmissions(){return empty('◉','TRANSMISSIONS','Comunicaciones interceptadas procedentes de emisores externos.','TRANSMISSIONS // LISTENING ON 142.85 MHz')}function locked(){return empty('▣','LOCKED FILES','Archivos protegidos por cifrado geodésico de alta seguridad.','SECURITY PROTOCOL // SEALED',true)}function unknown(){return empty('?','UNKNOWN','Anomalías y enigmas que no encajan en ninguna clasificación conocida.','UNKNOWN // LOG EMPTY')}
-const pages={central,map:mapPage,documents,collection,evidence,transmissions,locked,unknown};function render(page){if(!pages[page])return;document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('content').innerHTML=pages[page]();document.getElementById('crumb').textContent=({central:'CENTRAL INDEX',map:'WORLD MAP',documents:'DOCUMENTS',collection:'COLLECTION',evidence:'EVIDENCE',transmissions:'TRANSMISSIONS',locked:'LOCKED FILES',unknown:'UNKNOWN'})[page];window.scrollTo(0,0)}document.querySelectorAll('.nav [data-page]').forEach(button=>button.addEventListener('click',()=>render(button.dataset.page)));
+const archiveData = {
+  seekers: [
+    {
+      id: 'SEEKER-01',
+      name: 'Bastian Baltasar Bux',
+      location: 'Vancouver, Columbia Británica (Canadá)',
+      coords: '49°15′ N, 123°06′ W',
+      status: 'VERIFIED // INITIAL RECORD',
+      date: '2026-09-01',
+      details: 'Primer Seeker localizado. Foco de emisión activa registrado en costa oeste canadiense.'
+    }
+  ],
+  locations: [
+    {
+      id: 'LOC-01',
+      name: 'Vancouver, Columbia Británica (Canadá)',
+      seeker: 'Bastian Baltasar Bux',
+      coords: '49°15′28″ N, 123°06′58″ W',
+      region: 'North America / Pacific Northwest',
+      status: 'VERIFIED',
+      description: 'Primer Seeker localizado en el archivo. Registro de coordenadas confirmado en la red cartográfica del proyecto.',
+      x: 16.2,
+      y: 29.8
+    }
+  ],
+  totalAlbumCapacity: 12,
+
+  /* CARTAS Y SLOTS CLASIFICADOS */
+  cards: [
+    {
+      id: 'CARD-001',
+      order: 1,
+      number: 'CARD #001',
+      name: 'BASTIAN BALTASAR BUX',
+      rarity: 'personaje',
+      rarityType: 'diamante',
+      division: 'jovenes',
+      divisionLabel: 'Jóvenes Seekers',
+      element: 'PNEUMA (AIRE)',
+      elementKey: 'pneuma',
+      classification: 'PERSONAJE - JÓVENES SEEKERS',
+      discoveryDate: '2026-09-01',
+      dimensions: '720 × 770 PX [VERTICAL TCG]',
+      quote: '«Yo fui un Seeker. Ahora os toca descubrir qué significa serlo.»',
+      description: 'El lector que salvó al Reino de la Nada al otorgarle un nuevo nombre a la Emperatriz Infantil. Localizado originalmente en el desván escolar de la costa del Pacífico. Capaz de cruzar umbrales narrativos mediante la invocación del Pneuma y la memoria escrita.',
+      skills: [
+        { label: 'Fortaleza', val: 78 },
+        { label: 'Valentía', val: 85 },
+        { label: 'Empatía', val: 92 },
+        { label: 'Equipo', val: 88 },
+        { label: 'Liderazgo', val: 80 },
+        { label: 'Ingenio', val: 95 }
+      ],
+      lore: 'Registro de Seeker primario catalogado tras la apertura de la carta de Vancouver (2006). Porta la insignia del Pneuma (Aire), elemento que rige el pensamiento libre, la inspiración desatada y la conexión con el Gran Cuaderno de Eudoro.'
+    }
+  ],
+
+  upcomingSlots: [
+    {
+      id: 'SLOT-DIA',
+      order: 2,
+      rarity: 'diamante',
+      division: 'wildcards',
+      badgeClass: 'tag-dia',
+      name: 'RANURA SELLADA // RAREZA DIAMANTE',
+      typeLabel: 'ARTEFACTO SOBERANO // DIAMANTE',
+      desc: 'Ranura de máxima resonancia arcana. Contiene una reliquia o personaje de jerarquía superior pendiente de descifrado en el aula.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '💎'
+    },
+    {
+      id: 'SLOT-DOR',
+      order: 3,
+      rarity: 'dorada',
+      division: 'antiguos',
+      badgeClass: 'tag-dor',
+      name: 'RANURA SELLADA // RAREZA DORADA',
+      typeLabel: 'RELICARIO ÁUREO // DORADA',
+      desc: 'Custodia reliquias de gran poder histórico procedentes de la época de Alejandría o talismanes de protección.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '⚜️'
+    },
+    {
+      id: 'SLOT-PLA',
+      order: 4,
+      rarity: 'plata',
+      division: 'guardianes',
+      badgeClass: 'tag-pla',
+      name: 'RANURA SELLADA // RAREZA PLATA',
+      typeLabel: 'CRÓNICA ARGÉNTICA // PLATA',
+      desc: 'Crónica militar y táctica de guardianes y emisarios que custodian las fronteras del archivo.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '🛡️'
+    },
+    {
+      id: 'SLOT-PER-ANT',
+      order: 5,
+      rarity: 'personaje',
+      division: 'antiguos',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: ANTIGUOS',
+      typeLabel: 'PERSONAJES // DIVISIÓN: ANTIGUOS',
+      desc: 'Eruditos y sabios clásicos como Eudoro de Alejandría que documentaron por primera vez la teoría elemental.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '📜'
+    },
+    {
+      id: 'SLOT-PER-EXP',
+      order: 6,
+      rarity: 'personaje',
+      division: 'exploradores',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: EXPLORADORES',
+      typeLabel: 'PERSONAJES // DIVISIÓN: EXPLORADORES',
+      desc: 'Pioneros del terreno, cartógrafos de rutas desconocidas y rastreadores de coordenadas olvidadas.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '🧭'
+    },
+    {
+      id: 'SLOT-PER-CIE',
+      order: 7,
+      rarity: 'personaje',
+      division: 'cientificos',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: CIENTÍFICOS',
+      typeLabel: 'PERSONAJES // DIVISIÓN: CIENTÍFICOS',
+      desc: 'Analistas del pensamiento sistémico, investigadores de fenómenos físicos y descifradores de enigmas.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '⚗️'
+    },
+    {
+      id: 'SLOT-PER-GUA',
+      order: 8,
+      rarity: 'personaje',
+      division: 'guardianes',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: GUARDIANES',
+      typeLabel: 'PERSONAJES // DIVISIÓN: GUARDIANES',
+      desc: 'Protectores de los umbrales sagrados y defensores del archivo frente a las fuerzas del olvido.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '⚔️'
+    },
+    {
+      id: 'SLOT-PER-CON',
+      order: 9,
+      rarity: 'personaje',
+      division: 'contemporaneos',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: CONTEMPORÁNEOS',
+      typeLabel: 'PERSONAJES // DIVISIÓN: CONTEMPORÁNEOS',
+      desc: 'Seekers activos en la era moderna que conectan el pasado con las misiones actuales.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '⌚'
+    },
+    {
+      id: 'SLOT-PER-TRA',
+      order: 10,
+      rarity: 'personaje',
+      division: 'transmisores',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: TRANSMISORES',
+      typeLabel: 'PERSONAJES // DIVISIÓN: TRANSMISORES',
+      desc: 'Operadores de frecuencias, mensajeros entre planos y custodios de la red de radiofrecuencia táctica.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '📡'
+    },
+    {
+      id: 'SLOT-PER-WIL',
+      order: 11,
+      rarity: 'personaje',
+      division: 'wildcards',
+      badgeClass: 'tag-per',
+      name: 'RANURA // PERSONAJES: WILDCARDS',
+      typeLabel: 'PERSONAJES // DIVISIÓN: WILDCARDS',
+      desc: 'Entidades anómalas, comodines de destino y manifestaciones inesperadas dentro de la investigación.',
+      dim: '720 × 770 PX [VERT]',
+      glyph: '🃏'
+    }
+  ],
+
+  documents: [
+    {
+      id: 'DOC-01',
+      title: 'Carta de Bastian Baltasar Bux (Vancouver, 2006)',
+      formatLabel: 'Misiva Manuscrita Auténtica // 2 Folios',
+      conditionClass: 'state-intact',
+      pages: [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuABB9Q21glWRDoFdHEMjx89tNmBKxUiaOD_4eUdiWf2VWRhEIxQldKtXgSh6lGBbO4kKYJR-a4hOqUHCeUgcNAAR3gAmynGoyhuuYbp9ytYFYqO6abA2A9QUC6mMAbO5atuJCLEU-3CJxR4ln5fcMJkMyb9O8aNYL8RleiO8BvMxTiemJestVLz7C85T65Ll5ClgRsIwrcaBzKMfbJgppmxt4H82yRov09XqYD8o6NSl3PxUYd9Ko6rf753u9Z_pBkp',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuDMTxaTkmEOAGrY-IjxmNVhxVKsCjOTG2hmRhzwF4CFcxT9lGmU7BvpwdVQgwAhQjrK-6eeLWlXrLeJFUmb4QBrcJ2CtLmeh20h27ytetWej2AAuPOyxzzF6MU8MPm5Ii9OfAEldlpjudK7CK3RyHzcAXwe2Ccj2LwZrlRt2Cg0Yx4J-q380wtAOdLvFJLWqX3ziS86F1oExbEPEslqv4LhYzRQII8O2CnYxGDVf3KoQZ7Op311r_4ptTNBV71eZeW-'
+      ],
+      context: 'Carta manuscrita original dividida en dos folios hallada con la rúbrica y sello de Bastian Baltasar Bux en Vancouver en el año 2006. En ella confiesa su trayectoria como antiguo Seeker tras regresar de Fantasía.',
+      transcript: '«Para quienes hayan llegado hasta aquí: Si estáis leyendo esta carta, significa que algo que creía perdido ha vuelto a aparecer... Durante años conservé el recuerdo de lo que había vivido... Yo fui un Seeker. Ahora os toca descubrir qué significa serlo. P.D. Hasta que sepáis en quién confiar, guardad esta carta donde nadie la vea.»'
+    },
+    {
+      id: 'DOC-02',
+      title: 'Cuaderno de Eudoro // Pág 1: ΖΗΤΗΣΙΣ & Pneuma',
+      formatLabel: 'Papiro Alejandrino // Folio I',
+      conditionClass: 'state-intact',
+      pages: [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuALKLOxW9Li8ftILefeuUJ3UJa5k_hqbxthskx3UeMt-oH3TcL1c7HnSwVR48FwR6msA2E-n0F7zftzTqOnz5Grawu2b1pt6qFpM1hegTpPoC5H9Og1FfwkjrMUp9m3d0Z0JgE3ks_-WTRCN_qNSU4aGpc5bEebOlooAKAYzR1RJK1oo6s7q7FaE2eA2g1n3qwXXd6lD1VobNwZGIJfpJ-1pnYgiLGTEiDgJeq4CrJA9h4K19bpKGHsKFkK7UtVCnGW'
+      ],
+      context: 'Primera página recuperada del Cuaderno de Eudoro de Alejandría. Introducción al término ΖΗΤΗΣΙΣ (Zétêsis - Búsqueda/Indagación) y estudio del aliento vital primordial (Pneuma).',
+      transcript: '«FRAGMENTO I · SOBRE EL AIRE. He pasado esta mañana observando el agua de la fuente. No el agua en sí. Lo que la movía... El pneuma —aquello que los antiguos llamaron aliento, espíritu, aire— no ocupa un lugar en el mundo de la misma manera... ¿Dónde termina el Aire y dónde empieza todo lo demás?»'
+    },
+    {
+      id: 'DOC-03',
+      title: 'Cuaderno de Eudoro // Pág 2: Diagrama de 4 Elementos',
+      formatLabel: 'Papiro Alejandrino // Folio II',
+      conditionClass: 'state-intact',
+      pages: [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuB7r5jRKSp8QCYGkhzP1fcVz_pNwkFmG9wzDHgod5Dh86CV5CWpGnFHZvTQAhAhtP5QrkatZ_7COvDvZCwJikmu11Va6cD3vqSXiBlrpnG_vAU001-qVU8_9gtGfRUPNyXi3x5_sd08WKx0roYRzv3WBTH5ZVnm0UKIu5HwbD7P-rfCe7w7sTvnjpUU-Slj7SzN7aolwVKc--14y7X4LZ9x14XL0IU3lKBJLhgBX_jrP1Z1O83MuQ-v-YbQphR72Bzf'
+      ],
+      context: 'Segunda página que contiene el primer esquema cosmológico: los cuatro elementos (Pneuma, Hydor, Pyr, Gaia) rodeando un signo de interrogación central enigmático.',
+      transcript: '«He observado durante varios días el comportamiento del Aire sobre diferentes superficies... El Aire no moja. No pesa... ¿Actúa el Aire sobre los elementos o los elementos actúan a través del Aire? En el centro de la rueda se sitúa la gran incógnita [?].»'
+    },
+    {
+      id: 'DOC-04',
+      title: 'Cuaderno de Eudoro // Pág 3: Pensamiento Sistémico',
+      formatLabel: 'Papiro Alejandrino // Folio III',
+      conditionClass: 'state-intact',
+      pages: [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuDynrbay6qxIJrrNu2rYmoQAWbvh8KqgaYWf0xI42dnDZeVsbs-Vc1SEDdOU8KKycIkRYMrsuN7gHdcEZNUAbiADpTtQ6O5GbG_zusoFrfMWTMcr6MVpR5cK9r4CpCzbMK5y44WrKwnQKyss2e0Hj_c4csc0b_KxFwMa50n93J1j47uneVaXHmZkePdtPFaThY6Z7mVCS-YAYg-_R6Sk8i0UV5prBMWt67y4kVT-X-K5X9qxijFcllzuQsT2vfzSBlm'
+      ],
+      context: 'Tercera página donde Eudoro refuta su primer modelo. Abandona la clasificación separada e introduce el pensamiento sistémico con el centro en blanco: "Lo que hay en el centro no tiene nombre todavía".',
+      transcript: '«He vuelto a mirar el diagrama que dibujé ayer... He llegado a una conclusión incómoda: el diagrama está mal. En la idea que lo sostiene. No hay fronteras. He rehecho el diagrama... Y en el centro he dejado un espacio vacío. "Lo que hay en el centro no tiene nombre todavía".»'
+    },
+    {
+      id: 'DOC-05',
+      title: 'Cuaderno de Eudoro // Pág 4: Fragmento Rasgado',
+      formatLabel: 'Papiro Alejandrino // Fragmento IV Rasgado',
+      conditionClass: 'state-intact',
+      pages: [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD1nQnZj2GL0YxbUMGD3E9_NUzIkIvGW0oR7DFcagpgCq_F-pG4nEFkRUShSgsDN0lOcW37WBkPzERtOQMQ_ccgLq2M8Sg2t577lrnDqk3AIvsol1C4VL5AagnJnEBdfUTS6AD-yxRVyM3CG6yi7emr9XfD6l_iUQ1UY6h-rv_hlhS7JeyYNjMMzbybz53k0YRTSgwK99Hrw_xZFdUyaWyUnKDPkIhKriLbx-FWEsB8Dp1rTUaQyXwtXVdnEYGc07D3'
+      ],
+      context: 'Última página recuperada con borde rasgado. Formula la interdependencia total de las fuerzas elementales y plantea la gran tesis de la orden Seeker.',
+      transcript: '«Esta noche he entendido que el método tiene un error fundamental. No puedes estudiar por separado algo que... El Aire mueve el Agua. El Agua transforma la Tierra. La Tierra alimenta el Fuego. El Fuego devuelve al Aire. Esto no es una cadena. Es algo que ocurre al mismo tiempo... ¿Y si aquello que conecta los cuatro no fuera un elemento sino...?»'
+    }
+  ]
+};
+
+function total(k){ return archiveData[k]?.length || 0; }
+function esc(v){ return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+/* SISTEMA INFALIBLE DE ACCESO POR CONTRASEÑA 'empanadilla' */
+function unlockArchive(){
+  const gate = document.getElementById('loginGate');
+  const app = document.getElementById('archive');
+  const status = document.getElementById('keyStatus');
+  const msg = document.getElementById('loginMsg');
+
+  if(status) {
+    status.textContent = 'ACCESO CONCEDIDO // AUTORIZADO';
+    status.style.color = '#65e6a0';
+  }
+  if(msg) {
+    msg.textContent = 'CLAVE CORRECTA // ACCESO CONCEDIDO — SINCRONIZANDO NODO CENTRAL...';
+    msg.style.color = '#65e6a0';
+    msg.style.fontWeight = 'bold';
+  }
+
+  setTimeout(() => {
+    if(gate) {
+      gate.style.display = 'none';
+      gate.classList.add('hidden');
+    }
+    if(app) {
+      app.style.display = 'flex';
+      app.classList.remove('hidden');
+    }
+    render('central');
+  }, 350);
+}
+
+function handleLoginAttempt(){
+  const passInput = document.getElementById('password');
+  const status = document.getElementById('keyStatus');
+  const msg = document.getElementById('loginMsg');
+  const val = (passInput ? passInput.value : '').trim().toLowerCase();
+
+  if(val === 'empanadilla'){
+    unlockArchive();
+  } else {
+    if(status) {
+      status.textContent = 'ERROR // CLAVE INVÁLIDA';
+      status.style.color = 'var(--red)';
+    }
+    if(msg) {
+      msg.textContent = 'ERROR DE CLAVE: Intente nuevamente con el nombre clave (11 caracteres). O use el botón de demostración táctica.';
+      msg.style.color = 'var(--red)';
+    }
+    if(passInput){
+      passInput.style.borderColor = 'var(--red)';
+      passInput.focus();
+      setTimeout(() => {
+        passInput.style.borderColor = 'var(--dim)';
+      }, 1500);
+    }
+  }
+}
+
+// Vinculación de listeners de login
+const accessBtn = document.getElementById('access');
+if(accessBtn){
+  accessBtn.addEventListener('click', handleLoginAttempt);
+}
+
+const passwordInput = document.getElementById('password');
+if(passwordInput){
+  passwordInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      handleLoginAttempt();
+    }
+  });
+}
+
+const bypassBtn = document.getElementById('bypassBtn');
+if(bypassBtn){
+  bypassBtn.addEventListener('click', () => {
+    unlockArchive();
+  });
+}
+
+/* RELOJ TÁCTICO */
+function updateClock(){
+  const clk = document.getElementById('clock');
+  if(clk) clk.textContent = new Date().toLocaleString('es-ES',{dateStyle:'short',timeStyle:'medium'});
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* ESTADO DE COLECCIÓN */
+let currentPrimaryFilter = 'all';
+let currentSubdivisionFilter = 'all';
+let currentCollectionPage = 1;
+const CARDS_PER_PAGE = 4;
+
+/* RENDERIZADO DEL MAPA TÁCTICO CON IMAGEN CRT REAL */
+function renderMapMarkup(isFullPage = false){
+  const loc = archiveData.locations[0];
+  const posX = loc ? loc.x : 16.2;
+  const posY = loc ? loc.y : 29.8;
+
+  return `
+    <section class="panel">
+      <div class="ptitle">
+        <span>CARTOGRAPHY // GEODETIC WORLD NETWORK</span>
+        <span>SEEKERS LOCATED: ${String(total('seekers')).padStart(2,'0')}</span>
+      </div>
+      <div class="map-viewport ${isFullPage ? 'fullscreen' : ''}" id="mapViewport">
+        <div class="map-header-hud">
+          <div class="hud-title">▶ WGS-84 REAL-WORLD TOPOLOGY RECORD [CRT SATELLITE]</div>
+          <div class="hud-coords">TARGET 01: 49°15′ N / 123°06′ W<br><span style="color:var(--green)">NODE: VANCOUVER [BC, CA]</span></div>
+        </div>
+        <div class="map-canvas-wrap ${isFullPage ? 'fullscreen-wrap' : ''}">
+          <img class="world-crt-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1cNL1vHqzcsXzfTl0EPdXkfZavpR2NKMNlvA-rMe8PF7JKWm6XV0P7jhpDhIYgZQDnsmENCjEcXMqz3OCIZNKT8xTpmXFh7I73fxzPjq7wAu6ruNZmu4WftOP6nWGXQJvgn0LibuQfV1zJU4rKa-8jpzSjQ60RmArNBTlSX_3d2rpubrdbL-Mq5nkbwALkYxgPqJpm7rQdoQzs2fxy6NWAKEwW-1YUBbI4bnuBxgnvGeXWB4HQzA" alt="Mapa del Mundo Táctico CRT" draggable="false"/>
+          <div class="map-overlay-grid"></div>
+
+          <!-- MARCADOR GEODÉSICO INTERACTIVO DE BASTIAN B. BUX -->
+          <div class="marker-anchor" style="left: ${posX}%; top: ${posY}%;">
+            <button class="marker-btn" aria-label="Target 01: Bastian Baltasar Bux" onclick="inspectCard('CARD-001')">
+              <div class="marker-radar"></div>
+              <div class="marker-radar-2"></div>
+              <div class="marker-cross"></div>
+              <div class="marker-tag">✕ BASTIAN B. BUX</div>
+            </button>
+            <div class="marker-tooltip">
+              <strong>${esc(loc.name)}</strong>
+              <span>${esc(loc.coords)}</span>
+              Seeker primario catalogado: ${esc(loc.seeker)}.<br>
+              Estado: <span style="color:var(--green);display:inline">${esc(loc.status)}</span><br>
+              <em style="font-size:8px;color:var(--muted)">[Clic para inspeccionar ficha TCG]</em>
+            </div>
+          </div>
+
+          <div class="map-compass"></div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ==============================================================
+   SECCIÓN DE COLECCIÓN DE CARTAS TCG VERTICALES CON PAGINACIÓN
+   ============================================================== */
+function collection(){
+  const allCards = archiveData.cards;
+  const upcoming = archiveData.upcomingSlots;
+
+  let visibleCards = allCards.filter(c => {
+    if(currentPrimaryFilter === 'all') return true;
+    if(currentPrimaryFilter === 'diamante') return c.rarityType === 'diamante';
+    if(currentPrimaryFilter === 'dorada') return c.rarityType === 'dorada';
+    if(currentPrimaryFilter === 'plata') return c.rarityType === 'plata';
+    if(currentPrimaryFilter === 'personajes'){
+      if(currentSubdivisionFilter === 'all') return true;
+      return c.division === currentSubdivisionFilter;
+    }
+    return true;
+  });
+
+  let visibleSlots = upcoming.filter(s => {
+    if(currentPrimaryFilter === 'all') return true;
+    if(currentPrimaryFilter === 'diamante') return s.rarity === 'diamante';
+    if(currentPrimaryFilter === 'dorada') return s.rarity === 'dorada';
+    if(currentPrimaryFilter === 'plata') return s.rarity === 'plata';
+    if(currentPrimaryFilter === 'personajes'){
+      if(s.rarity !== 'personaje') return false;
+      if(currentSubdivisionFilter === 'all') return true;
+      return s.division === currentSubdivisionFilter;
+    }
+    return true;
+  });
+
+  const combinedItems = [
+    ...visibleCards.map(c => ({ type: 'card', data: c, order: c.order })),
+    ...visibleSlots.map(s => ({ type: 'slot', data: s, order: s.order }))
+  ].sort((a, b) => a.order - b.order);
+
+  const totalFilteredItems = combinedItems.length;
+  const totalPages = Math.max(1, Math.ceil(totalFilteredItems / CARDS_PER_PAGE));
+  if(currentCollectionPage > totalPages) currentCollectionPage = totalPages;
+  if(currentCollectionPage < 1) currentCollectionPage = 1;
+
+  const startIndex = (currentCollectionPage - 1) * CARDS_PER_PAGE;
+  const pageItems = combinedItems.slice(startIndex, startIndex + CARDS_PER_PAGE);
+
+  const totalDiscovered = allCards.length;
+  const maxCap = archiveData.totalAlbumCapacity;
+  const pct = Math.min(100, Math.round((totalDiscovered / maxCap) * 100));
+
+  const itemsMarkup = pageItems.map(item => {
+    if(item.type === 'card'){
+      const card = item.data;
+      return `
+        <article class="tcg-card-container" onclick="inspectCard('${card.id}')" tabindex="0">
+          <div class="tcg-top-spec">
+            <span>${esc(card.number)} // ORDEN: #${String(card.order).padStart(2,'0')}</span>
+            <span class="tcg-dim-indicator">720 × 770 VERTICAL</span>
+          </div>
+
+          <div class="tcg-inner-body">
+            <div class="tcg-vertical-header">
+              <div class="tcg-code-serial">SEEKER CLASSIFIED IDENTIFIER</div>
+              <h3 class="tcg-char-name">${esc(card.name)}</h3>
+              <div class="tcg-sub-row">
+                <span class="tcg-class-pill">${esc(card.classification)}</span>
+                <div class="elemental-badge ${card.elementKey}">
+                  <span>🌀</span> <span>${esc(card.element)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tcg-art-box">
+              <div class="tcg-art-watermark">ARCHIVAL CODEX</div>
+              <div class="tcg-art-glow-ring"></div>
+              <div class="tcg-art-center-vector">
+                <svg viewBox="0 0 100 100" fill="none" stroke="#65e6a0" stroke-width="1.8">
+                  <circle cx="50" cy="38" r="16" stroke-dasharray="3 2"/>
+                  <path d="M26 84 C26 62, 74 62, 74 84" stroke-width="2"/>
+                  <circle cx="50" cy="38" r="7" fill="#65e6a0"/>
+                  <circle cx="50" cy="50" r="42" stroke="#38bdf8" stroke-width="1" stroke-dasharray="5 3" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="tcg-art-quote">${esc(card.quote)}</div>
+            </div>
+
+            <div class="tcg-lore-box">
+              <b>TEXTO EXPLICATIVO CANÓNICO:</b><br>
+              ${esc(card.description)}
+            </div>
+
+            <div class="tcg-skills-section-label">
+              <span>HABILIDADES // JÓVENES SEEKERS</span>
+              <span style="color:var(--green)">518 PTS</span>
+            </div>
+            <div class="tcg-skills-grid">
+              ${card.skills.map(s => `
+                <div class="tcg-skill-slot">
+                  <div class="tcg-skill-header">
+                    <span>${esc(s.label.toUpperCase())}</span>
+                    <span style="color:var(--amber)">LVL</span>
+                  </div>
+                  <div class="tcg-skill-score">${s.val} <span style="font-size:7px;font-weight:normal;color:var(--muted)">PTS</span></div>
+                  <div class="tcg-skill-bar-wrap">
+                    <div class="tcg-skill-bar-fill" style="width: ${s.val}%"></div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="tcg-footer-row">
+              <span>REGISTRO: ${esc(card.discoveryDate)}</span>
+              <span style="color:var(--amber)">[ INSPECCIONAR ]</span>
+            </div>
+          </div>
+        </article>
+      `;
+    } else {
+      const slot = item.data;
+      return `
+        <article class="tcg-card-container sealed slot-${slot.rarity}" onclick="inspectSlot('${slot.id}')" tabindex="0">
+          <div class="tcg-top-spec">
+            <span>SLOT #${String(slot.order).padStart(2,'0')} // ORDEN CRONOLÓGICO</span>
+            <span class="tcg-dim-indicator">${slot.dim}</span>
+          </div>
+          <div class="tcg-inner-body">
+            <div class="tcg-vertical-header">
+              <div class="tcg-code-serial" style="color:var(--muted)">RANURA PENDIENTE DE REVELACIÓN</div>
+              <h3 class="tcg-char-name" style="color:var(--paper);font-size:14px">${esc(slot.name)}</h3>
+              <div class="tcg-sub-row">
+                <span style="font-size:8px;color:var(--amber)">${esc(slot.typeLabel)}</span>
+                <span class="${slot.badgeClass}" style="font-size:7.5px;padding:2px 6px">${esc(slot.rarity.toUpperCase())}</span>
+              </div>
+            </div>
+
+            <div class="tcg-sealed-art">
+              <div class="tcg-sealed-glyph">${slot.glyph}</div>
+              <div class="tcg-sealed-lock-tag ${slot.badgeClass}">ARCHIVO BLOQUEADO EN AULA</div>
+              <div class="tcg-sealed-desc">${esc(slot.desc)}</div>
+            </div>
+
+            <div class="tcg-lore-box" style="margin-top:auto">
+              <b>CONDICIÓN DE DESBLOQUEO:</b><br>
+              Resolución de misiones y acertijos del códex en las sesiones de investigación escolar.
+            </div>
+
+            <div class="tcg-footer-row">
+              <span>ESTADO: BLOQUEADO</span>
+              <span style="color:var(--amber)">🔒 EN ESPERA</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+  }).join('');
+
+  let pageButtonsHtml = '';
+  for(let i = 1; i <= totalPages; i++){
+    pageButtonsHtml += `
+      <button class="page-pill ${i === currentCollectionPage ? 'active' : ''}" onclick="goToCollectionPage(${i})">${i}</button>
+    `;
+  }
+
+  const subdivisionsBarHtml = `
+    <div class="subdivisions-bar">
+      <span class="subdiv-title">8 SUBDIVISIONES DE PERSONAJES:</span>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='all'?'active':''}" onclick="setSubdivision('all')">TODAS (8)</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='jovenes'?'active':''}" onclick="setSubdivision('jovenes')">Jóvenes Seekers</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='antiguos'?'active':''}" onclick="setSubdivision('antiguos')">Antiguos</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='exploradores'?'active':''}" onclick="setSubdivision('exploradores')">Exploradores</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='cientificos'?'active':''}" onclick="setSubdivision('cientificos')">Científicos</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='guardianes'?'active':''}" onclick="setSubdivision('guardianes')">Guardianes</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='contemporaneos'?'active':''}" onclick="setSubdivision('contemporaneos')">Contemporáneos</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='transmisores'?'active':''}" onclick="setSubdivision('transmisores')">Transmisores</button>
+      <button class="subdiv-pill ${currentSubdivisionFilter==='wildcards'?'active':''}" onclick="setSubdivision('wildcards')">Wildcards</button>
+    </div>
+  `;
+
+  return `
+    <div class="head">
+      <div>
+        <h2>COLLECTION // ARCHIVO CLASIFICADO DE CARTAS</h2>
+        <p class="intro">Registro cronológico y táctico de cartas verticales (TCG). Vista por páginas acoplada al ritmo del panel central.</p>
+      </div>
+      <div class="tag">ALBUM STATUS: LIVE RECOVERY</div>
+    </div>
+
+    <section class="panel">
+      <div class="album-hud-bar">
+        <div class="album-hud-top">
+          <div class="album-stats-group">
+            <div class="album-stat-chip">
+              <span>CARTAS ACTIVAS DESCUBIERTAS</span>
+              <strong>${String(totalDiscovered).padStart(2,'0')} / ${maxCap} REGISTROS</strong>
+            </div>
+            <div class="album-stat-chip">
+              <span>FORMATO VERTICAL TCG</span>
+              <strong style="color:var(--amber)">720 × 770 PX [VERTICAL]</strong>
+            </div>
+            <div class="album-stat-chip">
+              <span>CATEGORÍA ACTIVA</span>
+              <strong style="color:var(--green)">${currentPrimaryFilter.toUpperCase()} ${currentPrimaryFilter==='personajes' ? '— '+currentSubdivisionFilter.toUpperCase() : ''}</strong>
+            </div>
+            <div class="album-progress-wrap">
+              <div class="progress-meta"><span>SINCRONIZACIÓN CÓDEX</span><strong>${pct}%</strong></div>
+              <div class="progress-track"><div class="progress-fill" style="width: ${pct}%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filters-suite">
+          <div class="primary-filters">
+            <button class="filter-btn ${currentPrimaryFilter==='all'?'active':''}" onclick="setPrimaryFilter('all')">
+              <span>TODOS (ORDEN DE APARICIÓN)</span>
+            </button>
+            <button class="filter-btn badge-dia ${currentPrimaryFilter==='diamante'?'active':''}" onclick="setPrimaryFilter('diamante')">
+              <span>💎 DIAMANTE</span>
+            </button>
+            <button class="filter-btn badge-dor ${currentPrimaryFilter==='dorada'?'active':''}" onclick="setPrimaryFilter('dorada')">
+              <span>⚜️ DORADA</span>
+            </button>
+            <button class="filter-btn badge-pla ${currentPrimaryFilter==='plata'?'active':''}" onclick="setPrimaryFilter('plata')">
+              <span>🛡️ PLATA</span>
+            </button>
+            <button class="filter-btn ${currentPrimaryFilter==='personajes'?'active':''}" onclick="setPrimaryFilter('personajes')">
+              <span>👥 PERSONAJES (8 SUBDIVISIONES)</span>
+            </button>
+          </div>
+          ${currentPrimaryFilter === 'personajes' || currentPrimaryFilter === 'all' ? subdivisionsBarHtml : ''}
+        </div>
+      </div>
+
+      <div class="tcg-pagination-bar">
+        <div class="page-info-tag">
+          REGISTROS FILTRADOS: <span>${totalFilteredItems}</span> &nbsp;|&nbsp; MOSTRANDO PÁGINA <span>${currentCollectionPage}</span> DE <span>${totalPages}</span>
+        </div>
+        <div class="pagination-controls">
+          <button class="page-btn" onclick="prevCollectionPage()" ${currentCollectionPage <= 1 ? 'disabled' : ''}>
+            [ ◄ PÁGINA ANTERIOR ]
+          </button>
+          <div style="display:flex;gap:4px">
+            ${pageButtonsHtml}
+          </div>
+          <button class="page-btn" onclick="nextCollectionPage()" ${currentCollectionPage >= totalPages ? 'disabled' : ''}>
+            [ SIGUIENTE PÁGINA ► ]
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        ${pageItems.length > 0 ? itemsMarkup : `
+          <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--muted)">
+            NO SE ENCONTRARON CARTAS O RANURAS EN ESTA COMBINACIÓN DE FILTROS.
+          </div>
+        `}
+      </div>
+
+      <div class="tcg-pagination-bar" style="border-top: 1px solid var(--line); border-bottom: none">
+        <div style="font-size: 8.5px; color: var(--muted); letter-spacing: 1.5px">
+          DISTRIBUCIÓN MODULAR 4 CARTAS / PÁGINA — ARQUITECTURA HOMOGÉNEA
+        </div>
+        <div class="pagination-controls">
+          <button class="page-btn" onclick="prevCollectionPage()" ${currentCollectionPage <= 1 ? 'disabled' : ''}>
+            [ ◄ PÁGINA ANTERIOR ]
+          </button>
+          <span style="font-size:9.5px;color:var(--amber);padding:0 8px">PÁGINA ${currentCollectionPage} / ${totalPages}</span>
+          <button class="page-btn" onclick="nextCollectionPage()" ${currentCollectionPage >= totalPages ? 'disabled' : ''}>
+            [ SIGUIENTE PÁGINA ► ]
+          </button>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function prevCollectionPage(){
+  if(currentCollectionPage > 1){
+    currentCollectionPage--;
+    render('collection');
+  }
+}
+
+function nextCollectionPage(){
+  currentCollectionPage++;
+  render('collection');
+}
+
+function goToCollectionPage(p){
+  currentCollectionPage = p;
+  render('collection');
+}
+
+function setPrimaryFilter(filter){
+  currentPrimaryFilter = filter;
+  if(filter !== 'personajes') currentSubdivisionFilter = 'all';
+  currentCollectionPage = 1;
+  render('collection');
+}
+
+function setSubdivision(sub){
+  currentSubdivisionFilter = sub;
+  currentCollectionPage = 1;
+  render('collection');
+}
+
+function inspectSlot(slotId){
+  const slot = archiveData.upcomingSlots.find(s => s.id === slotId);
+  if(!slot) return;
+
+  const modal = document.getElementById('cardInspectorModal');
+  const modalContent = document.getElementById('inspectorModalContent');
+  const modalHeader = document.getElementById('inspectorHeaderTitle');
+
+  modalHeader.textContent = `CLASSIFIED SLOT // ${slot.id} — ${slot.name}`;
+  modalContent.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;border:1px dashed var(--dim);background:#030805">
+      <div style="font-size:52px;margin-bottom:12px">${slot.glyph}</div>
+      <div class="tcg-dim-indicator">${slot.dim}</div>
+      <div style="margin-top:8px;font-size:10px;color:var(--amber)">PROPORCIÓN VERTICAL TCG</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <div style="font-size:9px;color:var(--amber);letter-spacing:2px">RANURA BLOQUEADA</div>
+        <h3 style="font-size:17px;color:#fff;margin:4px 0">${esc(slot.name)}</h3>
+        <span style="font-size:8.5px;color:var(--paper)">${esc(slot.typeLabel)}</span>
+      </div>
+      <div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0">
+        ${esc(slot.desc)}
+      </div>
+      <div style="font-size:9px;color:var(--muted);line-height:1.7">
+        Para desbloquear esta carta física se requiere que los alumnos resuelvan los acertijos de clase correspondientes al cuaderno de Eudoro y las señales geodésicas.
+      </div>
+      <div class="inspector-actions">
+        <button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR AVISO</button>
+      </div>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+}
+
+function inspectCard(cardId){
+  const card = archiveData.cards.find(c => c.id === cardId);
+  if(!card) return;
+
+  const modal = document.getElementById('cardInspectorModal');
+  const modalContent = document.getElementById('inspectorModalContent');
+  const modalHeader = document.getElementById('inspectorHeaderTitle');
+
+  modalHeader.textContent = `DOSSIER TÁCTICO // ${card.number} — ${card.name}`;
+  modalContent.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div class="tcg-card-container" style="width:100%;max-width:280px;cursor:default;min-height:auto">
+        <div class="tcg-top-spec">
+          <span>${card.number}</span>
+          <span class="tcg-dim-indicator">${card.dimensions}</span>
+        </div>
+        <div class="tcg-inner-body">
+          <div class="tcg-vertical-header">
+            <h3 class="tcg-char-name" style="font-size:13px">${esc(card.name)}</h3>
+            <div class="tcg-sub-row">
+              <span class="tcg-class-pill" style="font-size:7px">${esc(card.classification)}</span>
+              <div class="elemental-badge ${card.elementKey}" style="font-size:7px;padding:2px 5px">
+                <span>🌀</span> <span>${esc(card.element)}</span>
+              </div>
+            </div>
+          </div>
+          <div class="tcg-art-box" style="aspect-ratio:1/1">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#65e6a0" stroke-width="1.8" style="width:55px;height:55px">
+              <circle cx="50" cy="38" r="16" stroke-dasharray="3 2"/>
+              <path d="M26 84 C26 62, 74 62, 74 84" stroke-width="2"/>
+              <circle cx="50" cy="38" r="7" fill="#65e6a0"/>
+            </svg>
+          </div>
+          <div style="font-size:7.5px;color:var(--muted);line-height:1.4">${esc(card.quote)}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <div style="font-size:9px;color:var(--amber);letter-spacing:2px">${esc(card.classification)}</div>
+        <h3 style="font-size:18px;color:#fff;margin:3px 0 6px">${esc(card.name)}</h3>
+        <span style="font-size:9px;color:var(--muted)">ORDEN CRONOLÓGICO #${String(card.order).padStart(2,'0')} • ELEMENTO: ${esc(card.element)}</span>
+      </div>
+
+      <div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0">
+        <div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TEXTO EXPLICATIVO CANÓNICO:</div>
+        ${esc(card.description)}
+      </div>
+
+      <div>
+        <div style="font-size:8.5px;color:var(--green);letter-spacing:1.5px;margin-bottom:6px">HABILIDADES EVALUADAS:</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          ${card.skills.map(s => `
+            <div style="background:#040c07;border:1px solid #163625;padding:6px;display:flex;justify-content:space-between">
+              <span style="font-size:8px;color:var(--muted)">${s.label}:</span>
+              <strong style="color:var(--green);font-size:10px">${s.val} PTS</strong>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div style="font-size:9.5px;line-height:1.7;color:var(--muted)">
+        <span style="color:var(--paper);font-weight:bold">LORE DEL ARCHIVO:</span><br>
+        ${esc(card.lore)}
+      </div>
+
+      <div class="inspector-actions">
+        <button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR DOSSIER</button>
+      </div>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+}
+
+document.getElementById('closeInspectorBtn').onclick = () => {
+  document.getElementById('cardInspectorModal').classList.add('hidden');
+};
+document.getElementById('cardInspectorModal').onclick = (e) => {
+  if(e.target === document.getElementById('cardInspectorModal')) document.getElementById('cardInspectorModal').classList.add('hidden');
+};
+
+/* ==============================================================
+   SECCIÓN DE DOCUMENTOS REALES Y VISOR HD
+   ============================================================== */
+let docZoomLevel = 1.0;
+
+function openDocViewer(docId){
+  const doc = archiveData.documents.find(d => d.id === docId);
+  if(!doc) return;
+
+  const modal = document.getElementById('docViewerModal');
+  const titleEl = document.getElementById('docViewerTitle');
+  const bodyEl = document.getElementById('docViewerBody');
+
+  docZoomLevel = 1.0;
+  updateDocZoomDisplay();
+
+  titleEl.textContent = `ARCHIVAL DOCUMENT // ${doc.id} — ${doc.title}`;
+  bodyEl.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:14px;overflow-x:auto;padding-bottom:10px" id="docViewerImageContainer">
+      ${doc.pages.map((p, idx) => `
+        <div style="border:1px solid #3d301f;background:#050705;padding:8px;position:relative">
+          <div style="position:absolute;top:12px;left:14px;background:#05120caa;padding:2px 8px;font-size:8px;color:var(--amber);border:1px solid #163625;z-index:5">FOLIO [${idx+1}/${doc.pages.length}]</div>
+          <img src="${p}" alt="${doc.title} - Página ${idx+1}" id="docImageEl_${idx}" style="width:100%;display:block;transform-origin:top center;transition:transform .2s ease;filter:contrast(1.04)">
+        </div>
+      `).join('')}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="border-bottom:1px solid #1a3827;padding-bottom:10px">
+        <div style="font-size:8.5px;color:var(--amber);letter-spacing:1.5px">${esc(doc.formatLabel)}</div>
+        <h3 style="font-size:16px;color:#fff;margin:4px 0">${esc(doc.title)}</h3>
+        <span class="doc-state-badge ${doc.conditionClass}">AUTENTICIDAD VERIFICADA</span>
+      </div>
+      <div style="background:#07120a;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0">
+        <div style="color:var(--amber);font-weight:bold;margin-bottom:4px;letter-spacing:1px">CONTEXTO Y HALLAZGO:</div>
+        ${esc(doc.context)}
+      </div>
+      <div style="background:#050f09;border:1px solid #163825;padding:12px;font-size:10px;line-height:1.8;color:var(--paper)">
+        <div style="color:var(--green);font-weight:bold;margin-bottom:4px;letter-spacing:1px">TRANSCRIPCIÓN PALEOGRÁFICA:</div>
+        ${esc(doc.transcript)}
+      </div>
+      <div class="inspector-actions">
+        <button class="inspector-btn" onclick="document.getElementById('docViewerModal').classList.add('hidden')">CERRAR VISOR</button>
+      </div>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+}
+
+function updateDocZoomDisplay(){
+  const zText = document.getElementById('docZoomLevelText');
+  if(zText) zText.textContent = `${Math.round(docZoomLevel * 100)}%`;
+  const container = document.getElementById('docViewerImageContainer');
+  if(container){
+    const imgs = container.querySelectorAll('img');
+    imgs.forEach(img => {
+      img.style.transform = `scale(${docZoomLevel})`;
+    });
+  }
+}
+
+document.getElementById('docZoomInBtn').onclick = () => {
+  if(docZoomLevel < 2.5){
+    docZoomLevel += 0.25;
+    updateDocZoomDisplay();
+  }
+};
+document.getElementById('docZoomOutBtn').onclick = () => {
+  if(docZoomLevel > 0.5){
+    docZoomLevel -= 0.25;
+    updateDocZoomDisplay();
+  }
+};
+document.getElementById('docZoomResetBtn').onclick = () => {
+  docZoomLevel = 1.0;
+  updateDocZoomDisplay();
+};
+document.getElementById('closeDocViewerBtn').onclick = () => {
+  document.getElementById('docViewerModal').classList.add('hidden');
+};
+document.getElementById('docViewerModal').onclick = (e) => {
+  if(e.target === document.getElementById('docViewerModal')) document.getElementById('docViewerModal').classList.add('hidden');
+};
+
+function documents(){
+  const docs = archiveData.documents;
+  return `
+    <div class="head">
+      <div>
+        <h2>DOCUMENTS // REPOSITORIO ORIGINAL</h2>
+        <p class="intro">Archivo de manuscritos, misivas históricas y fragmentos recuperados del Cuaderno de Eudoro de Alejandría.</p>
+      </div>
+      <div class="tag">RECORDS ONLINE: ${docs.length} DOCUMENTOS VERIFICADOS</div>
+    </div>
+    <section class="panel">
+      <div class="docs-grid">
+        ${docs.map(doc => `
+          <article class="doc-card" onclick="openDocViewer('${doc.id}')">
+            <div class="doc-header">
+              <span class="doc-id">${doc.id}</span>
+              <span class="doc-state-badge ${doc.conditionClass}">AUTÉNTICO</span>
+            </div>
+            <div class="papyri-thumbnail">
+              <img src="${doc.pages[0]}" alt="${doc.title}">
+            </div>
+            <div class="doc-title">${doc.title}</div>
+            <div class="doc-format-tag">${doc.formatLabel}</div>
+            <div class="doc-desc">${doc.context}</div>
+            <button class="doc-btn" onclick="event.stopPropagation();openDocViewer('${doc.id}')">[ INSPECCIONAR EN ALTA RESOLUCIÓN ]</button>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+/* CENTRAL INDEX */
+function central(){
+  return `
+    <div class="head">
+      <div>
+        <h2>CENTRAL INDEX</h2>
+        <p class="intro">Bienvenido al Archivo de los Seekers. La cartografía satelital CRT del mundo real está sincronizada.<br>Visualización activa del primer Seeker en Vancouver, estado del códex coleccionable y registro de manuscritos.</p>
+      </div>
+      <div class="tag">USER STATUS: NEW SEEKERS DETECTED</div>
+    </div>
+    <div class="grid">
+      ${renderMapMarkup(false)}
+      <div class="stack">
+        <section class="panel">
+          <div class="ptitle"><span>ARCHIVE STATUS</span><span>LIVE</span></div>
+          <div class="rows">
+            <div class="row"><span>Seekers located</span><span style="color:var(--green);font-weight:bold">${String(total('seekers')).padStart(2,'0')}</span></div>
+            <div class="row"><span>Active Target</span><span style="color:var(--paper)">Bastian Baltasar Bux</span></div>
+            <div class="row"><span>Coordinates</span><span style="color:var(--amber)">49°15′ N, 123°06′ W</span></div>
+            <div class="row"><span>Location</span><span style="color:var(--green)">Vancouver, BC (Canadá)</span></div>
+            <div class="row"><span>Cards recovered</span><span style="color:var(--amber);font-weight:bold">${String(total('cards')).padStart(2,'0')} / ${archiveData.totalAlbumCapacity}</span></div>
+            <div class="row"><span>Documents online</span><span style="color:var(--green)">${total('documents')} Manuscritos HD</span></div>
+            <div class="row"><span>Standard card size</span><span style="color:var(--green)">720 × 770 VERTICAL</span></div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="ptitle"><span>SATELLITE TELEMETRY</span><span>WGS-84</span></div>
+          <div class="note">
+            <b>INFORME TÁCTICO INICIAL:</b><br>
+            La emisión detectada en Vancouver confirma la presencia histórica de Bastian Baltasar Bux como Seeker primario. La colección clasificada se encuentra abierta para el registro cronológico del aula.
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function mapPage(){
+  return `
+    <div class="head">
+      <div>
+        <h2>WORLD MAP</h2>
+        <p class="intro">THE SEEKERS ARCHIVE / GLOBAL CARTOGRAPHIC RECORD &amp; SATELLITE NETWORK</p>
+      </div>
+      <div class="tag">SEEKERS LOCATED: ${String(total('seekers')).padStart(2,'0')}</div>
+    </div>
+    ${renderMapMarkup(true)}
+  `;
+}
+
+function empty(sym,title,desc,code,restricted=false){
+  return `
+    <div class="head">
+      <div><h2>${title}</h2><p class="intro">THE SEEKERS ARCHIVE / DIRECTORY</p></div>
+      <div class="tag">${restricted?'RESTRICTED DIRECTORY':'RECORD STATUS: PENDING'}</div>
+    </div>
+    <section class="panel">
+      <div class="ptitle"><span>${title} // DIRECTORY</span><span>${restricted?'RESTRICTED':'INDEX'}</span></div>
+      <div style="min-height:280px;padding:45px 25px;display:grid;place-items:center;text-align:center">
+        <div>
+          <div style="font-size:38px;color:var(--dim);margin-bottom:18px">${sym}</div>
+          <h3 style="font-size:15px;font-weight:normal;letter-spacing:3px;margin:0 0 12px">${restricted?'ACCESS RESTRICTED':title+' — NO RECORDS'}</h3>
+          <p style="max-width:520px;color:var(--muted);font-size:11px;line-height:1.9">${desc}</p>
+          <div style="font-size:9px;color:var(--dim);letter-spacing:2px;margin-top:20px">${code}</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function evidence(){ return empty('◇','EVIDENCE','Las evidencias de campo se organizarán aquí a medida que la investigación escolar avance.','EVIDENCE REGISTER // NO ACTIVE LOGS'); }
+function transmissions(){ return empty('◉','TRANSMISSIONS','Comunicaciones interceptadas procedentes de emisores externos.','TRANSMISSIONS // LISTENING ON 142.85 MHz'); }
+function locked(){ return empty('▣','LOCKED FILES','Archivos protegidos por cifrado geodésico de alta seguridad.','SECURITY PROTOCOL // SEALED',true); }
+function unknown(){ return empty('?','UNKNOWN','Anomalías y enigmas que no encajan en ninguna clasificación conocida.','UNKNOWN // LOG EMPTY'); }
+
+const pages = { central, map: mapPage, documents, collection, evidence, transmissions, locked, unknown };
+
+function render(page){
+  if(!Object.prototype.hasOwnProperty.call(pages,page)) return;
+  document.querySelectorAll('[data-page]').forEach(b => b.classList.toggle('active', b.dataset.page === page));
+  document.getElementById('content').innerHTML = typeof pages[page] === 'function' ? pages[page]() : pages[page];
+  document.getElementById('crumb').textContent = ({central:'CENTRAL INDEX', map:'WORLD MAP', documents:'DOCUMENTS', collection:'COLLECTION', evidence:'EVIDENCE', transmissions:'TRANSMISSIONS', locked:'LOCKED FILES', unknown:'UNKNOWN'})[page];
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll('.nav [data-page]').forEach(button => {
+  button.addEventListener('click', () => render(button.dataset.page));
+});
 </script>
-</body>
-</html>
+</body></html>
