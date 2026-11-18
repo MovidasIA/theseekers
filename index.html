@@ -464,7 +464,7 @@ const archiveData = {
       name: 'AMELIA EARHART', rarity: 'personaje', rarityType: 'normal',
       division: 'exploradores', divisionLabel: 'Exploradores',
       element: 'AIRE', discoveryDate: '2026-11-18',
-      image: 'img/cartas/earhart.png',
+      image: 'img/cartas/earhart.webp',
       description: 'Pionera estadounidense de la aviación, nacida en Atchison (Kansas). Su carta representa la exploración y el valor de abrir nuevos caminos.'
     },
     {
@@ -472,7 +472,7 @@ const archiveData = {
       name: 'VALENTINA TERESHKOVA', rarity: 'personaje', rarityType: 'normal',
       division: 'contemporaneos', divisionLabel: 'Contemporáneos',
       element: 'AIRE', discoveryDate: '2026-11-18',
-      image: 'img/cartas/tereshkova.png',
+      image: 'img/cartas/tereshkova.webp',
       description: 'Primera mujer que viajó al espacio. Nació en Maslennikovo, región de Yaroslavl, y su trayectoria amplió las fronteras de la exploración humana.'
     }
   ],
@@ -607,8 +607,8 @@ const archiveData = {
       formatLabel: 'Misiva Manuscrita Auténtica // 2 Folios',
       conditionClass: 'state-intact',
       pages: [
-        'img/carta-bastian-1.png',
-        'img/carta-bastian-2.png'
+        'img/carta-bastian-1.webp',
+        'img/carta-bastian-2.webp'
       ],
       context: 'Carta manuscrita original dividida en dos folios hallada con la rúbrica y sello de Bastian Baltasar Bux en Vancouver en el año 2006. En ella confiesa su trayectoria como antiguo Seeker tras regresar de Fantasía.',
       transcript: '«Para quienes hayan llegado hasta aquí: Si estáis leyendo esta carta, significa que algo que creía perdido ha vuelto a aparecer... Durante años conservé el recuerdo de lo que había vivido... Yo fui un Seeker. Ahora os toca descubrir qué significa serlo. P.D. Hasta que sepáis en quién confiar, guardad esta carta donde nadie la vea.»'
@@ -619,7 +619,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio I',
       conditionClass: 'state-intact',
       pages: [
-        'img/eudoro-1.png'
+        'img/eudoro-1.webp'
       ],
       context: 'Primera página recuperada del Cuaderno de Eudoro de Alejandría. Introducción al término ΖΗΤΗΣΙΣ (Zétêsis - Búsqueda/Indagación) y estudio del aliento vital primordial (Pneuma).',
       transcript: '«FRAGMENTO I · SOBRE EL AIRE. He pasado esta mañana observando el agua de la fuente. No el agua en sí. Lo que la movía... El pneuma —aquello que los antiguos llamaron aliento, espíritu, aire— no ocupa un lugar en el mundo de la misma manera... ¿Dónde termina el Aire y dónde empieza todo lo demás?»'
@@ -630,7 +630,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio II',
       conditionClass: 'state-intact',
       pages: [
-        'img/eudoro-2.png'
+        'img/eudoro-2.webp'
       ],
       context: 'Segunda página que contiene el primer esquema cosmológico: los cuatro elementos (Pneuma, Hydor, Pyr, Gaia) rodeando un signo de interrogación central enigmático.',
       transcript: '«He observado durante varios días el comportamiento del Aire sobre diferentes superficies... El Aire no moja. No pesa... ¿Actúa el Aire sobre los elementos o los elementos actúan a través del Aire? En el centro de la rueda se sitúa la gran incógnita [?].»'
@@ -641,7 +641,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio III',
       conditionClass: 'state-intact',
       pages: [
-        'img/eudoro-3.png'
+        'img/eudoro-3.webp'
       ],
       context: 'Tercera página donde Eudoro refuta su primer modelo. Abandona la clasificación separada e introduce el pensamiento sistémico con el centro en blanco: "Lo que hay en el centro no tiene nombre todavía".',
       transcript: '«He vuelto a mirar el diagrama que dibujé ayer... He llegado a una conclusión incómoda: el diagrama está mal. En la idea que lo sostiene. No hay fronteras. He rehecho el diagrama... Y en el centro he dejado un espacio vacío. "Lo que hay en el centro no tiene nombre todavía".»'
@@ -652,7 +652,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Fragmento IV Rasgado',
       conditionClass: 'state-intact',
       pages: [
-        'img/eudoro-4.png'
+        'img/eudoro-4.webp'
       ],
       context: 'Última página recuperada con borde rasgado. Formula la interdependencia total de las fuerzas elementales y plantea la gran tesis de la orden Seeker.',
       transcript: '«Esta noche he entendido que el método tiene un error fundamental. No puedes estudiar por separado algo que... El Aire mueve el Agua. El Agua transforma la Tierra. La Tierra alimenta el Fuego. El Fuego devuelve al Aire. Esto no es una cadena. Es algo que ocurre al mismo tiempo... ¿Y si aquello que conecta los cuatro no fuera un elemento sino...?»'
@@ -776,7 +776,7 @@ function renderMapMarkup(isFullPage = false){
       <div class="map-viewport ${isFullPage ? 'fullscreen' : ''}" id="mapViewport">
         <div class="map-header-hud"><div class="hud-title">▶ WORLD ARCHIVE // LOCATIONS</div><div class="hud-coords">${String(locations.length).padStart(2,'0')} ACTIVE RECORDS</div></div>
         <div class="map-canvas-wrap ${isFullPage ? 'fullscreen-wrap' : ''}">
-          <img class="world-crt-img" src="img/mundo-crt.png" alt="Mapa del Mundo Táctico CRT" draggable="false"/>
+          <img class="world-crt-img" src="img/mundo-crt.webp" alt="Mapa del Mundo Táctico CRT" draggable="false"/>
           <div class="map-overlay-grid"></div>
           ${pins}
           <div class="map-mini-legend"><span><i class="legend-x">✕</i>Especial</span><span><i class="legend-dot"></i>Normal</span></div>
@@ -1817,11 +1817,11 @@ function guardianMount() {
 
 /* Correspondencia entregada en clase. No introducir archivos futuros en esta lista. */
 const transmissionsArchive = [
-  {id:'TR-005', date:'2026-11-18', dateLabel:'18 NOV 2026', title:'Transmission 02', subtitle:'Segunda transmisión del Guardián', pages:['img/transmissions-02.1.png','img/transmissions-02.2.png']},
-  {id:'TR-004', date:'2026-11-13', dateLabel:'13 NOV 2026', title:'Transmission 01', subtitle:'Primera transmisión del Guardián', pages:['img/transmission-01.png']},
-  {id:'TR-003', date:'2026-11-06', dateLabel:'06 NOV 2026', title:'Archive 03', subtitle:'Presentación de KAIROS, ATLAS, NEXUS y ARGOS', pages:['img/archive-03.png']},
-  {id:'TR-002', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 02', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-02.png']},
-  {id:'TR-001', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 01', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-01.png']}
+  {id:'TR-005', date:'2026-11-18', dateLabel:'18 NOV 2026', title:'Transmission 02', subtitle:'Segunda transmisión del Guardián', pages:['img/transmissions-02.1.webp','img/transmissions-02.2.webp']},
+  {id:'TR-004', date:'2026-11-13', dateLabel:'13 NOV 2026', title:'Transmission 01', subtitle:'Primera transmisión del Guardián', pages:['img/transmission-01.webp']},
+  {id:'TR-003', date:'2026-11-06', dateLabel:'06 NOV 2026', title:'Archive 03', subtitle:'Presentación de KAIROS, ATLAS, NEXUS y ARGOS', pages:['img/archive-03.webp']},
+  {id:'TR-002', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 02', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-02.webp']},
+  {id:'TR-001', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 01', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-01.webp']}
 ];
 let transmissionsTab = 'chat';
 let transmissionViewed = null;
