@@ -59,6 +59,21 @@ h2{font-size:clamp(20px,3vw,30px);letter-spacing:3px;margin:0 0 8px}.intro{font-
 .marker-tooltip strong{display:block;color:#fff;font-size:11px;margin-bottom:3px}
 .marker-tooltip span{color:var(--amber);font-size:8.5px;display:block;margin-bottom:4px}
 
+/* MAP: puntos discretos para personajes normales; X/radar para especiales */
+.map-viewport,.map-viewport.fullscreen{min-height:0}
+.map-canvas-wrap{min-height:0;aspect-ratio:2574 / 1384;flex:none}
+.map-canvas-wrap.fullscreen-wrap{min-height:0}
+.world-crt-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.marker-anchor.map-normal{z-index:31}
+.map-dot-btn{width:24px;height:24px;border:0;background:transparent;display:grid;place-items:center;padding:0;cursor:pointer;position:relative}
+.map-dot-btn:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 2px #07110d,0 0 9px #65e6a066;transition:transform .15s,box-shadow .15s}
+.map-dot-btn:hover:before,.map-dot-btn:focus-visible:before{transform:scale(1.65);box-shadow:0 0 0 2px #07110d,0 0 13px #65e6a0}
+.marker-anchor:focus-within .marker-tooltip{display:block}
+.map-mini-legend{position:absolute;left:12px;bottom:12px;padding:6px 8px;border:1px solid #285c40;background:#041009e8;z-index:20;color:var(--paper);font-size:8px;letter-spacing:.5px;display:flex;gap:12px;align-items:center}
+.map-mini-legend .legend-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;vertical-align:middle}
+.map-mini-legend .legend-x{color:#ff5548;font-weight:bold;font-size:12px;margin-right:5px}
+@media(max-width:768px){.top{flex-wrap:wrap}.online{white-space:normal;overflow-wrap:anywhere}.map-viewport{min-height:0}.map-viewport.fullscreen{min-height:0}.map-header-hud{top:6px;left:7px;right:7px}.hud-title,.hud-coords{font-size:6px;letter-spacing:0}.map-compass{display:none}.map-mini-legend{font-size:6px;bottom:5px;left:5px;padding:4px 5px;gap:5px}.marker-tag{font-size:6px}.marker-btn{transform:scale(.65)}}
+
 /* COMMON ROWS */
 .rows{padding:5px 16px 12px}.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #65e6a018;font-size:10px;gap:12px}.row:last-child{border:0}.row span:first-child{color:var(--muted)}
 .note,.activity{padding:16px;color:var(--muted);font-size:11px;line-height:1.8}.note b{color:var(--amber);font-weight:normal}.activity div{padding:5px 0}.activity i{color:var(--amber);font-style:normal;margin-right:10px}
@@ -196,6 +211,83 @@ h2{font-size:clamp(20px,3vw,30px);letter-spacing:3px;margin:0 0 8px}.intro{font-
 
 footer{margin-top:35px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:#527361;font-size:9px;letter-spacing:1px}
 @media(max-width:960px){#archive{display:block}aside{width:100%;padding:14px;border:0;border-bottom:1px solid var(--line)}.brand{padding-bottom:12px}.navtitle{margin:13px 5px 7px}.nav{grid-template-columns:repeat(4,1fr)}.nav button{text-align:center;padding:9px 3px;font-size:9px}.sidefoot{display:none}.grid{grid-template-columns:1fr}.inspector-body{grid-template-columns:1fr}}
+/* ===== EL GUARDIÁN DEL ARCHIVO // TRANSMISSIONS ===== */
+.gd-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:18px}
+.gd-log{margin:12px 12px 0;height:min(54vh,480px);min-height:320px;overflow-y:auto;background:#030a06;border:1px solid var(--dim);box-shadow:inset 0 0 50px rgba(0,0,0,.85);padding:16px 16px 8px;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:var(--dim) #030a06;position:relative}
+.gd-sys{text-align:center;font-size:9px;letter-spacing:2px;color:var(--amber);padding:7px 0;border-top:1px dashed #d39a4540;border-bottom:1px dashed #d39a4540;text-shadow:0 0 8px #d39a4544;flex-shrink:0}
+.gd-msg{max-width:88%;line-height:1.75;font-size:12px;flex-shrink:0}
+.gd-who{display:block;font-size:8.5px;letter-spacing:2px;margin-bottom:4px}
+.gd-txt{display:block;overflow-wrap:anywhere}
+.gd-g{align-self:flex-start;color:var(--paper)}
+.gd-g .gd-who{color:var(--amber)}
+.gd-g .gd-txt{border-left:2px solid var(--amber);padding:2px 0 2px 12px;text-shadow:0 0 10px #d39a4526}
+.gd-u{align-self:flex-end;text-align:right;color:var(--green)}
+.gd-u .gd-who{color:var(--muted)}
+.gd-u .gd-txt{display:inline-block;text-align:left;border:1px solid var(--dim);background:#65e6a00d;padding:7px 11px}
+.gd-msg.typing .gd-txt:after{content:'▌';color:var(--amber);animation:gdBlink 1s steps(1) infinite}
+.gd-dots{align-self:flex-start;color:var(--amber);font-size:10px;letter-spacing:3px;padding-left:14px;flex-shrink:0}
+.gd-dots:after{content:'···';animation:gdBlink 1s steps(1) infinite}
+@keyframes gdBlink{50%{opacity:0}}
+@keyframes gdPulse{0%,100%{opacity:1}50%{opacity:.35}}
+.gd-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.gd-chip{background:transparent;border:1px solid var(--dim);color:#9ab7a5;font-size:10px;letter-spacing:.5px;padding:7px 10px;text-align:left;transition:.15s}
+.gd-chip:hover{color:var(--green);border-color:var(--green);background:#65e6a012}
+.gd-input{display:flex;align-items:center;gap:8px;margin:12px;border:1px solid var(--dim);background:#06120b;padding:4px 4px 4px 12px}
+.gd-prompt{color:var(--amber)}
+.gd-input input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--green);letter-spacing:1px;font-size:12px;padding:9px 0}
+.gd-input input::placeholder{color:#527361}
+.gd-input button{background:var(--dim);border:1px solid var(--green);color:#fff;padding:9px 14px;font-size:9px;letter-spacing:2px}
+.gd-input button:hover{background:#2f7050}
+.gd-input button:disabled,.gd-input input:disabled{opacity:.45;cursor:wait}
+.gd-live{animation:gdPulse 2s ease-in-out infinite}
+.gd-side{padding:14px 16px;display:flex;flex-wrap:wrap;gap:6px}
+.gd-note{padding:14px 16px;color:var(--muted);font-size:10px;line-height:1.9;letter-spacing:.5px}
+.gd-note b{color:var(--amber);font-weight:normal}
+@media(max-width:960px){.gd-grid{grid-template-columns:1fr}.gd-msg{max-width:96%}}
+
+
+/* ===== CARTAS COMPLETAS (IMAGEN) ===== */
+.cards-grid{grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+@media(max-width:1440px){.cards-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:1000px){.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.cards-grid{grid-template-columns:1fr}}
+.tcg-card-container.img-card{background:#030805;min-height:0}
+.tcg-img-wrap{position:relative;width:100%;aspect-ratio:5/7;background:radial-gradient(ellipse at 50% 40%,#133325 0%,#081710 65%,#030705 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tcg-img-wrap img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .25s ease}
+.tcg-card-container.img-card:hover .tcg-img-wrap img{transform:scale(1.03)}
+.img-card .tcg-footer-row{padding:9px 12px;border-top:1px solid #163625;margin-top:0}
+.insp-img{width:100%;max-width:430px;max-height:74vh;object-fit:contain;display:block;filter:drop-shadow(0 10px 30px rgba(0,0,0,.8))}
+a.inspector-btn{text-decoration:none;display:block}
+
+/* ===== TRANSMISSIONS / GUARDIAN LINK + INBOX ===== */
+.tr-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.tr-tab{border:1px solid var(--dim);background:#06120b;color:var(--muted);font-size:11px;letter-spacing:1px;padding:12px 16px;cursor:pointer}
+.tr-tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#041009;font-weight:bold}
+.tr-tab:focus-visible,.tr-card:focus-visible,.tr-modal button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.tr-lead{font-size:11px;line-height:1.8;color:var(--muted);margin:0 0 18px}
+.tr-count{color:var(--amber);font-size:9px;letter-spacing:1px}
+.tr-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tr-card{background:linear-gradient(155deg,#102217,#07120b);border:1px solid #234b35;color:inherit;text-align:left;cursor:pointer;padding:13px;display:flex;gap:15px;min-width:0;align-items:center;transition:border-color .16s,transform .16s}
+.tr-card:hover{border-color:var(--amber);transform:translateY(-3px)}
+.tr-thumb{width:115px;height:145px;object-fit:cover;object-position:top center;flex-shrink:0;border:1px solid #4c3c22;background:#160f08}
+.tr-details{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tr-ref{color:var(--amber);font-size:9px;letter-spacing:1.8px}
+.tr-name{color:#f2ead8;font-size:15px;line-height:1.35;letter-spacing:.6px}
+.tr-date{color:var(--muted);font-size:10px;line-height:1.6}
+.tr-action{color:var(--green);font-size:9px;letter-spacing:1.5px;margin-top:6px}
+.tr-modal{position:fixed;inset:0;z-index:1100;background:rgba(1,6,3,.95);display:flex;align-items:center;justify-content:center;padding:14px}
+.tr-modal-dialog{width:min(1040px,100%);max-height:96vh;display:flex;flex-direction:column;background:#07140c;border:1px solid var(--green);box-shadow:0 16px 50px #000;min-height:0}
+.tr-modal-head{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line)}
+.tr-modal-head strong{font-size:12px;color:var(--paper);line-height:1.5}
+.tr-modal-head small{display:block;font-size:9px;color:var(--amber);margin-top:4px}
+.tr-modal-x,.tr-control{border:1px solid var(--dim);background:#06120b;color:var(--green);padding:9px 12px;font:inherit;cursor:pointer}
+.tr-modal-x:hover,.tr-control:hover{border-color:var(--green);background:#153b2c}
+.tr-scroll{flex:1;overflow:auto;min-height:0;padding:15px;text-align:center;background:#030906}
+.tr-scroll img{width:auto;max-width:100%;height:auto;max-height:none;display:block;margin:0 auto;object-fit:contain}
+.tr-modal-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line)}
+.tr-page{font-size:10px;color:var(--muted)}
+@media(max-width:900px){.tr-list{grid-template-columns:1fr}}
+@media(max-width:550px){.tr-card{gap:10px}.tr-thumb{width:85px;height:115px}.tr-name{font-size:13px}.tr-tab{flex:1;padding:12px 7px;font-size:9px}.tr-modal{padding:4px}.tr-modal-dialog{max-height:99vh}.tr-scroll{padding:7px}}
 </style>
 </head>
 <body>
@@ -315,10 +407,29 @@ const archiveData = {
       status: 'VERIFIED',
       description: 'Primer Seeker localizado en el archivo. Registro de coordenadas confirmado en la red cartográfica del proyecto.',
       x: 16.2,
-      y: 29.8
+      y: 29.8,
+      cardId: 'CARD-001',
+      prominence: 'special',
+      locationType: 'localización narrativa'
+    },
+    {
+      id: 'LOC-002', name: 'Atchison, Kansas (Estados Unidos)',
+      seeker: 'Amelia Earhart', coords: '39.56° N, 95.12° O',
+      region: 'North America / Kansas', status: 'VERIFIED',
+      description: 'Lugar de nacimiento de Amelia Earhart.',
+      x: 23.6, y: 36.0, cardId: 'CARD-002',
+      prominence: 'normal', locationType: 'lugar de nacimiento'
+    },
+    {
+      id: 'LOC-003', name: 'Maslennikovo, Yaroslavl (Rusia)',
+      seeker: 'Valentina Tereshkova', coords: '57.8° N, 39.5° E (área de Yaroslavl)',
+      region: 'Europe / Russia', status: 'VERIFIED',
+      description: 'Pueblo natal de Valentina Tereshkova; marcador aproximado sobre el área de Yaroslavl.',
+      x: 61.0, y: 25.0, cardId: 'CARD-003',
+      prominence: 'normal', locationType: 'lugar de nacimiento'
     }
   ],
-  totalAlbumCapacity: 12,
+  totalAlbumCapacity: 100,
 
   /* CARTAS Y SLOTS CLASIFICADOS */
   cards: [
@@ -334,7 +445,7 @@ const archiveData = {
       element: 'PNEUMA (AIRE)',
       elementKey: 'pneuma',
       classification: 'PERSONAJE - JÓVENES SEEKERS',
-      discoveryDate: '2026-09-01',
+      discoveryDate: '2026-10-21',
       dimensions: '720 × 770 PX [VERTICAL TCG]',
       quote: '«Yo fui un Seeker. Ahora os toca descubrir qué significa serlo.»',
       description: 'El lector que salvó al Reino de la Nada al otorgarle un nuevo nombre a la Emperatriz Infantil. Localizado originalmente en el desván escolar de la costa del Pacífico. Capaz de cruzar umbrales narrativos mediante la invocación del Pneuma y la memoria escrita.',
@@ -347,6 +458,22 @@ const archiveData = {
         { label: 'Ingenio', val: 95 }
       ],
       lore: 'Registro de Seeker primario catalogado tras la apertura de la carta de Vancouver (2006). Porta la insignia del Pneuma (Aire), elemento que rige el pensamiento libre, la inspiración desatada y la conexión con el Gran Cuaderno de Eudoro.'
+    },
+    {
+      id: 'CARD-002', order: 2, number: 'CARD #002',
+      name: 'AMELIA EARHART', rarity: 'personaje', rarityType: 'normal',
+      division: 'exploradores', divisionLabel: 'Exploradores',
+      element: 'AIRE', discoveryDate: '2026-11-18',
+      image: 'img/cartas/earhart.png',
+      description: 'Pionera estadounidense de la aviación, nacida en Atchison (Kansas). Su carta representa la exploración y el valor de abrir nuevos caminos.'
+    },
+    {
+      id: 'CARD-003', order: 3, number: 'CARD #003',
+      name: 'VALENTINA TERESHKOVA', rarity: 'personaje', rarityType: 'normal',
+      division: 'contemporaneos', divisionLabel: 'Contemporáneos',
+      element: 'AIRE', discoveryDate: '2026-11-18',
+      image: 'img/cartas/tereshkova.png',
+      description: 'Primera mujer que viajó al espacio. Nació en Maslennikovo, región de Yaroslavl, y su trayectoria amplió las fronteras de la exploración humana.'
     }
   ],
 
@@ -480,8 +607,8 @@ const archiveData = {
       formatLabel: 'Misiva Manuscrita Auténtica // 2 Folios',
       conditionClass: 'state-intact',
       pages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuABB9Q21glWRDoFdHEMjx89tNmBKxUiaOD_4eUdiWf2VWRhEIxQldKtXgSh6lGBbO4kKYJR-a4hOqUHCeUgcNAAR3gAmynGoyhuuYbp9ytYFYqO6abA2A9QUC6mMAbO5atuJCLEU-3CJxR4ln5fcMJkMyb9O8aNYL8RleiO8BvMxTiemJestVLz7C85T65Ll5ClgRsIwrcaBzKMfbJgppmxt4H82yRov09XqYD8o6NSl3PxUYd9Ko6rf753u9Z_pBkp',
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuDMTxaTkmEOAGrY-IjxmNVhxVKsCjOTG2hmRhzwF4CFcxT9lGmU7BvpwdVQgwAhQjrK-6eeLWlXrLeJFUmb4QBrcJ2CtLmeh20h27ytetWej2AAuPOyxzzF6MU8MPm5Ii9OfAEldlpjudK7CK3RyHzcAXwe2Ccj2LwZrlRt2Cg0Yx4J-q380wtAOdLvFJLWqX3ziS86F1oExbEPEslqv4LhYzRQII8O2CnYxGDVf3KoQZ7Op311r_4ptTNBV71eZeW-'
+        'img/carta-bastian-1.png',
+        'img/carta-bastian-2.png'
       ],
       context: 'Carta manuscrita original dividida en dos folios hallada con la rúbrica y sello de Bastian Baltasar Bux en Vancouver en el año 2006. En ella confiesa su trayectoria como antiguo Seeker tras regresar de Fantasía.',
       transcript: '«Para quienes hayan llegado hasta aquí: Si estáis leyendo esta carta, significa que algo que creía perdido ha vuelto a aparecer... Durante años conservé el recuerdo de lo que había vivido... Yo fui un Seeker. Ahora os toca descubrir qué significa serlo. P.D. Hasta que sepáis en quién confiar, guardad esta carta donde nadie la vea.»'
@@ -492,7 +619,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio I',
       conditionClass: 'state-intact',
       pages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuALKLOxW9Li8ftILefeuUJ3UJa5k_hqbxthskx3UeMt-oH3TcL1c7HnSwVR48FwR6msA2E-n0F7zftzTqOnz5Grawu2b1pt6qFpM1hegTpPoC5H9Og1FfwkjrMUp9m3d0Z0JgE3ks_-WTRCN_qNSU4aGpc5bEebOlooAKAYzR1RJK1oo6s7q7FaE2eA2g1n3qwXXd6lD1VobNwZGIJfpJ-1pnYgiLGTEiDgJeq4CrJA9h4K19bpKGHsKFkK7UtVCnGW'
+        'img/eudoro-1.png'
       ],
       context: 'Primera página recuperada del Cuaderno de Eudoro de Alejandría. Introducción al término ΖΗΤΗΣΙΣ (Zétêsis - Búsqueda/Indagación) y estudio del aliento vital primordial (Pneuma).',
       transcript: '«FRAGMENTO I · SOBRE EL AIRE. He pasado esta mañana observando el agua de la fuente. No el agua en sí. Lo que la movía... El pneuma —aquello que los antiguos llamaron aliento, espíritu, aire— no ocupa un lugar en el mundo de la misma manera... ¿Dónde termina el Aire y dónde empieza todo lo demás?»'
@@ -503,7 +630,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio II',
       conditionClass: 'state-intact',
       pages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuB7r5jRKSp8QCYGkhzP1fcVz_pNwkFmG9wzDHgod5Dh86CV5CWpGnFHZvTQAhAhtP5QrkatZ_7COvDvZCwJikmu11Va6cD3vqSXiBlrpnG_vAU001-qVU8_9gtGfRUPNyXi3x5_sd08WKx0roYRzv3WBTH5ZVnm0UKIu5HwbD7P-rfCe7w7sTvnjpUU-Slj7SzN7aolwVKc--14y7X4LZ9x14XL0IU3lKBJLhgBX_jrP1Z1O83MuQ-v-YbQphR72Bzf'
+        'img/eudoro-2.png'
       ],
       context: 'Segunda página que contiene el primer esquema cosmológico: los cuatro elementos (Pneuma, Hydor, Pyr, Gaia) rodeando un signo de interrogación central enigmático.',
       transcript: '«He observado durante varios días el comportamiento del Aire sobre diferentes superficies... El Aire no moja. No pesa... ¿Actúa el Aire sobre los elementos o los elementos actúan a través del Aire? En el centro de la rueda se sitúa la gran incógnita [?].»'
@@ -514,7 +641,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Folio III',
       conditionClass: 'state-intact',
       pages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuDynrbay6qxIJrrNu2rYmoQAWbvh8KqgaYWf0xI42dnDZeVsbs-Vc1SEDdOU8KKycIkRYMrsuN7gHdcEZNUAbiADpTtQ6O5GbG_zusoFrfMWTMcr6MVpR5cK9r4CpCzbMK5y44WrKwnQKyss2e0Hj_c4csc0b_KxFwMa50n93J1j47uneVaXHmZkePdtPFaThY6Z7mVCS-YAYg-_R6Sk8i0UV5prBMWt67y4kVT-X-K5X9qxijFcllzuQsT2vfzSBlm'
+        'img/eudoro-3.png'
       ],
       context: 'Tercera página donde Eudoro refuta su primer modelo. Abandona la clasificación separada e introduce el pensamiento sistémico con el centro en blanco: "Lo que hay en el centro no tiene nombre todavía".',
       transcript: '«He vuelto a mirar el diagrama que dibujé ayer... He llegado a una conclusión incómoda: el diagrama está mal. En la idea que lo sostiene. No hay fronteras. He rehecho el diagrama... Y en el centro he dejado un espacio vacío. "Lo que hay en el centro no tiene nombre todavía".»'
@@ -525,7 +652,7 @@ const archiveData = {
       formatLabel: 'Papiro Alejandrino // Fragmento IV Rasgado',
       conditionClass: 'state-intact',
       pages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuD1nQnZj2GL0YxbUMGD3E9_NUzIkIvGW0oR7DFcagpgCq_F-pG4nEFkRUShSgsDN0lOcW37WBkPzERtOQMQ_ccgLq2M8Sg2t577lrnDqk3AIvsol1C4VL5AagnJnEBdfUTS6AD-yxRVyM3CG6yi7emr9XfD6l_iUQ1UY6h-rv_hlhS7JeyYNjMMzbybz53k0YRTSgwK99Hrw_xZFdUyaWyUnKDPkIhKriLbx-FWEsB8Dp1rTUaQyXwtXVdnEYGc07D3'
+        'img/eudoro-4.png'
       ],
       context: 'Última página recuperada con borde rasgado. Formula la interdependencia total de las fuerzas elementales y plantea la gran tesis de la orden Seeker.',
       transcript: '«Esta noche he entendido que el método tiene un error fundamental. No puedes estudiar por separado algo que... El Aire mueve el Agua. El Agua transforma la Tierra. La Tierra alimenta el Fuego. El Fuego devuelve al Aire. Esto no es una cadena. Es algo que ocurre al mismo tiempo... ¿Y si aquello que conecta los cuatro no fuera un elemento sino...?»'
@@ -559,7 +686,7 @@ function unlockArchive(){
       gate.classList.add('hidden');
     }
     if(app) {
-      app.style.display = 'flex';
+      app.style.removeProperty('display');
       app.classList.remove('hidden');
     }
     render('central');
@@ -628,51 +755,35 @@ updateClock();
 let currentPrimaryFilter = 'all';
 let currentSubdivisionFilter = 'all';
 let currentCollectionPage = 1;
-const CARDS_PER_PAGE = 4;
+const CARDS_PER_PAGE = 12;
 
 /* RENDERIZADO DEL MAPA TÁCTICO CON IMAGEN CRT REAL */
 function renderMapMarkup(isFullPage = false){
-  const loc = archiveData.locations[0];
-  const posX = loc ? loc.x : 16.2;
-  const posY = loc ? loc.y : 29.8;
-
+  // Solo representa cartas efectivamente publicadas en Collection.
+  const locations = archiveData.locations.filter(loc => archiveData.cards.some(c => c.id === loc.cardId));
+  const pins = locations.map(loc => {
+    const card = archiveData.cards.find(c => c.id === loc.cardId);
+    const special = ['plata','dorada','diamante'].includes(card?.rarityType) || loc.prominence === 'special';
+    const tooltip = `<div class="marker-tooltip"><strong>${esc(loc.seeker)}</strong><span>${esc(loc.name)}</span>${esc(loc.locationType || 'Localización')}<br><em style="font-size:8px;color:var(--muted)">[Clic para abrir la carta]</em></div>`;
+    return `<div class="marker-anchor ${special ? 'map-special' : 'map-normal'}" style="left:${loc.x}%;top:${loc.y}%">
+      ${special ? `<button class="marker-btn" aria-label="Abrir carta de ${esc(loc.seeker)}" onclick="inspectCard('${loc.cardId}')"><div class="marker-radar"></div><div class="marker-radar-2"></div><div class="marker-cross"></div><div class="marker-tag">✕ ${esc(loc.seeker.toUpperCase())}</div></button>` : `<button class="map-dot-btn" aria-label="Abrir carta de ${esc(loc.seeker)}: ${esc(loc.name)}" title="${esc(loc.seeker)} · ${esc(loc.name)}" onclick="inspectCard('${loc.cardId}')"></button>`}
+      ${tooltip}
+    </div>`;
+  }).join('');
   return `
     <section class="panel">
-      <div class="ptitle">
-        <span>CARTOGRAPHY // GEODETIC WORLD NETWORK</span>
-        <span>SEEKERS LOCATED: ${String(total('seekers')).padStart(2,'0')}</span>
-      </div>
+      <div class="ptitle"><span>CARTOGRAPHY // GEODETIC WORLD NETWORK</span><span>PERSONAJES LOCALIZADOS: ${String(locations.length).padStart(2,'0')}</span></div>
       <div class="map-viewport ${isFullPage ? 'fullscreen' : ''}" id="mapViewport">
-        <div class="map-header-hud">
-          <div class="hud-title">▶ WGS-84 REAL-WORLD TOPOLOGY RECORD [CRT SATELLITE]</div>
-          <div class="hud-coords">TARGET 01: 49°15′ N / 123°06′ W<br><span style="color:var(--green)">NODE: VANCOUVER [BC, CA]</span></div>
-        </div>
+        <div class="map-header-hud"><div class="hud-title">▶ WORLD ARCHIVE // LOCATIONS</div><div class="hud-coords">${String(locations.length).padStart(2,'0')} ACTIVE RECORDS</div></div>
         <div class="map-canvas-wrap ${isFullPage ? 'fullscreen-wrap' : ''}">
-          <img class="world-crt-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1cNL1vHqzcsXzfTl0EPdXkfZavpR2NKMNlvA-rMe8PF7JKWm6XV0P7jhpDhIYgZQDnsmENCjEcXMqz3OCIZNKT8xTpmXFh7I73fxzPjq7wAu6ruNZmu4WftOP6nWGXQJvgn0LibuQfV1zJU4rKa-8jpzSjQ60RmArNBTlSX_3d2rpubrdbL-Mq5nkbwALkYxgPqJpm7rQdoQzs2fxy6NWAKEwW-1YUBbI4bnuBxgnvGeXWB4HQzA" alt="Mapa del Mundo Táctico CRT" draggable="false"/>
+          <img class="world-crt-img" src="img/mundo-crt.png" alt="Mapa del Mundo Táctico CRT" draggable="false"/>
           <div class="map-overlay-grid"></div>
-
-          <!-- MARCADOR GEODÉSICO INTERACTIVO DE BASTIAN B. BUX -->
-          <div class="marker-anchor" style="left: ${posX}%; top: ${posY}%;">
-            <button class="marker-btn" aria-label="Target 01: Bastian Baltasar Bux" onclick="inspectCard('CARD-001')">
-              <div class="marker-radar"></div>
-              <div class="marker-radar-2"></div>
-              <div class="marker-cross"></div>
-              <div class="marker-tag">✕ BASTIAN B. BUX</div>
-            </button>
-            <div class="marker-tooltip">
-              <strong>${esc(loc.name)}</strong>
-              <span>${esc(loc.coords)}</span>
-              Seeker primario catalogado: ${esc(loc.seeker)}.<br>
-              Estado: <span style="color:var(--green);display:inline">${esc(loc.status)}</span><br>
-              <em style="font-size:8px;color:var(--muted)">[Clic para inspeccionar ficha TCG]</em>
-            </div>
-          </div>
-
+          ${pins}
+          <div class="map-mini-legend"><span><i class="legend-x">✕</i>Especial</span><span><i class="legend-dot"></i>Normal</span></div>
           <div class="map-compass"></div>
         </div>
       </div>
-    </section>
-  `;
+    </section>`;
 }
 
 /* ==============================================================
@@ -687,7 +798,9 @@ function collection(){
     if(currentPrimaryFilter === 'diamante') return c.rarityType === 'diamante';
     if(currentPrimaryFilter === 'dorada') return c.rarityType === 'dorada';
     if(currentPrimaryFilter === 'plata') return c.rarityType === 'plata';
+    if(currentPrimaryFilter === 'alumnado') return c.division === 'alumnado';
     if(currentPrimaryFilter === 'personajes'){
+      if(c.division === 'alumnado') return false;
       if(currentSubdivisionFilter === 'all') return true;
       return c.division === currentSubdivisionFilter;
     }
@@ -699,6 +812,7 @@ function collection(){
     if(currentPrimaryFilter === 'diamante') return s.rarity === 'diamante';
     if(currentPrimaryFilter === 'dorada') return s.rarity === 'dorada';
     if(currentPrimaryFilter === 'plata') return s.rarity === 'plata';
+    if(currentPrimaryFilter === 'alumnado') return false;
     if(currentPrimaryFilter === 'personajes'){
       if(s.rarity !== 'personaje') return false;
       if(currentSubdivisionFilter === 'all') return true;
@@ -710,7 +824,7 @@ function collection(){
   const combinedItems = [
     ...visibleCards.map(c => ({ type: 'card', data: c, order: c.order })),
     ...visibleSlots.map(s => ({ type: 'slot', data: s, order: s.order }))
-  ].sort((a, b) => a.order - b.order);
+  ].sort((a, b) => (a.type === b.type ? a.order - b.order : (a.type === 'card' ? -1 : 1)));
 
   const totalFilteredItems = combinedItems.length;
   const totalPages = Math.max(1, Math.ceil(totalFilteredItems / CARDS_PER_PAGE));
@@ -727,6 +841,16 @@ function collection(){
   const itemsMarkup = pageItems.map(item => {
     if(item.type === 'card'){
       const card = item.data;
+      if(card.image){
+        return `
+        <article class="tcg-card-container img-card ${cardRarityClass(card)}" onclick="inspectCard('${card.id}')" onkeydown="if(event.key==='Enter')inspectCard('${card.id}')" tabindex="0" role="button" aria-label="Inspeccionar carta ${esc(card.name)}">
+          <div class="tcg-img-wrap"><img src="${esc(card.image)}" alt="Carta ${esc(card.name)}" loading="lazy" decoding="async"></div>
+          <div class="tcg-footer-row">
+            <span>${esc(card.number)} // REGISTRO: ${esc(card.discoveryDate)}</span>
+            <span style="color:var(--amber)">[ INSPECCIONAR ]</span>
+          </div>
+        </article>`;
+      }
       return `
         <article class="tcg-card-container" onclick="inspectCard('${card.id}')" tabindex="0">
           <div class="tcg-top-spec">
@@ -871,7 +995,7 @@ function collection(){
             </div>
             <div class="album-stat-chip">
               <span>FORMATO VERTICAL TCG</span>
-              <strong style="color:var(--amber)">720 × 770 PX [VERTICAL]</strong>
+              <strong style="color:var(--amber)">VERTICAL // PROPORCIÓN 5:7</strong>
             </div>
             <div class="album-stat-chip">
               <span>CATEGORÍA ACTIVA</span>
@@ -897,6 +1021,9 @@ function collection(){
             </button>
             <button class="filter-btn badge-pla ${currentPrimaryFilter==='plata'?'active':''}" onclick="setPrimaryFilter('plata')">
               <span>🛡️ PLATA</span>
+            </button>
+            <button class="filter-btn ${currentPrimaryFilter==='alumnado'?'active':''}" onclick="setPrimaryFilter('alumnado')">
+              <span>🧭 ALUMNADO</span>
             </button>
             <button class="filter-btn ${currentPrimaryFilter==='personajes'?'active':''}" onclick="setPrimaryFilter('personajes')">
               <span>👥 PERSONAJES (8 SUBDIVISIONES)</span>
@@ -1014,9 +1141,44 @@ function inspectSlot(slotId){
   modal.classList.remove('hidden');
 }
 
+function cardRarityClass(c){
+  return ({diamante:'slot-diamond', dorada:'slot-gold', plata:'slot-silver'})[c.rarityType] || '';
+}
+function cardKindLabel(c){
+  if(c.classification) return c.classification;
+  const origin = c.division === 'alumnado' ? 'PERSONAJE CREADO POR EL ALUMNADO' : (c.divisionLabel ? 'PERSONAJE · ' + c.divisionLabel.toUpperCase() : 'PERSONAJE');
+  const rar = ({diamante:'CARTA DIAMANTE', dorada:'CARTA DORADA', plata:'CARTA PLATA'})[c.rarityType];
+  return rar ? origin + ' · ' + rar : origin;
+}
+
 function inspectCard(cardId){
   const card = archiveData.cards.find(c => c.id === cardId);
   if(!card) return;
+
+  if(card.image){
+    const modal = document.getElementById('cardInspectorModal');
+    document.getElementById('inspectorHeaderTitle').textContent = `DOSSIER TÁCTICO // ${card.number} — ${card.name}`;
+    document.getElementById('inspectorModalContent').innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <img class="insp-img" src="${esc(card.image)}" alt="Carta ${esc(card.name)}">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div>
+          <div style="font-size:9px;color:var(--amber);letter-spacing:2px">${esc(cardKindLabel(card))}</div>
+          <h3 style="font-size:18px;color:#fff;margin:3px 0 6px">${esc(card.name)}</h3>
+          <span style="font-size:9px;color:var(--muted)">ORDEN CRONOLÓGICO #${String(card.order).padStart(2,'0')}${card.element ? ' • ELEMENTO: ' + esc(card.element) : ''}</span>
+        </div>
+        ${card.description ? `<div style="background:#05110a;border:1px solid #163625;padding:12px;font-size:10px;line-height:1.7;color:#c0ded0">${esc(card.description)}</div>` : ''}
+        ${card.lore ? `<div style="font-size:9.5px;line-height:1.7;color:var(--muted)"><span style="color:var(--paper);font-weight:bold">LORE DEL ARCHIVO:</span><br>${esc(card.lore)}</div>` : ''}
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px">REGISTRO: ${esc(card.discoveryDate)}</div>
+        <div class="inspector-actions">
+          <a class="inspector-btn" href="${esc(card.image)}" target="_blank" rel="noopener">VER A TAMAÑO COMPLETO</a>
+          <button class="inspector-btn" onclick="document.getElementById('cardInspectorModal').classList.add('hidden')">CERRAR DOSSIER</button>
+        </div>
+      </div>`;
+    modal.classList.remove('hidden');
+    return;
+  }
 
   const modal = document.getElementById('cardInspectorModal');
   const modalContent = document.getElementById('inspectorModalContent');
@@ -1255,7 +1417,7 @@ function mapPage(){
         <h2>WORLD MAP</h2>
         <p class="intro">THE SEEKERS ARCHIVE / GLOBAL CARTOGRAPHIC RECORD &amp; SATELLITE NETWORK</p>
       </div>
-      <div class="tag">SEEKERS LOCATED: ${String(total('seekers')).padStart(2,'0')}</div>
+      <div class="tag">SEEKERS LOCATED: ${String(archiveData.locations.filter(loc=>archiveData.cards.some(c=>c.id===loc.cardId)).length).padStart(2,'0')}</div>
     </div>
     ${renderMapMarkup(true)}
   `;
@@ -1282,9 +1444,470 @@ function empty(sym,title,desc,code,restricted=false){
 }
 
 function evidence(){ return empty('◇','EVIDENCE','Las evidencias de campo se organizarán aquí a medida que la investigación escolar avance.','EVIDENCE REGISTER // NO ACTIVE LOGS'); }
-function transmissions(){ return empty('◉','TRANSMISSIONS','Comunicaciones interceptadas procedentes de emisores externos.','TRANSMISSIONS // LISTENING ON 142.85 MHz'); }
 function locked(){ return empty('▣','LOCKED FILES','Archivos protegidos por cifrado geodésico de alta seguridad.','SECURITY PROTOCOL // SEALED',true); }
 function unknown(){ return empty('?','UNKNOWN','Anomalías y enigmas que no encajan en ninguna clasificación conocida.','UNKNOWN // LOG EMPTY'); }
+
+/* ===== EL GUARDIÁN DEL ARCHIVO // TRANSMISSIONS ===== */
+/* Lee archiveData: lo que se añada a cartas, documentos, localizaciones o seekers pasa a ser conocido por el Guardián. */
+const guardianState = { log: [], booted: false, busy: false, skip: null, last: {}, hints: {}, asked: { who: 0, fallback: 0 } };
+
+const GUARDIAN_DOCS = {
+  'DOC-01': {
+    kw: ['manuscrita', 'folios', 'vancouver', '2006', 'misiva'],
+    info: 'Dos folios escritos a mano, fechados en 2006, desde Vancouver. Quien los escribió fue un Seeker. Al final pide algo muy concreto: guardarlos donde nadie los vea hasta saber en quién confiar.',
+    hints: [
+      'Lee el final de la carta dos veces. Bastian no te da una respuesta: te da una tarea.',
+      '¿A quién se dirige la carta: a una persona o a muchas? ¿Qué te dice eso de lo que espera de quien la encuentre?',
+      'Una carta que empieza «Para quienes hayan llegado hasta aquí» no espera a un lector solitario. Piénsalo.'
+    ]
+  },
+  'DOC-02': {
+    kw: ['pneuma', 'fuente', 'aliento', 'sobre el aire'],
+    info: 'El primer folio del cuaderno de Eudoro. Habla del Aire, al que los antiguos llamaron pneuma, y de algo que mueve las cosas sin dejarse ver.',
+    hints: [
+      'Eudoro mira la fuente, pero dice que no mira el agua. ¿Qué mira entonces?',
+      'Cuenta los nombres que Eudoro da al pneuma. Si un mismo secreto tiene varios nombres, ¿qué tienen en común?',
+      'La última pregunta del folio no busca un lugar, sino un límite. Pregúntate si el Aire tiene uno.'
+    ]
+  },
+  'DOC-03': {
+    kw: ['diagrama', 'rueda', 'incognita', 'interrogacion', 'esquema'],
+    info: 'El segundo folio: una rueda con cuatro nombres alrededor y, en el centro, una gran incógnita. Eudoro anota que el Aire no moja ni pesa.',
+    hints: [
+      'Cuatro nombres rodean una pregunta. Antes de buscar la respuesta, mira qué relación hay entre los nombres.',
+      'Eudoro se pregunta si el Aire actúa sobre los demás o a través de ellos. Fíjate en la diferencia entre «sobre» y «a través».',
+      'No te pido que llenes el centro. Te pido que expliques por qué Eudoro no pudo.'
+    ]
+  },
+  'DOC-04': {
+    kw: ['sistemico', 'pensamiento', 'fronteras', 'rehecho', 'rehizo'],
+    info: 'El tercer folio: Eudoro descubre que su propio diagrama está mal, lo rehace y deja el centro vacío: «no tiene nombre todavía».',
+    hints: [
+      'Un sabio que dice «está mal» de su propia obra… ¿te parece un fracaso o una forma de hacer ciencia?',
+      'Compara el dibujo del folio anterior con este. ¿Qué ha desaparecido? Pista: tiene que ver con la palabra «fronteras».',
+      'Si no hay fronteras, ¿qué significa que cada elemento tenga su propio lugar?'
+    ]
+  },
+  'DOC-05': {
+    kw: ['rasgado', 'rasgada', 'ciclo', 'cadena', 'interdependencia'],
+    info: 'El último folio, con el borde rasgado. Eudoro describe cómo cada elemento empuja al siguiente… y se queda a medias frente a una pregunta.',
+    hints: [
+      'Sigue el orden: Aire, Agua, Tierra, Fuego… y vuelve al principio. ¿Qué forma dibuja?',
+      'Eudoro dice «no es una cadena». Piensa en qué falla una cadena. Y recuerda esas palabras: «al mismo tiempo».',
+      'El papel está rasgado justo donde la frase se corta. Esa parte es vuestra.'
+    ]
+  }
+};
+
+const GUARDIAN_CARD_HINTS = {
+  'CARD-001': [
+    'Bastian porta el Pneuma. Abre ahora el primer folio del cuaderno de Eudoro y mira de qué habla. En este archivo las casualidades son raras.',
+    'Compara la frase de su carta de colección con lo que escribe en su carta manuscrita. ¿Quién repite las palabras de quién?',
+    'Fíjate en cómo termina su carta: no te da una solución, te da una invitación. Pregúntate a qué.'
+  ]
+};
+
+const gN = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+const gT = (id, arr) => { let i; do { i = Math.floor(Math.random() * arr.length); } while (arr.length > 1 && i === guardianState.last[id]); guardianState.last[id] = i; return arr[i]; };
+const gRoman = r => ({ i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9, x: 10 })[r] || 0;
+const gShort = (t, m = 50) => (t.length > m ? t.slice(0, m - 2) + '…' : t);
+const gLabel = d => { const m = /P[aá]g\s*(\d+)\s*:?\s*(.*)$/i.exec(d.title); return m ? 'Folio ' + m[1] + (m[2] ? ' · ' + gShort(m[2], 26) : '') : gShort(d.title); };
+const gDocs = () => (typeof archiveData !== 'undefined' && archiveData.documents) || [];
+const gCards = () => (typeof archiveData !== 'undefined' && archiveData.cards) || [];
+
+function gDocKeywords(d) {
+  if (GUARDIAN_DOCS[d.id]) return GUARDIAN_DOCS[d.id].kw;
+  const stop = ['cuaderno', 'eudoro', 'carta', 'documento', 'fragmento', 'pagina'];
+  return gN(d.title).split(' ').filter(w => w.length >= 6 && !stop.includes(w));
+}
+function gCardTokens(c) {
+  return gN(c.name).split(' ').filter(w => w.length >= 4 && !['seeker', 'seekers', 'guardian', 'archivo', 'carta', 'cartas', 'antiguo', 'antiguos'].includes(w));
+}
+function gDocInfo(d) {
+  if (GUARDIAN_DOCS[d.id]) return GUARDIAN_DOCS[d.id].info;
+  return `«${d.title}». ${d.formatLabel || 'Un documento custodiado'}. Lee su transcripción con calma y dime qué se repite.`;
+}
+function gCardInfo(c) {
+  const alum = c.division === 'alumnado';
+  const kind = c.classification || (alum ? 'Personaje creado por el alumnado' : '');
+  const best = alum ? null : (c.skills || []).slice().sort((a, b) => b.val - a.val)[0];
+  return [`${c.name}${kind ? ' · ' + kind : ''}.`, c.element ? `Porta el elemento ${c.element}.` : '', c.quote || '', best ? `Su don más alto: ${best.label} (${best.val}).` : ''].filter(Boolean).join(' ');
+}
+function gHint(id, title, list) {
+  const k = guardianState.hints[id] || 0;
+  if (k >= list.length) return 'Ya te he dicho todo lo que puedo decir sobre esto. Lo que falta, tenéis que encontrarlo vosotros.';
+  guardianState.hints[id] = k + 1;
+  return ['Una pista, no una respuesta: ', 'Otra más: ', 'La última: '][k] + list[k];
+}
+function gHintFor(item, isDoc) {
+  if (isDoc) {
+    const list = (GUARDIAN_DOCS[item.id] || {}).hints || [
+      'Lee la transcripción despacio. Subraya lo que se repite: lo que se repite, importa.',
+      'Pregúntate qué dice, qué calla y qué pregunta. La tercera suele ser la más reveladora.',
+      'Compáralo con otro documento del archivo. Las piezas encajan mejor de dos en dos.'
+    ];
+    return gHint(item.id, item.title, list);
+  }
+  const list = GUARDIAN_CARD_HINTS[item.id] || [
+    `Mira el elemento que porta ${item.name}. No está ahí por adorno.`,
+    'Lee su frase y su historia dos veces: una para saber qué dice, otra para saber qué calla.',
+    'Compárala con los documentos del archivo. Si algo coincide, no es casualidad.'
+  ];
+  return gHint(item.id, item.name, list);
+}
+function gChoice(mode, docs, cards) {
+  const kind = mode === 'hint' ? 'hint' : 'info';
+  if (cards.length > 4) cards = [];
+  return docs.map(d => ({ label: gLabel(d), cmd: `@${kind}:${d.id}` })).concat(cards.map(c => ({ label: 'Carta: ' + gShort(c.name), cmd: `@${kind}:${c.id}` })));
+}
+function gFind(id) {
+  const d = gDocs().find(x => x.id === id); if (d) return { item: d, isDoc: true };
+  const c = gCards().find(x => x.id === id); if (c) return { item: c, isDoc: false };
+  return null;
+}
+
+function guardianReply(raw) {
+  const q = String(raw || '').trim().slice(0, 140);
+  const n = gN(q);
+  const has = re => re.test(n);
+  const S = guardianState;
+  const say = (id, arr, chips) => ({ text: gT(id, arr), chips: chips || null });
+  const ok = r => { S.asked.fallback = 0; return r; };
+
+  // Comandos de los botones
+  const cmd = /^@(hint|info):(.+)$/.exec(q);
+  if (cmd) {
+    const f = gFind(cmd[2]);
+    if (!f) return say('lost', ['Ese registro se ha perdido entre las estanterías. Pregunta otra cosa.']);
+    if (cmd[1] === 'hint') return ok({ text: gHintFor(f.item, f.isDoc) });
+    return ok({ text: f.isDoc ? gDocInfo(f.item) : gCardInfo(f.item) });
+  }
+
+  const letters = n.replace(/[^a-z]/g, '');
+  if (!letters) return say('sym', ['Solo veo símbolos. El archivo exige palabras.', 'Eso no es una pregunta. Es ruido. Prueba con palabras.']);
+  if ((letters.length >= 4 && !/[aeiou]/.test(letters)) || /(.)\1{4,}/.test(letters) || has(/asdf|qwer|zxcv|sdfg|hjkl|lkjh/))
+    return say('mash', ['Esas letras no forman ninguna palabra que el archivo reconozca.', 'Mis estanterías no guardan eso. Prueba con palabras de verdad.']);
+
+  if (has(/contrasena|password|\bclave|codigo secreto|llave de acceso|\bpin\b/))
+    return say('pass', ['Las palabras de paso ni se piden ni se regalan. Si estás aquí, ya conoces la tuya.']);
+
+  if (has(/quien eres|quien (es|esta) (el )?guardian|como te llamas|tu nombre|cuantos anos tienes|que edad|eres (un |una |el |la )?(persona|humano|humana|robot|ia|maquina|profe|profesor|maestro|jose|real|chico|chica|hombre|mujer|bastian|eudoro)|quien te (creo|hizo|escribe)|quien esta (detras|ahi)|quien eres tu/)) {
+    S.asked.who++;
+    if (S.asked.who >= 4 && S.asked.who % 2 === 0) return say('who2', ['Insistes. Es virtud de Seeker, pero no es una llave.', 'Quien pregunta mil veces lo mismo suele saber que la respuesta está en otra parte.']);
+    return say('who', [
+      'Quien custodia el archivo no firma. Los nombres se olvidan; los archivos permanecen.',
+      '¿Quién soy? Mejor pregúntate quién tendría motivos para guardar este secreto tanto tiempo.',
+      'Unos dicen que escribo con tinta. Otros, que con electricidad. Los dos aciertan a medias.',
+      'Tengo más años de los que cuento y menos de los que aparento. Prueba con otra pregunta.',
+      'Soy la voz del archivo. De qué está hecha esa voz no es asunto tuyo todavía.'
+    ]);
+  }
+
+  if (has(/\b(tonto|tonta|idiota|estupid[oa]|imbecil|feo|fea|tu madre|mierda|caca|pedo|culo|pis|puto|puta|odio|callate|aburrido|aburrida|asco)\b/))
+    return say('rude', [
+      'Esas palabras se disuelven en el archivo sin dejar rastro. Pregunta algo digno de ser guardado.',
+      'El archivo no se ofende. Pero tampoco responde al ruido.',
+      'Interesante… pero ningún documento habla de eso. Inténtalo con algo que sí esté aquí.'
+    ]);
+  if (has(/\b(jaja\w*|jeje\w*|jiji\w*|lol|xd|haha\w*)\b/)) return say('laugh', ['Reír es buena señal: los Seekers que ríen, resisten. Ahora, una pregunta de verdad.', 'El archivo no ríe… pero a veces se le escapa una letra. Pregunta.']);
+  if (has(/chiste|adivinanza|cuentame algo|cantame|canta/)) return say('joke', ['Un archivo que cuenta chistes dejaría de ser un archivo. Pregunta por lo que custodio.']);
+  if (has(/como estas|que tal estas|que haces|estas ahi|estas vivo/)) return say('feel', ['Estoy donde siempre: entre papeles que nadie ha terminado de leer.', 'Vigilando. Es lo único que sé hacer, y lo hago bien.']);
+  if (has(/te quiero|eres mi amigo|eres mi amiga|me caes bien|eres guay|eres genial/)) return say('love', ['Un Seeker no busca solo. Lo que descubras aquí, compártelo con tus compañeros.']);
+
+  if (n.split(' ').length <= 5 && has(/^(hola|buenas|buenos dias|buenas tardes|buenas noches|hey|ey|ole|saludos|holi|hello|hi)\b/))
+    return say('hi', ['Has cruzado la puerta. Pocos lo consiguen a la primera. Pregunta, Seeker.', 'Te esperaba… o quizá esperaba a otro. Da igual. Pregunta.', 'El archivo te ha oído llegar. ¿Qué buscas?']);
+  if (has(/^(gracias|muchas gracias|vale gracias|ok gracias)\b/)) return say('thx', ['No se agradece lo que se custodia. Sigue buscando.', 'Guárdate el agradecimiento. Úsalo para encontrar algo.']);
+  if (has(/^(adios|chao|chau|hasta luego|hasta manana|me voy|bye)\b/)) return say('bye', ['Cierra la puerta al salir. El archivo recordará que estuviste aquí.', 'Vete si debes. Lo que has visto ya no puedes dejar de verlo.']);
+
+  const docsAll = gDocs(), cardsAll = gCards();
+  const hintWord = has(/pista|ayuda|ayudame|no entiendo|no lo entiendo|no se\b|dime algo|atascad|perdid[oa]/);
+
+  if (has(/solucion|respuestas?\b|dime la respuesta|hazme|haz mi|que tengo que hacer|resuelve|resuelvelo|dime que es|dimelo|cual es el secreto/) && !has(/pista/))
+    return say('give', ['Si te lo diera yo, dejaría de ser tuyo. Un Seeker gana lo que encuentra. Pídeme una pista, no una respuesta.'], gChoice('hint', docsAll, cardsAll));
+
+  if (has(/proxim[oa]s?|siguiente carta|siguientes cartas|futur[oa]|sorpresa|que habra|que pasara|que va a (pasar|haber|salir)|spoiler|ranuras?|sellad[oa]s?|que falta|cartas que faltan|ultima carta|nuevas cartas|nuevos documentos|mas documentos/))
+    return say('future', ['El archivo solo habla de lo que ya ha sido recuperado. Lo que aún no está aquí, no puedo nombrarlo.', 'Los sellos siguen cerrados. No me corresponde romper ninguno.', 'El futuro no está catalogado. Pregunta por lo que ya reposa en estas estanterías.']);
+
+  if (has(/quinto|5 elemento|cinco elementos|\bcentro\b|incognita|gran secreto|tesoro|el final|conexion|conectar|que une|\bunion\b/))
+    return say('center', [
+      'Eudoro dejó el centro vacío: «no tiene nombre todavía». Yo tampoco voy a dárselo.',
+      'Una palabra dicha demasiado pronto pesa menos que una descubierta. Si crees tenerla, guárdala… y demuéstrala.',
+      'Quien llene el centro tendrá que explicar por qué. Una respuesta sin razones no abre nada.'
+    ]);
+
+  if (has(/carta/) && has(/consig|ganar|gano|ganan|obten|\bsaco|sacar|recib|conseguir|como se (dan|da)|como las/))
+    return say('howcards', [
+      'Las cartas no se compran ni se piden. Se ganan: con el trabajo en clase, con vuestro comportamiento, con las buenas acciones del curso… y superando las pruebas que el archivo os ponga.',
+      'Una carta es una pieza recuperada, no un premio. Se recupera con esfuerzo, con buenas acciones y con las grandes pruebas de cada trimestre.'
+    ]);
+  if (has(/escape|prueba|pruebas|mision|misiones|reto|retos/))
+    return say('escape', ['Cada trimestre, el archivo os someterá a una gran prueba. Lo que se gana en ella queda registrado para siempre.', 'Las pruebas no se anuncian aquí. Se viven. Lo que se consigue en ellas, sí viene a parar a este archivo.']);
+
+  if (has(/mapa|ubicacion|localizacion|coordenadas|punto rojo|donde (esta|estan|fue|se escribio)|canada/) || (has(/vancouver/) && !has(/carta|folio|documento|manuscrit|2006/))) {
+    const locs = (archiveData.locations || []).map(l => l.name || l.title || l.label).filter(Boolean);
+    return ok({ text: locs.length ? `Un punto late en el mapa: ${locs.join(', ')}. Fíjate en sus coordenadas: los lugares también guardan secretos.` : 'El mapa aún no marca ningún punto. Mira bien: a veces lo importante no se ve a la primera.' });
+  }
+  /* Entidades: documentos y cartas */
+  let docs = [], cards = [];
+  const fol = /\b(?:pagina|pag|folio|papiro|fragmento)\s+(\d+|[ivx]+)\b/.exec(n);
+  if (fol) {
+    const num = /^\d+$/.test(fol[1]) ? parseInt(fol[1], 10) : gRoman(fol[1]);
+    docsAll.forEach(d => { const p = /pag\s*(\d+)/.exec(gN(d.title)); if (p && parseInt(p[1], 10) === num && !docs.includes(d)) docs.push(d); });
+  }
+  docsAll.forEach(d => { if (!docs.includes(d) && gDocKeywords(d).some(k => n.includes(k))) docs.push(d); });
+  const person = new Set();
+  cardsAll.forEach(c => gCardTokens(c).forEach(t => { if (new RegExp('\\b' + t + '\\b').test(n)) { person.add(t); if (!cards.includes(c)) cards.push(c); } }));
+  if (/\beudoro\b|\bcuaderno\b/.test(n)) person.add('eudoro');
+
+  if (cards.length === 0 && has(/habilidad|habilidades|poderes?|puntos|virtud|virtudes|fuerza|valentia|ingenio|empatia|liderazgo/) && cardsAll.length === 1) cards = [cardsAll[0]];
+  if (cards.length && has(/habilidad|habilidades|poderes?|puntos|virtud|virtudes|fuerza|valentia|ingenio|empatia|liderazgo/)) {
+    const c = cards[0], sk = (c.skills || []).slice().sort((a, b) => b.val - a.val);
+    if (c.division === 'alumnado') return ok({ text: `Las virtudes de ${c.name} están grabadas en su carta. Léelas con atención: un Seeker no se mide en números.` });
+    if (sk.length) return ok({ text: `Estas son las virtudes de ${c.name}, medidas por el archivo: ${sk.map(s => s.label + ' ' + s.val).join(', ')}. La más alta es ${sk[0].label}. ¿Por qué crees que un Seeker la necesita?` });
+  }
+
+  if (docs.length === 1 && cards.length === 0) return ok({ text: hintWord ? gHintFor(docs[0], true) : gDocInfo(docs[0]) });
+  if (docs.length > 1 && !person.size) return ok({ text: 'Varios papeles responden a esa llamada. ¿Cuál quieres examinar?', chips: gChoice(hintWord ? 'hint' : 'info', docs, []) });
+
+  if (person.size) {
+    const tok = [...person][0];
+    const pDocs = docs.length ? docs : docsAll.filter(d => gN(d.title).includes(tok));
+    const pCards = cards.length ? cards : cardsAll.filter(c => gN(c.name).includes(tok));
+    const cardWord = has(/coleccion|personaje|habilidad|elemento|rareza|diamante|insignia|album/);
+    const docWord = has(/documento|manuscrit|folio|escrib|vancouver|2006|misiva|papel|cuaderno|pagina/);
+    if (pCards.length === 1 && !pDocs.length) return ok({ text: hintWord ? gHintFor(pCards[0], false) : gCardInfo(pCards[0]) });
+    if (pCards.length === 1 && pDocs.length === 1) {
+      if (cardWord && !docWord) return ok({ text: hintWord ? gHintFor(pCards[0], false) : gCardInfo(pCards[0]) });
+      if (docWord && !cardWord) return ok({ text: hintWord ? gHintFor(pDocs[0], true) : gDocInfo(pDocs[0]) });
+    }
+    if (pDocs.length === 1 && !pCards.length) return ok({ text: hintWord ? gHintFor(pDocs[0], true) : gDocInfo(pDocs[0]) });
+    if (pDocs.length || pCards.length) {
+      const intro = tok === 'eudoro'
+        ? `Eudoro de Alejandría: un sabio que observaba lo que otros pasaban por alto. Lo que queda de él son sus páginas, y ${pDocs.length} ${pDocs.length === 1 ? 'descansa' : 'descansan'} en el archivo. ¿Cuál quieres examinar?`
+        : `${tok.charAt(0).toUpperCase() + tok.slice(1)}. Más de una huella suya reposa en el archivo. ¿Cuál quieres examinar?`;
+      return ok({ text: intro, chips: gChoice(hintWord ? 'hint' : 'info', pDocs, pCards) });
+    }
+  }
+
+  if (has(/hydor|pyr\b|gaia|elementos?|\baire\b|\bagua\b|\btierra\b|\bfuego\b/))
+    return ok(say('elem', [
+      'Cuatro fuerzas, cuatro nombres antiguos: Pneuma, Hydor, Pyr, Gaia. Eudoro habla del Aire en su cuaderno. Busca cuál es cuál y fíjate en cómo se tocan unos a otros.',
+      'Los antiguos los nombraban así: Pneuma, Hydor, Pyr, Gaia. Pregúntate qué elemento esconde cada nombre y qué hacen entre sí.'
+    ]));
+
+  if (has(/cuantas cartas|que cartas|cartas hay|cuantos personajes|que personajes|lista de cartas|coleccion/)) {
+    const k = cardsAll.length, names = k <= 5 ? ': ' + cardsAll.map(c => c.name).join(', ') : '';
+    const sealed = (archiveData.upcomingSlots && archiveData.upcomingSlots.length) ? ' Las demás ranuras permanecen selladas.' : '';
+    return ok({ text: `${k === 0 ? 'Ninguna carta ha sido recuperada todavía.' : `Hay ${k} carta${k === 1 ? '' : 's'} recuperada${k === 1 ? '' : 's'}${names}.`}${sealed}`, chips: k && k <= 4 ? gChoice('info', [], cardsAll) : null });
+  }
+  if (has(/cuantos documentos|que documentos|documentos hay|que papeles|lista de documentos|que hay en (el )?archivo|que guardas|que custodias|que tienes|que puedes|de que sabes|que sabes/))
+    return ok({ text: `Custodio ${docsAll.length} documento${docsAll.length === 1 ? '' : 's'}, ${cardsAll.length} carta${cardsAll.length === 1 ? '' : 's'} y un punto en el mapa. Elige por dónde empezar.`, chips: gChoice('info', docsAll, cardsAll) });
+
+  if (has(/cuantos seekers|quienes son los seekers|lista de seekers|seekers hay/)) {
+    const names = (archiveData.seekers || []).map(s => s.name || s.title).filter(Boolean);
+    return ok({ text: names.length ? `El registro nombra ${names.length}: ${names.join(', ')}. Hubo otros, dicen. Pero esos no constan.` : 'El registro de Seekers está casi vacío. Alguien tendrá que llenarlo.' });
+  }
+  if (has(/que es (un )?seekers?|que significa (ser )?(un )?seeker|que son los seekers|que es ser seeker/))
+    return ok({ text: 'Bastian lo dijo: «Ahora os toca descubrir qué significa serlo». No voy a quitaros esa tarea. Pero lo que pide a quien encuentre su carta es una buena pista.' });
+  if (has(/que es (esto|esta web|el archivo|la web|this)|para que sirve|donde estoy|que es the seekers/))
+    return ok({ text: 'Esto es un archivo. Guarda lo que ha sido recuperado: documentos, cartas, un punto en el mapa. Alguien lo dejó aquí para quien siga buscando.' });
+
+  if (hintWord) return ok({ text: 'Una pista necesita un lugar donde apoyarse. ¿Sobre qué quieres que te hable?', chips: gChoice('hint', docsAll, cardsAll) });
+
+  S.asked.fallback++;
+  const base = ['Eso no consta en mis registros. Pregunta por lo que sí está a la vista: documentos, cartas, el mapa.', 'Mis estanterías no guardan esa respuesta. Prueba con otra pregunta.', 'El archivo guarda silencio sobre eso. Quizá la pregunta correcta sea otra.'];
+  if (S.asked.fallback >= 3) { S.asked.fallback = 0; return { text: 'Parece que buscas en estanterías vacías. Prueba una de estas frecuencias.', chips: GUARDIAN_SUGGESTIONS.slice(0, 4) }; }
+  return say('fb', base);
+}
+
+const GUARDIAN_SUGGESTIONS = [
+  { label: '¿Quién eres?', cmd: '¿Quién eres?' },
+  { label: '¿Qué documentos hay?', cmd: '¿Qué documentos hay?' },
+  { label: '¿Quién es Eudoro?', cmd: '¿Quién es Eudoro?' },
+  { label: '¿Quién es Bastian?', cmd: '¿Quién es Bastian?' },
+  { label: '¿Cómo consigo cartas?', cmd: '¿Cómo consigo cartas?' },
+  { label: 'Necesito una pista', cmd: 'Necesito una pista' },
+  { label: '¿Qué es un Seeker?', cmd: '¿Qué es un Seeker?' }
+];
+
+/* ---------- Interfaz ---------- */
+function gChipsHTML(chips) {
+  return `<div class="gd-chips">${chips.map(c => `<button type="button" class="gd-chip" data-label="${esc(c.label)}" data-cmd="${esc(c.cmd)}">${esc(c.label)}</button>`).join('')}</div>`;
+}
+function gMsgHTML(e) {
+  if (e.who === 'sys') return `<div class="gd-sys">${esc(e.text)}</div>`;
+  const g = e.who === 'g';
+  return `<div class="gd-msg ${g ? 'gd-g' : 'gd-u'}"><span class="gd-who">${g ? 'EL GUARDIÁN' : '› SEEKER'}</span><span class="gd-txt">${esc(e.text)}</span>${e.chips ? gChipsHTML(e.chips) : ''}</div>`;
+}
+function gLog() { return document.getElementById('gdLog'); }
+function gScroll() { const l = gLog(); if (l) l.scrollTop = l.scrollHeight; }
+function gLock(on) {
+  guardianState.busy = on;
+  const i = document.getElementById('gdInput'), b = document.getElementById('gdSend');
+  if (i) { i.disabled = on; if (!on && document.activeElement !== i) i.focus({ preventScroll: true }); }
+  if (b) b.disabled = on;
+}
+function gType(el, text, done) {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!el || reduce) { if (el) el.textContent = text; return done(); }
+  let i = 0;
+  const step = Math.max(8, Math.min(22, 2600 / Math.max(1, text.length)));
+  const finish = () => { clearInterval(t); guardianState.skip = null; el.parentNode && el.parentNode.classList.remove('typing'); done(); };
+  const t = setInterval(() => {
+    if (!el.isConnected) return finish();
+    i++; el.textContent = text.slice(0, i); gScroll();
+    if (i >= text.length) finish();
+  }, step);
+  guardianState.skip = () => { el.textContent = text; finish(); };
+}
+function guardianSkip() { if (guardianState.skip) guardianState.skip(); }
+
+function guardianSpeak(entry, after) {
+  const log = gLog();
+  guardianState.log.push(entry);
+  if (!log) { return after && after(); }
+  const dots = document.createElement('div'); dots.className = 'gd-dots'; log.appendChild(dots); gScroll();
+  setTimeout(() => {
+    dots.remove();
+    const l = gLog(); if (!l) return after && after();
+    l.insertAdjacentHTML('beforeend', gMsgHTML({ who: 'g', text: '' }));
+    const msg = l.lastElementChild; msg.classList.add('typing');
+    gType(msg.querySelector('.gd-txt'), entry.text, () => {
+      if (entry.chips && msg.isConnected) { msg.insertAdjacentHTML('beforeend', gChipsHTML(entry.chips)); gScroll(); }
+      after && after();
+    });
+  }, 450 + Math.random() * 450);
+}
+
+function guardianAsk(label, cmd) {
+  const text = String(label || '').trim();
+  if (!text || guardianState.busy) return;
+  gLock(true);
+  const u = { who: 'u', text: text.slice(0, 140) };
+  guardianState.log.push(u);
+  const l = gLog(); if (l) { l.insertAdjacentHTML('beforeend', gMsgHTML(u)); gScroll(); }
+  const rep = guardianReply(cmd || text);
+  guardianSpeak({ who: 'g', text: rep.text, chips: rep.chips || null }, () => gLock(false));
+}
+function guardianSend() {
+  const i = document.getElementById('gdInput'); if (!i) return;
+  const v = i.value; i.value = '';
+  guardianAsk(v);
+}
+
+function guardianMount() {
+  const content = document.getElementById('content');
+  if (content && !content.dataset.gdBound) {
+    content.dataset.gdBound = '1';
+    content.addEventListener('click', e => { const b = e.target.closest && e.target.closest('.gd-chip'); if (b) guardianAsk(b.dataset.label, b.dataset.cmd); });
+  }
+  const i = document.getElementById('gdInput'), b = document.getElementById('gdSend');
+  if (i) i.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); guardianSend(); } });
+  if (b) b.addEventListener('click', guardianSend);
+  gScroll();
+  if (!guardianState.booted) {
+    guardianState.booted = true;
+    gLock(true);
+    const sys = { who: 'sys', text: 'CONEXIÓN ESTABLECIDA CON EL GUARDIÁN DEL ARCHIVO' };
+    guardianState.log.push(sys);
+    const l = gLog(); if (l) l.insertAdjacentHTML('beforeend', gMsgHTML(sys));
+    setTimeout(() => guardianSpeak({ who: 'g', text: 'Has llegado hasta aquí. Pocos lo consiguen. Pregunta, Seeker… pero elige bien: cada pregunta es una llave.' }, () => gLock(false)), 700);
+  } else if (i && !guardianState.busy) { i.focus({ preventScroll: true }); }
+}
+
+/* Correspondencia entregada en clase. No introducir archivos futuros en esta lista. */
+const transmissionsArchive = [
+  {id:'TR-005', date:'2026-11-18', dateLabel:'18 NOV 2026', title:'Transmission 02', subtitle:'Segunda transmisión del Guardián', pages:['img/transmissions-02.1.png','img/transmissions-02.2.png']},
+  {id:'TR-004', date:'2026-11-13', dateLabel:'13 NOV 2026', title:'Transmission 01', subtitle:'Primera transmisión del Guardián', pages:['img/transmission-01.png']},
+  {id:'TR-003', date:'2026-11-06', dateLabel:'06 NOV 2026', title:'Archive 03', subtitle:'Presentación de KAIROS, ATLAS, NEXUS y ARGOS', pages:['img/archive-03.png']},
+  {id:'TR-002', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 02', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-02.png']},
+  {id:'TR-001', date:'2026-10-29', dateLabel:'29 OCT 2026', title:'Archive 01', subtitle:'Comunicación recuperada del Archivo', pages:['img/archive-01.png']}
+];
+let transmissionsTab = 'chat';
+let transmissionViewed = null;
+let transmissionPage = 0;
+let lastFocusedTransmission = null;
+
+function chooseTransmissionsTab(tab) {
+  if(tab !== 'chat' && tab !== 'inbox') return;
+  transmissionsTab = tab;
+  render('transmissions');
+}
+function transmissionInbox() {
+  return `<p class="tr-lead">Comunicaciones recibidas del Guardián del Archivo. Solo se archivan mensajes que ya han llegado a los Seekers.</p>
+    <div class="ptitle" style="margin-bottom:14px"><span>INBOX // ARCHIVED SIGNALS</span><span class="tr-count">${transmissionsArchive.length} TRANSMISSIONS</span></div>
+    <div class="tr-list">${transmissionsArchive.map(t=>`<button type="button" class="tr-card" onclick="openTransmission('${t.id}')" aria-label="Abrir ${esc(t.title)}, ${esc(t.dateLabel)}">
+      <img class="tr-thumb" src="${t.pages[0]}" alt="Vista previa de ${esc(t.title)}" loading="lazy">
+      <span class="tr-details"><span class="tr-ref">${esc(t.id)} // ${t.pages.length === 1 ? '1 FOLIO' : t.pages.length+' FOLIOS'}</span>
+      <strong class="tr-name">${esc(t.title)}</strong><span class="tr-date">${esc(t.subtitle)}</span>
+      <span class="tr-date">${esc(t.dateLabel)}</span><span class="tr-action">[ OPEN MESSAGE ]</span></span></button>`).join('')}</div>`;
+}
+function openTransmission(id) {
+  const item = transmissionsArchive.find(t=>t.id===id);
+  if (!item) return;
+  lastFocusedTransmission = document.activeElement;
+  transmissionViewed = item;
+  transmissionPage = 0;
+  let overlay = document.getElementById('trViewer');
+  if(!overlay){overlay=document.createElement('div');overlay.id='trViewer';overlay.className='tr-modal';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Visor de comunicaciones');document.body.appendChild(overlay);}
+  overlay.onclick = e => {if(e.target===overlay) closeTransmission();};
+  showTransmissionPage();
+  document.body.style.overflow='hidden';
+  overlay.querySelector('.tr-modal-x').focus();
+}
+function showTransmissionPage() {
+  const item=transmissionViewed, overlay=document.getElementById('trViewer');
+  if(!item||!overlay) return;
+  overlay.innerHTML=`<div class="tr-modal-dialog">
+    <div class="tr-modal-head"><div><strong>${esc(item.title)} // ${esc(item.subtitle)}</strong><small>${esc(item.id)} · ${esc(item.dateLabel)}</small></div>
+      <button type="button" class="tr-modal-x" onclick="closeTransmission()" aria-label="Cerrar comunicación">[ ✕ ESC ]</button></div>
+    <div class="tr-scroll"><a href="${item.pages[transmissionPage]}" target="_blank" rel="noopener" title="Abrir página original a tamaño completo"><img src="${item.pages[transmissionPage]}" alt="${esc(item.title)} — Página ${transmissionPage+1} de ${item.pages.length}"></a></div>
+    <div class="tr-modal-foot"><button type="button" class="tr-control" onclick="changeTransmissionPage(-1)" ${transmissionPage===0?'disabled':''}>← PREV</button>
+      <span class="tr-page">FOLIO ${transmissionPage+1} / ${item.pages.length} · Pulsa la imagen para abrirla a tamaño completo</span>
+      <button type="button" class="tr-control" onclick="changeTransmissionPage(1)" ${transmissionPage===item.pages.length-1?'disabled':''}>NEXT →</button></div></div>`;
+}
+function changeTransmissionPage(delta) {
+  if(!transmissionViewed) return;
+  const next=transmissionPage+delta;
+  if(next<0||next>=transmissionViewed.pages.length)return;
+  transmissionPage=next;showTransmissionPage();
+}
+function closeTransmission() {
+  document.getElementById('trViewer')?.remove();
+  transmissionViewed=null;
+  document.body.style.overflow='';
+  if(lastFocusedTransmission?.isConnected) lastFocusedTransmission.focus();
+}
+document.addEventListener('keydown',e=>{
+  if(!transmissionViewed)return;
+  if(e.key==='Escape'){e.preventDefault();closeTransmission();}
+  else if(e.key==='ArrowRight')changeTransmissionPage(1);
+  else if(e.key==='ArrowLeft')changeTransmissionPage(-1);
+});
+
+function transmissions() {
+  const chat=transmissionsTab==='chat';
+  if(chat) setTimeout(()=>{if(transmissionsTab==='chat' && document.getElementById('gdLog'))guardianMount();},0);
+  return `
+    <div class="head">
+      <div><h2>TRANSMISSIONS</h2><p class="intro">THE SEEKERS ARCHIVE / SECURE COMMUNICATION NETWORK</p></div>
+      <div class="tag">CANAL ABIERTO // 142.85 MHz</div>
+    </div>
+    <div class="tr-tabs" role="tablist" aria-label="Canales de comunicación">
+      <button type="button" class="tr-tab" role="tab" aria-selected="${chat}" onclick="chooseTransmissionsTab('chat')">◉ GUARDIAN LINK</button>
+      <button type="button" class="tr-tab" role="tab" aria-selected="${!chat}" onclick="chooseTransmissionsTab('inbox')">✉ INBOX <span class="tr-count">[${transmissionsArchive.length}]</span></button>
+    </div>
+    ${chat ? `<div class="gd-grid">
+      <section class="panel">
+        <div class="ptitle"><span>TRANSMISSIONS // EL GUARDIÁN DEL ARCHIVO</span><span class="gd-live">● EN LÍNEA</span></div>
+        <div class="gd-log" id="gdLog" onclick="guardianSkip()">${guardianState.log.map(gMsgHTML).join('')}</div>
+        <div class="gd-input"><span class="gd-prompt">›</span><input id="gdInput" type="text" maxlength="140" autocomplete="off" spellcheck="false" placeholder="Formula tu pregunta, Seeker…"><button id="gdSend" type="button">ENVIAR</button></div>
+      </section>
+      <div class="stack">
+        <section class="panel"><div class="ptitle"><span>FRECUENCIAS SUGERIDAS</span><span>◉</span></div><div class="gd-side">${GUARDIAN_SUGGESTIONS.map(c => `<button type="button" class="gd-chip" data-label="${esc(c.label)}" data-cmd="${esc(c.cmd)}">${esc(c.label)}</button>`).join('')}</div></section>
+        <section class="panel"><div class="ptitle"><span>PROTOCOLO DE ENLACE</span><span>READ-ONLY</span></div><div class="gd-note">› El Guardián solo habla de lo que ya reposa en el archivo.<br>› Da <b>pistas</b>, no respuestas.<br>› La investigación es vuestra.<br>› Cada pregunta es una llave. Elige bien.</div></section>
+      </div></div>` : transmissionInbox()}`;
+}
 
 const pages = { central, map: mapPage, documents, collection, evidence, transmissions, locked, unknown };
 
